@@ -1,0 +1,1 @@
+create table Prendas(codigo INT AUTO_INCREMENT,nombre VARCHAR(255) NOT NULL, pesoinicial FLOAT NOT NULL, pesofinal FLOAT NO NULL);
