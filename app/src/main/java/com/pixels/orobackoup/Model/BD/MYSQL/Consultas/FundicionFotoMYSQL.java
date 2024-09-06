@@ -5,24 +5,23 @@ import android.widget.Toast;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.pixels.orobackoup.Model.BD.MYSQL.Conexion;
-import com.pixels.orobackoup.Model.DatosEncapsulados.Fundicion;
 import com.pixels.orobackoup.ViewModel.FundicionViewModel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
-import java.util.List;
+import java.sql.ResultSet;
 
-public class FundicionMYSQL extends Conexion {
+public class FundicionFotoMYSQL extends Conexion {
 
     private boolean verficar;
     private boolean verificarE=false;
     private FundicionViewModel ViewModel;
-    private List<Fundicion> Datos;
-    public FundicionMYSQL(Context context, FundicionViewModel viewModel, List<Fundicion> datos) {
+    private int Codigodeprenda;
+    byte[] imageBytes = null;
+    public FundicionFotoMYSQL(Context context, FundicionViewModel viewModel, int codigodeprenda) {
         super(context);
         this.ViewModel=viewModel;
-        this.Datos=datos;
+        this.Codigodeprenda=codigodeprenda;
         execute("");
         new android.os.Handler().postDelayed(new Runnable() {
             public void run() {
@@ -44,13 +43,13 @@ public class FundicionMYSQL extends Conexion {
             if(verificarE){
                 return "Error en la conexion";
             }else{
-                String Sql="INSERT INTO Fundicion (codigoprenda, pesoinicial, pesofinal, foto) VALUES (?, ?, ?, ?)";
+                String Sql = "SELECT foto FROM Fundicion WHERE codigoprenda = ?";
                 PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(Sql);
-                stmt.setInt(1, Datos.get(0).getCodigoprenda());
-                stmt.setFloat(2, Datos.get(0).getPesoinicial());
-                stmt.setFloat(3, Datos.get(0).getPesofinal());
-                stmt.setBytes(4, Datos.get(0).getFoto()); // Seteando la imagen como array de bytes
-                stmt.executeUpdate();
+                stmt.setInt(1, Codigodeprenda);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    imageBytes = rs.getBytes("foto"); // Recupera los bytes de la imagen
+                }
                 return "";
             }
         }catch (Exception e){
@@ -74,6 +73,6 @@ public class FundicionMYSQL extends Conexion {
         }
     }
     public void ConsultaBaseDatos() {
-        ViewModel.resultado.setValue(verficar);
+        ViewModel.resultadov2.setValue(imageBytes);
     }
 }

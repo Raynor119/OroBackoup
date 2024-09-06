@@ -1,14 +1,21 @@
 package com.pixels.orobackoup.View;
 
 import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.icu.text.SimpleDateFormat;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,10 +25,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.pixels.orobackoup.Model.BD.MYSQL.Conexion;
+import com.pixels.orobackoup.Model.DatosEncapsulados.Fundicion;
 import com.pixels.orobackoup.R;
+import com.pixels.orobackoup.ViewModel.FundicionViewModel;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import androidx.core.content.FileProvider;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -31,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgView;
     TextInputEditText PesoInicial,pesofinal;
     TextView mermatext;
+    Button boton;
+    Bitmap imgBitmap;
+    private Uri photoURI;
+    private File photoFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mermatext=findViewById(R.id.merma);
         btnCamarav2 = findViewById(R.id.fotoRealizada);
         imgView = findViewById(R.id.fotoprenda);
+        boton= findViewById(R.id.ButtonG);
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,22 +115,101 @@ public class MainActivity extends AppCompatActivity {
         PesoInicial.addTextChangedListener(watcher);
         pesofinal.addTextChangedListener(watcher);
 
+        /*
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FundicionViewModel agregar= ViewModelProviders.of(MainActivity.this).get(FundicionViewModel.class);
+                agregar.reset();
+                List<Fundicion>datos=new ArrayList<>();
+                byte[] imageBytes = bitmapToByteArray(imgBitmap);
+                datos.add(new Fundicion(2, 34.3F,32.1F,imageBytes));
+                agregar.guardarfundicion(MainActivity.this,datos);
+                Observer<Boolean> observer1= new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean aBoolean) {
+                        if(aBoolean){
+                            try{
+                                Toast.makeText(MainActivity.this, "Se guardo el Producto en la Base de Datos", Toast.LENGTH_LONG).show();
+                            }catch (Exception e){
+                             //   Toast.makeText(MainActivity.this, "Error al guardar el Producto en la Base de Datos", Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+                    }
+                };
+                agregar.getResultado().observe(MainActivity.this,observer1);
+            }
+        });
+
+         */
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FundicionViewModel agregar= ViewModelProviders.of(MainActivity.this).get(FundicionViewModel.class);
+                agregar.reset();
+                agregar.verfoto(MainActivity.this,1);
+                Observer<byte[]> observer=new Observer<byte[]>() {
+                    @Override
+                    public void onChanged(byte[] bytes) {
+                        imgBitmap= byteArrayToBitmap(bytes);
+                        imgView.setImageBitmap(imgBitmap);
+                        btnCamara.setVisibility(View.GONE);
+                        saveImageToGallery(imgBitmap);
+                    }
+                };
+                agregar.getResultadov2().observe(MainActivity.this,observer);
+            }
+        });
+
     }
-    private void abrirCamara(){
+    private void abrirCamara() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(intent.resolveActivity(getPackageManager()) != null){
-            startActivityForResult(intent, 1);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // Crear el archivo donde se guardará la foto
+            try {
+                photoFile = createImageFile();
+                if (photoFile != null) {
+                    photoURI = FileProvider.getUriForFile(this, "com.tuapp.fileprovider", photoFile);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                    startActivityForResult(intent, 1);
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Toast.makeText(this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+            }
         }
     }
+    private File createImageFile() throws IOException {
+        // Crear un nombre de archivo único
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES); // Directorio temporal para guardar la imagen
+        File image = File.createTempFile(
+                imageFileName, /* prefix */
+                ".jpg",        /* suffix */
+                storageDir     /* directory */
+        );
 
+        return image;
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imgBitmap = (Bitmap) extras.get("data");
+            // Decodificar la imagen desde el archivo con resolución completa
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888; // Mantén la calidad alta
+            Bitmap imgBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+
+            // Mostrar la imagen en el ImageView
             imgView.setImageBitmap(imgBitmap);
             btnCamara.setVisibility(View.GONE);
-            //Toast.makeText(this, "se tomo la foto", Toast.LENGTH_LONG).show();
+
+            // Guardar en la galería o en la base de datos
+            saveImageToGallery(imgBitmap);
+            //Toast.makeText(this, "Foto capturada con alta resolución", Toast.LENGTH_LONG).show();
         }
     }
     private void calcularMerma() {
@@ -137,4 +243,72 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    private byte[] bitmapToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Usa PNG para guardar sin pérdida, o JPEG con calidad máxima (100)
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); // Cambiar a PNG si es posible, para calidad sin pérdida
+        return stream.toByteArray();
+    }
+
+    private void saveImageToGallery(Bitmap bitmap) {
+        OutputStream fos;
+        String imageName = "imagen_" + System.currentTimeMillis() + ".jpg"; // Nombre único para cada imagen
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            // Para Android 10 (API 29) y superiores
+            ContentResolver resolver = getContentResolver();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, imageName);
+            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
+            contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES); // Guarda en la carpeta "Pictures"
+
+            Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+
+            try {
+                if (imageUri != null) {
+                    fos = resolver.openOutputStream(imageUri);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos); // Guarda el bitmap en formato JPEG
+                    fos.close();
+                    Toast.makeText(this, "Imagen guardada en la galería", Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Error al guardar la imagen", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // Para versiones anteriores a Android 10
+            File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "MiApp");
+            if (!directory.exists()) {
+                directory.mkdirs(); // Crea el directorio si no existe
+            }
+
+            File imageFile = new File(directory, imageName);
+            try {
+                fos = new FileOutputStream(imageFile);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                fos.close();
+
+                // Notificar al sistema para que la imagen aparezca en la galería
+                Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                intent.setData(Uri.fromFile(imageFile));
+                sendBroadcast(intent);
+
+                Toast.makeText(this, "Imagen guardada en la galería", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Error al guardar la imagen", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private Bitmap byteArrayToBitmap(byte[] imageBytes) {
+        // Configura opciones para evitar la reducción de tamaño
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        options.inSampleSize = 1; // Asegúrate de no escalar la imagen
+
+        // Decodifica la imagen desde los bytes manteniendo la resolución original
+        return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length, options);
+    }
+
 }
