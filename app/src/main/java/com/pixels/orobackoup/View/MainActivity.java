@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.pixels.orobackoup.Model.BD.MYSQL.Conexion;
 import com.pixels.orobackoup.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -117,10 +118,10 @@ public class MainActivity extends AppCompatActivity {
                 mermatext.setText(String.format("La merma es: %.2f", merma));
             } catch (NumberFormatException e) {
                 // Manejo de errores si el formato del número es incorrecto
-                mermatext.setText("La merma es:: 0");
+                mermatext.setText("La merma es: 0");
             }
         } else {
-            mermatext.setText("La merma es:a: 0");
+            mermatext.setText("La merma es: 0");
         }
     }
     @Override
