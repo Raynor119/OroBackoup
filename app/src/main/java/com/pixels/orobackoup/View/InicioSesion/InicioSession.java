@@ -36,6 +36,7 @@ public class InicioSession extends AppCompatActivity {
         Contr=findViewById(R.id.contra);
         EditContr=findViewById(R.id.Ccontra);
         GuardadoSesion=findViewById(R.id.CheckGS);
+        GuardadoSesion.setChecked(true);
         BInicio=findViewById(R.id.ButtonI);
         TextWatcher textWatcherU = new  TextWatcher(){
 
