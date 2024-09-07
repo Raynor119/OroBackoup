@@ -159,7 +159,8 @@ public class MainActivity extends AppCompatActivity {
                         imgBitmap= byteArrayToBitmap(bytes);
                         imgView.setImageBitmap(imgBitmap);
                         btnCamara.setVisibility(View.GONE);
-                        saveImageToGallery(imgBitmap);
+                        showImageInGalleryApp(imgBitmap);
+                        //saveImageToGallery(imgBitmap);
                     }
                 };
                 agregar.getResultadov2().observe(MainActivity.this,observer);
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 photoFile = createImageFile();
                 if (photoFile != null) {
-                    photoURI = FileProvider.getUriForFile(this, "com.tuapp.fileprovider", photoFile);
+                    photoURI = FileProvider.getUriForFile(this, "com.pixels.orobackoup.fileprovider", photoFile);
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(intent, 1);
                 }
@@ -268,6 +269,36 @@ public class MainActivity extends AppCompatActivity {
         // Usa PNG para guardar sin pérdida, o JPEG con calidad máxima (100)
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); // Cambiar a PNG si es posible, para calidad sin pérdida
         return stream.toByteArray();
+    }
+
+    private void showImageInGalleryApp(Bitmap bitmap) {
+        try {
+            // Crear un archivo temporal para almacenar la imagen
+            File tempFile = File.createTempFile("temp_image", ".jpg", getCacheDir());
+
+            // Guardar el Bitmap en el archivo temporal
+            OutputStream fos = new FileOutputStream(tempFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.close();
+
+            // Crear un URI para el archivo temporal utilizando FileProvider
+            Uri imageUri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", tempFile);
+
+            // Crear un Intent para visualizar la imagen en la app de galería
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(imageUri, "image/jpeg");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Permisos para la galería
+
+            // Verificar que haya una aplicación disponible para abrir el Intent
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent); // Mostrar la imagen
+            } else {
+                Toast.makeText(this, "No hay una aplicación disponible para visualizar la imagen", Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al visualizar la imagen", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void saveImageToGallery(Bitmap bitmap) {

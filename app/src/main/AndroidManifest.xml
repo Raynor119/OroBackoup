@@ -32,7 +32,7 @@
         tools:targetApi="31">
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.tuapp.fileprovider"
+            android:authorities="com.pixels.orobackoup.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
