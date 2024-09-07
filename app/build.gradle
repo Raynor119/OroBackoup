@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 android {
     namespace 'com.pixels.orobackoup'
     buildToolsVersion "32.0.0"
-    compileSdk 32
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.pixels.orobackoup"
         minSdk 24
-        targetSdk 32
+        targetSdk 34
         versionCode 1
         versionName "1.0"
     }
