@@ -1,2 +1,8 @@
-create table Prendas(codigo INT AUTO_INCREMENT,nombre VARCHAR(255) NOT NULL,PRIMARY KEY (codigo));
-CREATE TABLE Fundicion (codigo INT AUTO_INCREMENT,codigoprenda INT NOT NULL,pesoinicial FLOAT NOT NULL,pesofinal FLOAT NOT NULL,foto LONGBLOB,PRIMARY KEY (codigo));
+create table Usuarios(codigo INT AUTO_INCREMENT,usuario VARCHAR(255) NOT NULL, contra VARCHAR(255) NOT NULL,tipousuario ENUM('A', 'U') NOT NULL,PRIMARY KEY (codigo));
+create table Prendas(codigo INT AUTO_INCREMENT,codigousu INT NOT NULL, nombre VARCHAR(255) NOT NULL, estado ENUM('S', 'N') NOT NULL DEFAULT 'N',PRIMARY KEY (codigo),FOREIGN KEY (codigousu) REFERENCES Usuarios(codigo));
+CREATE TABLE Fundicion (codigo INT AUTO_INCREMENT,codigoprenda INT NOT NULL, pesoinicial FLOAT NOT NULL, pesofinal FLOAT NOT NULL, foto LONGBLOB,PRIMARY KEY (codigo),FOREIGN KEY (codigoprenda) REFERENCES Prendas(codigo));
+CREATE TABLE Electropulidobomba (codigo INT AUTO_INCREMENT,codigoprenda INT NOT NULL, pesoinicial FLOAT NOT NULL, pesofinal FLOAT NOT NULL, foto LONGBLOB,PRIMARY KEY (codigo),FOREIGN KEY (codigoprenda) REFERENCES Prendas(codigo));
+CREATE TABLE Limado (codigo INT AUTO_INCREMENT,codigoprenda INT NOT NULL, pesoinicial FLOAT NOT NULL, pesofinal FLOAT NOT NULL, foto LONGBLOB,PRIMARY KEY (codigo),FOREIGN KEY (codigoprenda) REFERENCES Prendas(codigo));
+CREATE TABLE Lijado (codigo INT AUTO_INCREMENT,codigoprenda INT NOT NULL, pesoinicial FLOAT NOT NULL, pesofinal FLOAT NOT NULL, foto LONGBLOB,PRIMARY KEY (codigo),FOREIGN KEY (codigoprenda) REFERENCES Prendas(codigo));
+CREATE TABLE Engaste (codigo INT AUTO_INCREMENT,codigoprenda INT NOT NULL, pesoinicial FLOAT NOT NULL, pesofinal FLOAT NOT NULL, foto LONGBLOB,PRIMARY KEY (codigo),FOREIGN KEY (codigoprenda) REFERENCES Prendas(codigo));
+CREATE TABLE Pulido (codigo INT AUTO_INCREMENT,codigoprenda INT NOT NULL, pesoinicial FLOAT NOT NULL, pesofinal FLOAT NOT NULL, foto LONGBLOB,PRIMARY KEY (codigo),FOREIGN KEY (codigoprenda) REFERENCES Prendas(codigo));
