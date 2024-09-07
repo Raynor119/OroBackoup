@@ -43,6 +43,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import androidx.core.content.FileProvider;
+import android.media.ExifInterface;
+import android.graphics.Matrix;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -123,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 agregar.reset();
                 List<Fundicion>datos=new ArrayList<>();
                 byte[] imageBytes = bitmapToByteArray(imgBitmap);
-                datos.add(new Fundicion(2, 34.3F,32.1F,imageBytes));
+                datos.add(new Fundicion(3, 34.3F,32.1F,imageBytes));
                 agregar.guardarfundicion(MainActivity.this,datos);
                 Observer<Boolean> observer1= new Observer<Boolean>() {
                     @Override
@@ -133,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Se guardo el Producto en la Base de Datos", Toast.LENGTH_LONG).show();
                             }catch (Exception e){
                              //   Toast.makeText(MainActivity.this, "Error al guardar el Producto en la Base de Datos", Toast.LENGTH_LONG).show();
-
                             }
                         }
                     }
@@ -143,12 +144,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
          */
+
+
+
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FundicionViewModel agregar= ViewModelProviders.of(MainActivity.this).get(FundicionViewModel.class);
                 agregar.reset();
-                agregar.verfoto(MainActivity.this,1);
+                agregar.verfoto(MainActivity.this,3);
                 Observer<byte[]> observer=new Observer<byte[]>() {
                     @Override
                     public void onChanged(byte[] bytes) {
@@ -161,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 agregar.getResultadov2().observe(MainActivity.this,observer);
             }
         });
+
 
     }
     private void abrirCamara() {
@@ -198,18 +203,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            // Decodificar la imagen desde el archivo con resolución completa
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.ARGB_8888; // Mantén la calidad alta
-            Bitmap imgBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+            // Verificar si el archivo existe y tiene datos
+            if (photoFile != null && photoFile.exists()) {
+                // Decodificar la imagen desde el archivo con resolución completa
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                // Establecer inSampleSize para reducir la calidad. Un valor de 2 reducirá la resolución a la mitad.
+                options.inSampleSize = 2; // Cambia este valor si quieres reducir más la calidad
+                imgBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
 
-            // Mostrar la imagen en el ImageView
-            imgView.setImageBitmap(imgBitmap);
-            btnCamara.setVisibility(View.GONE);
+                // Verificar si la imagen fue decodificada correctamente
+                if (imgBitmap != null) {
+                    // Corregir la orientación de la imagen
+                    imgBitmap = rotateImageIfRequired(imgBitmap, photoFile.getAbsolutePath());
 
-            // Guardar en la galería o en la base de datos
-            saveImageToGallery(imgBitmap);
-            //Toast.makeText(this, "Foto capturada con alta resolución", Toast.LENGTH_LONG).show();
+                    // Mostrar la imagen en el ImageView
+                    imgView.setImageBitmap(imgBitmap);
+                    btnCamara.setVisibility(View.GONE);
+
+                    // Guardar en la galería o en la base de datos
+                    //saveImageToGallery(imgBitmap);
+                } else {
+                    // Manejo del error si la imagen no se decodifica
+                    Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Archivo de imagen no encontrado", Toast.LENGTH_SHORT).show();
+            }
         }
     }
     private void calcularMerma() {
@@ -301,6 +321,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private Bitmap rotateImageIfRequired(Bitmap img, String imagePath) {
+        try {
+            ExifInterface exif = new ExifInterface(imagePath);
+            int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    return rotateImage(img, 90);
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    return rotateImage(img, 180);
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    return rotateImage(img, 270);
+                default:
+                    return img;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al leer los metadatos EXIF", Toast.LENGTH_SHORT).show();
+            return img; // Devuelve la imagen sin rotar si hay un error
+        }
+    }
+
+    // Método para rotar el Bitmap
+    private Bitmap rotateImage(Bitmap img, int degree) {
+        if (img == null) {
+            Toast.makeText(this, "Error: Imagen no cargada", Toast.LENGTH_SHORT).show();
+            return null; // Asegúrate de no intentar rotar un Bitmap nulo
+        }
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        return Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+    }
     private Bitmap byteArrayToBitmap(byte[] imageBytes) {
         // Configura opciones para evitar la reducción de tamaño
         BitmapFactory.Options options = new BitmapFactory.Options();
