@@ -1,11 +1,12 @@
 package com.pixels.orobackoup.Model.DatosEncapsulados;
 
 public class MenuLista {
-    private String Titulo,Icono;
+    private String Titulo;
+    private int Id;
 
-    public MenuLista(String titulo, String icono) {
+    public MenuLista(int id,String titulo) {
         this.Titulo = titulo;
-        this.Icono = icono;
+        this.Id = id;
     }
 
     public String getTitulo() {
@@ -16,11 +17,11 @@ public class MenuLista {
         this.Titulo = titulo;
     }
 
-    public String getIcono() {
-        return this.Icono;
+    public int getId() {
+        return Id;
     }
 
-    public void setIcono(String icono) {
-        this.Icono = icono;
+    public void setId(int id) {
+        Id = id;
     }
 }

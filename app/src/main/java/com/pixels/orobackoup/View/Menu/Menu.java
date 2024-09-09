@@ -14,12 +14,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.pixels.orobackoup.Model.DatosEncapsulados.MenuLista;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.InicioSession;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Menu extends AppCompatActivity {
 
     private SharedPreferences prefe;
+    private List<MenuLista> menuopciones= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,18 @@ public class Menu extends AppCompatActivity {
             CerrarSession();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void Recicler(){
+        prefe=getSharedPreferences("Sesion",Menu.this.MODE_PRIVATE);
+        if(prefe.getString("TipoUsuario","0").equals("U")){
+            menuopciones.add(new MenuLista(1,"Prendas Registradas"));
+            menuopciones.add(new MenuLista(4,"Salir"));
+        }else{
+            menuopciones.add(new MenuLista(2,"Prendas Registradas"));
+            menuopciones.add(new MenuLista(3,"Estadisticas"));
+            menuopciones.add(new MenuLista(4,"Salir"));
+        }
     }
     public void CerrarSession(){
         SharedPreferences preferencias=getSharedPreferences("Sesion",Menu.this.MODE_PRIVATE);
