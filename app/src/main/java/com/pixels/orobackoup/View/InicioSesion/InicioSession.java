@@ -1,5 +1,6 @@
 package com.pixels.orobackoup.View.InicioSesion;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,6 +33,7 @@ public class InicioSession extends AppCompatActivity {
     private TextInputLayout EditContr;
     private CheckBox GuardadoSesion;
     private Button BInicio;
+    private SharedPreferences prefe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,10 @@ public class InicioSession extends AppCompatActivity {
         Contr=findViewById(R.id.contra);
         EditContr=findViewById(R.id.Ccontra);
         GuardadoSesion=findViewById(R.id.CheckGS);
-        GuardadoSesion.setChecked(true);
+        prefe=getSharedPreferences("datos",InicioSession.this.MODE_PRIVATE);
+        if(prefe.getString("checkboxG","0").equals("0")){
+            GuardadoSesion.setChecked(true);
+        }
         BInicio=findViewById(R.id.ButtonI);
         TextWatcher textWatcherU = new  TextWatcher(){
 
