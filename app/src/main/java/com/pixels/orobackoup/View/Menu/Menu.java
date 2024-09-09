@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pixels.orobackoup.Model.DatosEncapsulados.MenuLista;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.InicioSession;
@@ -25,16 +27,26 @@ public class Menu extends AppCompatActivity {
 
     private SharedPreferences prefe;
     private List<MenuLista> menuopciones= new ArrayList<>();
+    public static FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         TextView titulo=(TextView) findViewById(R.id.titulomenu);
+        fab = findViewById(R.id.fab);
         prefe=getSharedPreferences("Sesion",Menu.this.MODE_PRIVATE);
         if(prefe.getString("TipoUsuario","0").equals("A")){
             titulo.setText("Menu de Administrador");
+            fab.setVisibility(View.GONE);
         }
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setTitle("");
         setSupportActionBar(toolbar);
