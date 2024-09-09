@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+
+import com.pixels.orobackoup.View.InicioSesion.AlertDialog.AlertCarga;
 import com.pixels.orobackoup.View.Menu.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +36,7 @@ public class InicioSession extends AppCompatActivity {
     private TextInputEditText Contr;
     private TextInputLayout EditContr;
     private CheckBox GuardadoSesion;
+    private AlertCarga carga;
     private Button BInicio;
     private SharedPreferences prefe;
 
@@ -93,6 +96,7 @@ public class InicioSession extends AppCompatActivity {
         };
         Usuario.addTextChangedListener(textWatcherU);
         Contr.addTextChangedListener(textWatcherC);
+        carga =new AlertCarga(InicioSession.this);
         BInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,10 +116,13 @@ public class InicioSession extends AppCompatActivity {
                 }else{
                     InicionSesionViewModel inicio= ViewModelProviders.of(InicioSession.this).get(InicionSesionViewModel.class);
                     inicio.reset();
+                    carga.Cargar();
                     inicio.verificarUsuario(InicioSession.this,Usuario.getText().toString(),Contr.getText().toString());
                     Observer<List<Usuarios>> observerU=new Observer<List<Usuarios>>() {
                         @Override
                         public void onChanged(List<Usuarios> usuarios) {
+                            carga.setInicio(1);
+                            carga.Cerrar();
                             if(usuarios.get(0).getCodigo()==0){
                                 Toast.makeText(InicioSession.this, "El Usuario o la Contraseña son incorrectos", Toast.LENGTH_SHORT).show();
                                 EditUsuario.setError(" ");
@@ -148,6 +155,15 @@ public class InicioSession extends AppCompatActivity {
                         }
                     };
                     inicio.getResultado().observe(InicioSession.this,observerU);
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(carga.getInicio()==0){
+                                Toast.makeText(InicioSession.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                carga.Cerrar();
+                            }
+                        }
+                    },12000);
                 }
             }
         });
