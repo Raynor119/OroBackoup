@@ -13,10 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.pixels.orobackoup.Model.DatosEncapsulados.Usuarios;
 import com.pixels.orobackoup.R;
+import com.pixels.orobackoup.ViewModel.InicioSesion.InicionSesionViewModel;
+
+import java.util.List;
 
 public class InicioSession extends AppCompatActivity {
 
@@ -97,7 +103,22 @@ public class InicioSession extends AppCompatActivity {
                         EditContr.setError("La Contraseña no puede superar los 18 caracteres");
                     }
                 }else{
-                    Toast.makeText(InicioSession.this, "Iniciando Session", Toast.LENGTH_SHORT).show();
+                    InicionSesionViewModel inicio= ViewModelProviders.of(InicioSession.this).get(InicionSesionViewModel.class);
+                    inicio.reset();
+                    inicio.verificarUsuario(InicioSession.this,Usuario.getText().toString(),Contr.getText().toString());
+                    Observer<List<Usuarios>> observerU=new Observer<List<Usuarios>>() {
+                        @Override
+                        public void onChanged(List<Usuarios> usuarios) {
+                            if(usuarios.get(0).getCodigo()==0){
+                                Toast.makeText(InicioSession.this, "El Usuario o la Contraseña son incorrectos", Toast.LENGTH_SHORT).show();
+                                EditUsuario.setError(" ");
+                                EditContr.setError(" ");
+                            }else{
+                                Toast.makeText(InicioSession.this, "Iniciando Session", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    };
+                    inicio.getResultado().observe(InicioSession.this,observerU);
                 }
             }
         });
