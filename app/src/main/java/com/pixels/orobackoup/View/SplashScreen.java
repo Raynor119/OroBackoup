@@ -31,6 +31,13 @@ public class SplashScreen extends AppCompatActivity {
                         SharedPreferences.Editor editor=preferencias.edit();
                         editor.putString("checkboxG", "0");
                         editor.commit();
+                        SharedPreferences preferenciasv2=getSharedPreferences("Sesion",SplashScreen.this.MODE_PRIVATE);
+                        SharedPreferences.Editor editorv2=preferenciasv2.edit();
+                        editorv2.putString("Codigo", "");
+                        editorv2.putString("Usuario", "");
+                        editorv2.putString("TipoUsuario", "");
+                        editorv2.putString("SesionD", "0");
+                        editorv2.commit();
                         Intent intent =new Intent(SplashScreen.this, InicioSession.class);
                         startActivity(intent);
                         finish();
