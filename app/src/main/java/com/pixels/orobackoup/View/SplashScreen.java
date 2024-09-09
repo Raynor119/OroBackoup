@@ -12,8 +12,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.InicioSession;
+import com.pixels.orobackoup.View.Menu.Menu;
 
 public class SplashScreen extends AppCompatActivity {
+
+    private SharedPreferences prefe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +36,16 @@ public class SplashScreen extends AppCompatActivity {
                         finish();
                         break;
                     case 1:
-                        Intent IIntent =new Intent(SplashScreen.this, InicioSession.class);
-                        startActivity(IIntent);
-                        finish();
+                        prefe=getSharedPreferences("Sesion",SplashScreen.this.MODE_PRIVATE);
+                        if(prefe.getString("SesionD","0").equals("0")){
+                            Intent IIntent =new Intent(SplashScreen.this, InicioSession.class);
+                            startActivity(IIntent);
+                            finish();
+                        }else{
+                            Intent IIntent =new Intent(SplashScreen.this, Menu.class);
+                            startActivity(IIntent);
+                            finish();
+                        }
                         break;
                     case 2:
                         Toast.makeText(getApplicationContext(), "se Actualizo", Toast.LENGTH_LONG).show();

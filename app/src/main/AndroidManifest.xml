@@ -40,7 +40,8 @@
         </activity>
         <activity
             android:name=".View.Menu.Menu"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity
             android:name=".View.InicioSesion.InicioSession"
             android:exported="false"

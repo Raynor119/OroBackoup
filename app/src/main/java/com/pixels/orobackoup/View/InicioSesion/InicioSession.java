@@ -1,9 +1,11 @@
 package com.pixels.orobackoup.View.InicioSesion;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.pixels.orobackoup.View.Menu.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -119,7 +121,29 @@ public class InicioSession extends AppCompatActivity {
                                 EditUsuario.setError(" ");
                                 EditContr.setError(" ");
                             }else{
-                                Toast.makeText(InicioSession.this, "Iniciando Session", Toast.LENGTH_SHORT).show();
+                                if(GuardadoSesion.isEnabled()){
+                                    SharedPreferences preferencias=getSharedPreferences("Sesion",InicioSession.this.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor=preferencias.edit();
+                                    editor.putString("Codigo", usuarios.get(0).getCodigo()+"");
+                                    editor.putString("Usuario", usuarios.get(0).getUsuario()+"");
+                                    editor.putString("TipoUsuario", usuarios.get(0).getTipoUsuario()+"");
+                                    editor.putString("SesionD", "1");
+                                    editor.commit();
+                                    Intent IIntent =new Intent(InicioSession.this, Menu.class);
+                                    startActivity(IIntent);
+                                    finish();
+                                }else{
+                                    SharedPreferences preferencias=getSharedPreferences("Sesion",InicioSession.this.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor=preferencias.edit();
+                                    editor.putString("Codigo", usuarios.get(0).getCodigo()+"");
+                                    editor.putString("Usuario", usuarios.get(0).getUsuario()+"");
+                                    editor.putString("TipoUsuario", usuarios.get(0).getTipoUsuario()+"");
+                                    editor.putString("SesionD", "0");
+                                    editor.commit();
+                                    Intent IIntent =new Intent(InicioSession.this, Menu.class);
+                                    startActivity(IIntent);
+                                    finish();
+                                }
                             }
                         }
                     };
