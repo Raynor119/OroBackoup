@@ -18,10 +18,10 @@ public class MenuLista {
     }
 
     public int getId() {
-        return Id;
+        return this.Id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 }

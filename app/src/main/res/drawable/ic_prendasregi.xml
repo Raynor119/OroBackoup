@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ic_rounded_vector.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fondo azul con bordes redondeados -->
+    <item>
+        <shape>
+            <solid android:color="@color/colorPrimary" /> <!-- Color de fondo azul -->
+            <corners android:radius="8dp" /> <!-- Bordes redondeados -->
+        </shape>
+    </item>
+
+</layer-list>
