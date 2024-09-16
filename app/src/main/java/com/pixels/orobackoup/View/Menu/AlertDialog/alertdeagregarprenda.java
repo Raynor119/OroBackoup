@@ -69,7 +69,7 @@ public class alertdeagregarprenda {
                 if(nombre.getText().toString().equals("")){
                     Cnombre.setError("Digite el nombre de la prenda");
                 }else{
-
+                    alertCancelar();
                 }
             }
         });
