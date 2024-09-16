@@ -23,6 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pixels.orobackoup.Model.DatosEncapsulados.MenuLista;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.InicioSession;
+import com.pixels.orobackoup.View.Menu.AlertDialog.alertdeagregarprenda;
 import com.pixels.orobackoup.View.Menu.RecyclerViewAdaptador.RecyclerAdaptadorMenu;
 
 import java.util.ArrayList;
@@ -52,7 +53,8 @@ public class Menu extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                alertdeagregarprenda alert=new alertdeagregarprenda(Menu.this);
+                alert.pedirnombre();
             }
         });
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
