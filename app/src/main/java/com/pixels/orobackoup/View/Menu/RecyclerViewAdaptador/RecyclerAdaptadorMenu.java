@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,18 @@ public class RecyclerAdaptadorMenu extends RecyclerView.Adapter<RecyclerAdaptado
         @Override
         public void onClick(View view) {
             int Id = Integer.parseInt((view.getTag() + ""));
+            if (Id==1){
+
+            }
+            if (Id==2){
+
+            }
+            if (Id==3){
+
+            }
+            if(Id==4){
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
         }
     };
 
@@ -40,20 +53,18 @@ public class RecyclerAdaptadorMenu extends RecyclerView.Adapter<RecyclerAdaptado
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+
         if(MValues.get(position).getId()==1){
-            holder.imagen.setImageResource(R.mipmap.caja);
+            holder.imagen.setImageResource(R.drawable.baseline_dashboard_customize_24);
         }
         if(MValues.get(position).getId()==2){
-            holder.imagen.setImageResource(R.mipmap.productos);
+            holder.imagen.setImageResource(R.drawable.baseline_dashboard_24);
         }
         if(MValues.get(position).getId()==3){
-            holder.imagen.setImageResource(R.mipmap.ventas);
+            holder.imagen.setImageResource(R.drawable.baseline_analytics_24);
         }
         if(MValues.get(position).getId()==4){
-            holder.imagen.setImageResource(R.mipmap.ajustes);
-        }
-        if(MValues.get(position).getId()==4){
-            holder.imagen.setImageResource(R.mipmap.salir);
+            holder.imagen.setImageResource(R.drawable.baseline_power_settings_new_24);
         }
         holder.mContentView.setText(MValues.get(position).getTitulo());
         holder.itemView.setTag(MValues.get(position).getId());
@@ -62,14 +73,15 @@ public class RecyclerAdaptadorMenu extends RecyclerView.Adapter<RecyclerAdaptado
 
     @Override
     public int getItemCount() {
+
         return MValues.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView mContentView;
-        final ImageView imagen;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public final TextView mContentView;
+        public final ImageView imagen;
 
-        ViewHolder(View view) {
+        public ViewHolder(View view) {
             super(view);
             imagen=(ImageView) view.findViewById(R.id.imagen);
             mContentView = (TextView) view.findViewById(R.id.content);

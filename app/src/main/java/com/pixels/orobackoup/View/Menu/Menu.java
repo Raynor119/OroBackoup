@@ -6,7 +6,9 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 
@@ -14,11 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pixels.orobackoup.Model.DatosEncapsulados.MenuLista;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.InicioSession;
+import com.pixels.orobackoup.View.Menu.RecyclerViewAdaptador.RecyclerAdaptadorMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +33,14 @@ public class Menu extends AppCompatActivity {
     private SharedPreferences prefe;
     private List<MenuLista> menuopciones= new ArrayList<>();
     public static FloatingActionButton fab;
+    public RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        recyclerView = (RecyclerView) findViewById(R.id.opcion_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         TextView titulo=(TextView) findViewById(R.id.titulomenu);
         fab = findViewById(R.id.fab);
         prefe=getSharedPreferences("Sesion",Menu.this.MODE_PRIVATE);
@@ -50,6 +58,8 @@ public class Menu extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setTitle("");
         setSupportActionBar(toolbar);
+
+        Recicler();
     }
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu){
@@ -66,7 +76,10 @@ public class Menu extends AppCompatActivity {
     }
 
     private void Recicler(){
+        recyclerView.setAdapter(null);
+        menuopciones=new ArrayList<>();
         prefe=getSharedPreferences("Sesion",Menu.this.MODE_PRIVATE);
+
         if(prefe.getString("TipoUsuario","0").equals("U")){
             menuopciones.add(new MenuLista(1,"Prendas Registradas"));
             menuopciones.add(new MenuLista(4,"Salir"));
@@ -75,6 +88,7 @@ public class Menu extends AppCompatActivity {
             menuopciones.add(new MenuLista(3,"Estadisticas"));
             menuopciones.add(new MenuLista(4,"Salir"));
         }
+        recyclerView.setAdapter(new RecyclerAdaptadorMenu(Menu.this,menuopciones));
     }
     public void CerrarSession(){
         SharedPreferences preferencias=getSharedPreferences("Sesion",Menu.this.MODE_PRIVATE);
