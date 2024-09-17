@@ -30,23 +30,26 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".View.Prenda.PrendaView"
+            android:exported="false" />
+        <activity
             android:name=".View.SplashScreen"
-            android:theme="@style/Theme.MyApplication.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".View.Menu.Menu"
             android:exported="false"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".View.InicioSesion.InicioSession"
             android:exported="false"
-            android:theme="@style/Theme.MyApplication.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.MyApplication.NoActionBar"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
