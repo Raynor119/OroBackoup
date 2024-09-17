@@ -53,7 +53,9 @@ public class Menu extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertdeagregarprenda alert=new alertdeagregarprenda(Menu.this);
+                prefe=getSharedPreferences("Sesion",Menu.this.MODE_PRIVATE);
+                String codigo=prefe.getString("Codigo","0");
+                alertdeagregarprenda alert=new alertdeagregarprenda(Menu.this,codigo);
                 alert.pedirnombre();
             }
         });

@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.pixels.orobackoup.Model.BD.MYSQL.Consultas.Menu.AgregarPrendaMYSQL;
+
 public class AgregarPrendaViewModel extends ViewModel {
     public MutableLiveData<Boolean> resultado;
     public  AgregarPrendaViewModel(){
@@ -18,6 +20,6 @@ public class AgregarPrendaViewModel extends ViewModel {
         return resultado;
     }
     public void guardarprenda(Context context, String condigoU, String nombreP){
-
+        AgregarPrendaMYSQL BD=new AgregarPrendaMYSQL(context,condigoU,nombreP,AgregarPrendaViewModel.this);
     }
 }
