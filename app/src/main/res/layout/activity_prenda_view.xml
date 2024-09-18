@@ -89,128 +89,69 @@
                                         android:inputType="text" />
                                 </com.google.android.material.textfield.TextInputLayout>
                             </RelativeLayout>
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="20dp"
                                 android:layout_width="match_parent"
-                                android:layout_marginLeft="18dp"
-                                android:layout_marginRight="18dp"
-                                android:layout_height="230dp">
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/fotoRealizada"
-                                    card_view:cardBackgroundColor="@android:color/transparent"
-                                    card_view:cardCornerRadius="8dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:animateLayoutChanges="true"
+                                android:layout_marginLeft="10dp"
+                                app:cardCornerRadius="10dp"
+                                android:layout_gravity="center">
+                                <LinearLayout
+                                    android:id="@+id/LayoutF"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <RelativeLayout
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:orientation="vertical"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_height="300dp">
+                                    <FrameLayout
+                                        xmlns:android="http://schemas.android.com/apk/res/android"
+                                        xmlns:tools="http://schemas.android.com/tools"
+                                        android:id="@+id/containerF"
+                                        android:animateLayoutChanges="true"
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="match_parent"
+                                        tools:ignore="MergeRootFrame" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_height="match_parent">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/mostrarF"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="bottom"
+                                        android:animateLayoutChanges="true"
+                                        android:background="@color/black"
+                                        app:cardCornerRadius="0dp">
+
                                         <LinearLayout
                                             android:layout_width="match_parent"
-                                            android:gravity="center"
-                                            android:background="@drawable/fondofoto"
-                                            android:layout_height="match_parent">
-                                            <ImageView
-                                                android:id="@+id/fotoprenda"
-                                                android:padding="4dp"
-                                                android:layout_marginTop="1dp"
-                                                android:layout_height="match_parent"
-                                                android:layout_width="match_parent"
-                                                />
-                                        </LinearLayout>
-                                        <androidx.cardview.widget.CardView
-                                            android:id="@+id/foto"
-                                            android:layout_width="match_parent"
-                                            card_view:cardCornerRadius="10dp"
                                             android:layout_height="match_parent"
-                                            android:orientation="horizontal">
-                                            <LinearLayout
-                                                android:background="@drawable/fondofoto"
-                                                android:layout_width="match_parent"
-                                                android:gravity="bottom"
-                                                android:layout_height="match_parent">
-                                                <androidx.cardview.widget.CardView
-                                                    card_view:cardBackgroundColor="@android:color/transparent"
-                                                    card_view:cardCornerRadius="0dp"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="40dp">
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:gravity="center"
-                                                        android:orientation="horizontal"
-                                                        android:background="@color/colorPrimary"
-                                                        android:layout_height="match_parent">
-                                                        <ImageView
-                                                            android:padding="4dp"
-                                                            android:layout_marginTop="0dp"
-                                                            android:layout_height="35dp"
-                                                            android:layout_width="40dp"
-                                                            android:src="@drawable/baseline_camera_alt_24"/>
-                                                        <TextView
-                                                            android:layout_width="wrap_content"
-                                                            android:text="Tomar foto"
-                                                            android:textColor="@color/black"
-                                                            android:layout_height="wrap_content"/>
-                                                    </LinearLayout>
-                                                </androidx.cardview.widget.CardView>
+                                            android:animateLayoutChanges="true"
+                                            android:background="@color/colorPrimary"
+                                            android:gravity="center">
 
-                                            </LinearLayout>
-                                        </androidx.cardview.widget.CardView>
-                                    </RelativeLayout>
-                                </androidx.cardview.widget.CardView>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginLeft="17dp"
-                                android:layout_marginRight="17dp"
-                                android:layout_height="wrap_content">
-                                <com.google.android.material.textfield.TextInputLayout
-                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Peso Inicial (g)"
-                                    app:endIconMode="clear_text">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/PesoInicial"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:inputType="numberDecimal" />
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="30dp"
-                                android:layout_marginLeft="17dp"
-                                android:layout_marginRight="17dp"
-                                android:layout_height="wrap_content">
-                                <com.google.android.material.textfield.TextInputLayout
-                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Peso Final (g)"
-                                    app:endIconMode="clear_text">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/pesofinal"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:inputType="numberDecimal" />
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="30dp"
-                                android:layout_marginLeft="17dp"
-                                android:layout_marginRight="17dp"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:id="@+id/merma"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="La merma es:"
-                                    android:textSize="17dp"
-                                    />
-                            </LinearLayout>
-                           
+                                            <TextView
+                                                android:id="@+id/TextMasF"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Fundicion"
+                                                android:textColor="#FFFFFF" />
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
                         </LinearLayout>
                     </ScrollView>
                 </LinearLayout>
