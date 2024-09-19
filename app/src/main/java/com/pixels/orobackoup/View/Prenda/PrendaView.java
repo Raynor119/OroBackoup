@@ -3,16 +3,24 @@ package com.pixels.orobackoup.View.Prenda;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.itextpdf.text.pdf.parser.Line;
+import com.pixels.orobackoup.Model.DatosEncapsulados.DatosPrenda;
 import com.pixels.orobackoup.R;
+import com.pixels.orobackoup.View.InicioSesion.AlertDialog.AlertCarga;
+import com.pixels.orobackoup.ViewModel.Prenda.DatosPrendaViewModel;
+
+import java.util.List;
 
 public class PrendaView extends AppCompatActivity {
     public LinearLayout LayoutF,LayoutG,LayoutL,LayoutLL,LayoutE,LayoutP;
@@ -103,8 +111,45 @@ public class PrendaView extends AppCompatActivity {
                 }
             }
         });
-
-        nombreP.setText("Prenda de prueba");
+        AlertCarga carga =new AlertCarga(PrendaView.this);
+        DatosPrendaViewModel prendaViewModel= ViewModelProviders.of(PrendaView.this).get(DatosPrendaViewModel.class);
+        prendaViewModel.reset();
+        carga.Cargar();
+        prendaViewModel.nombreprenda(PrendaView.this,CodigoP);
+        Observer<String> observer=new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if (s.equals("0nohayfalse")){
+                    Toast.makeText(PrendaView.this, "Error en la conexion de la base de datos", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else{
+                    nombreP.setText(s);
+                    nombreP.setEnabled(false);
+                    prendaViewModel.DatosdePrendas(PrendaView.this,CodigoP);
+                    Observer<List<DatosPrenda>> observer1=new Observer<List<DatosPrenda>>() {
+                        @Override
+                        public void onChanged(List<DatosPrenda> datosPrendas) {
+                            carga.setInicio(1);
+                            carga.Cerrar();
+                            Toast.makeText(PrendaView.this, "datos:"+datosPrendas.size(), Toast.LENGTH_SHORT).show();
+                        }
+                    };
+                    prendaViewModel.getResultadoDatos().observe(PrendaView.this,observer1);
+                }
+            }
+        };
+        prendaViewModel.getResultado().observe(PrendaView.this,observer);
         nombreP.setEnabled(false);
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(carga.getInicio()==0){
+                    Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                    carga.Cerrar();
+                    finish();
+                }
+            }
+        },12000);
+
     }
 }

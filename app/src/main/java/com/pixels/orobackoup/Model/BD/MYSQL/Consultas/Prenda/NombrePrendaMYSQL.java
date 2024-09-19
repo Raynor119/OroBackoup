@@ -21,6 +21,7 @@ public class NombrePrendaMYSQL extends Conexion {
         super(context);
         this.ViewModel=viewModel;
         this.Codigodeprenda=codigodeprenda;
+        NombrePrenda="0nohayfalse";
         execute("");
         new android.os.Handler().postDelayed(new Runnable() {
             public void run() {
