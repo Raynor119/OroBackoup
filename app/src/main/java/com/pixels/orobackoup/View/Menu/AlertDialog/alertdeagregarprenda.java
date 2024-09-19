@@ -82,14 +82,14 @@ public class alertdeagregarprenda {
                     prendaViewModel.reset();
                     carga.Cargar();
                     prendaViewModel.guardarprenda(Context,CodigoU,nombre.getText().toString());
-                    Observer<Boolean> observernombreregi=new Observer<Boolean>() {
+                    Observer<Integer> observernombreregi=new Observer<Integer>() {
                         @Override
-                        public void onChanged(Boolean aBoolean) {
+                        public void onChanged(Integer aBoolean) {
                             carga.setInicio(1);
                             carga.Cerrar();
-                            if(aBoolean){
+                            if(aBoolean!=0){
                                 alertCancelar();
-                                Toast.makeText(Context, "La prenda se ha registro", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Context, "La prenda se ha registro codigo:"+aBoolean, Toast.LENGTH_SHORT).show();
                             }else{
                                 Cnombre.setError("Error al registrar la prenda");
                             }

@@ -78,6 +78,6 @@ public class AgregarPrendaMYSQL extends Conexion {
         }
     }
     public void ConsultaBaseDatos() {
-        ViewModel.resultado.setValue(verficar);
+        ViewModel.resultado.setValue(CodigoP);
     }
 }
