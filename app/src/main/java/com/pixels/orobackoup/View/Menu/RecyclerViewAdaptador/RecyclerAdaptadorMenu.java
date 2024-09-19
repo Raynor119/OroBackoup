@@ -28,6 +28,7 @@ public class RecyclerAdaptadorMenu extends RecyclerView.Adapter<RecyclerAdaptado
             int Id = Integer.parseInt((view.getTag() + ""));
             if (Id==1){
                 Intent intent=new Intent(MParentActivity, PrendaView.class);
+                intent.putExtra("codigo","1");
                 MParentActivity.startActivity(intent);
             }
             if (Id==2){

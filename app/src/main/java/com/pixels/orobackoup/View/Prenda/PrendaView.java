@@ -17,11 +17,13 @@ import com.pixels.orobackoup.R;
 public class PrendaView extends AppCompatActivity {
     public LinearLayout LayoutF,LayoutG,LayoutL,LayoutLL,LayoutE,LayoutP;
     public TextInputEditText nombreP;
+    String CodigoP;
     public CardView mostrarF,mostrarG,mostrarL,mostrarLL,mostrarE,mostrarP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prenda_view);
+        CodigoP=getIntent().getExtras().getString("codigo");
         LayoutF=findViewById(R.id.LayoutF);
         LayoutG=findViewById(R.id.LayoutG);
         LayoutL=findViewById(R.id.LayoutL);
