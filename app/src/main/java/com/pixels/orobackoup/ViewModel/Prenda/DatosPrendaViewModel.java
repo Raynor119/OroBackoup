@@ -8,9 +8,11 @@ import androidx.lifecycle.ViewModel;
 
 import com.pixels.orobackoup.Model.DatosEncapsulados.DatosPrenda;
 
+import java.util.List;
+
 public class DatosPrendaViewModel extends ViewModel {
     public MutableLiveData<String> Nombre;
-    public MutableLiveData<DatosPrenda> DatosdePrenda;
+    public MutableLiveData<List<DatosPrenda>> DatosdePrenda;
     public  DatosPrendaViewModel(){
         this.Nombre=new MutableLiveData<>();
         this.DatosdePrenda=new MutableLiveData<>();
@@ -22,7 +24,7 @@ public class DatosPrendaViewModel extends ViewModel {
     public LiveData<String> getResultado(){
         return Nombre;
     }
-    public LiveData<DatosPrenda> getResultadoDatos(){
+    public LiveData<List<DatosPrenda>> getResultadoDatos(){
         return DatosdePrenda;
     }
     public void nombreprenda(Context context, String CodigoP){

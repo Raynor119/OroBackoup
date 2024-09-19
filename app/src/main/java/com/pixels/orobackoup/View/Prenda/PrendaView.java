@@ -37,8 +37,6 @@ public class PrendaView extends AppCompatActivity {
         mostrarLL=findViewById(R.id.mostrarLL);
         mostrarE=findViewById(R.id.mostrarE);
         mostrarP=findViewById(R.id.mostrarP);
-        nombreP.setText("Prenda de prueba");
-        nombreP.setEnabled(false);
         LayoutF.setVisibility(LinearLayout.GONE);
         LayoutG.setVisibility(LinearLayout.GONE);
         LayoutL.setVisibility(LinearLayout.GONE);
@@ -105,5 +103,8 @@ public class PrendaView extends AppCompatActivity {
                 }
             }
         });
+
+        nombreP.setText("Prenda de prueba");
+        nombreP.setEnabled(false);
     }
 }
