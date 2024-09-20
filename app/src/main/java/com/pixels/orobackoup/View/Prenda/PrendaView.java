@@ -1,12 +1,23 @@
 package com.pixels.orobackoup.View.Prenda;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.ExifInterface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.FileProvider;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -14,12 +25,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.itextpdf.text.pdf.parser.Line;
 import com.pixels.orobackoup.Model.DatosEncapsulados.DatosPrenda;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.AlertDialog.AlertCarga;
 import com.pixels.orobackoup.ViewModel.Prenda.DatosPrendaViewModel;
+import android.graphics.Matrix;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class PrendaView extends AppCompatActivity {
@@ -27,6 +45,19 @@ public class PrendaView extends AppCompatActivity {
     public TextInputEditText nombreP;
     String CodigoP;
     public CardView mostrarF,mostrarG,mostrarL,mostrarLL,mostrarE,mostrarP;
+
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int PERMISSIONS_REQUEST_CAMERA = 2;
+    CardView btnCamaraF;
+    CardView btnCamarav2F;
+    ImageView imgViewF;
+    TextInputEditText PesoInicialF,pesofinalF;
+    TextInputLayout LYPesoInicialF,LYpesofinalF;
+    TextView mermatextF;
+    Button botonF;
+    Bitmap imgBitmapF;
+    private Uri photoURI;
+    private File photoFile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +84,31 @@ public class PrendaView extends AppCompatActivity {
         LayoutP.setVisibility(LinearLayout.GONE);
 
 
-        //tarjeta Fundicion
+        //tarjeta de fundicion
+        btnCamaraF = findViewById(R.id.fotoF);
+        btnCamarav2F = findViewById(R.id.fotoRealizadaF);
+        PesoInicialF= findViewById(R.id.PesoInicialF);
+        pesofinalF= findViewById(R.id.pesofinalF);
+        LYPesoInicialF= findViewById(R.id.TLPesoInicialF);
+        LYpesofinalF= findViewById(R.id.TLpesofinalF);
+        mermatextF=findViewById(R.id.mermaF);
+        imgViewF = findViewById(R.id.fotoprendaF);
+        botonF= findViewById(R.id.ButtonF);
 
+        TextWatcher watcherF = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                calcularMerma(PesoInicialF,pesofinalF,mermatextF);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        };
+        PesoInicialF.addTextChangedListener(watcherF);
+        pesofinalF.addTextChangedListener(watcherF);
 
 
         mostrarF.setOnClickListener(new View.OnClickListener() {
@@ -161,4 +215,96 @@ public class PrendaView extends AppCompatActivity {
             }
         },12000);
     }
+
+    private void calcularMerma( TextInputEditText PesoInicial,TextInputEditText pesofinal, TextView mermatext) {
+        String pesoInicialStr = PesoInicial.getText().toString();
+        String pesoFinalStr = pesofinal.getText().toString();
+
+        if (!pesoInicialStr.isEmpty() && !pesoFinalStr.isEmpty()) {
+            try {
+                double pesoInicial = Double.parseDouble(pesoInicialStr);
+                double pesoFinal = Double.parseDouble(pesoFinalStr);
+                double merma = pesoInicial - pesoFinal;
+                mermatext.setText(String.format("La merma es: %.2fg", merma));
+            } catch (NumberFormatException e) {
+                // Manejo de errores si el formato del número es incorrecto
+                mermatext.setText("La merma es: 0g");
+            }
+        } else {
+            mermatext.setText("La merma es: 0g");
+        }
+    }
+
+    private void showImageInGalleryApp(Bitmap bitmap) {
+        try {
+            // Crear un archivo temporal para almacenar la imagen
+            File tempFile = File.createTempFile("temp_image", ".jpg", getCacheDir());
+
+            // Guardar el Bitmap en el archivo temporal
+            OutputStream fos = new FileOutputStream(tempFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.close();
+
+            // Crear un URI para el archivo temporal utilizando FileProvider
+            Uri imageUri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", tempFile);
+
+            // Crear un Intent para visualizar la imagen en la app de galería
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(imageUri, "image/jpeg");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Permisos para la galería
+
+            // Verificar que haya una aplicación disponible para abrir el Intent
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent); // Mostrar la imagen
+            } else {
+                Toast.makeText(this, "No hay una aplicación disponible para visualizar la imagen", Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al visualizar la imagen", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private Bitmap rotateImageIfRequired(Bitmap img, String imagePath) {
+        try {
+            ExifInterface exif = new ExifInterface(imagePath);
+            int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    return rotateImage(img, 90);
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    return rotateImage(img, 180);
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    return rotateImage(img, 270);
+                default:
+                    return img;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al leer los metadatos EXIF", Toast.LENGTH_SHORT).show();
+            return img; // Devuelve la imagen sin rotar si hay un error
+        }
+    }
+
+    // Método para rotar el Bitmap
+    private Bitmap rotateImage(Bitmap img, int degree) {
+        if (img == null) {
+            Toast.makeText(this, "Error: Imagen no cargada", Toast.LENGTH_SHORT).show();
+            return null; // Asegúrate de no intentar rotar un Bitmap nulo
+        }
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        return Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+    }
+    private Bitmap byteArrayToBitmap(byte[] imageBytes) {
+        // Configura opciones para evitar la reducción de tamaño
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        options.inSampleSize = 1; // Asegúrate de no escalar la imagen
+
+        // Decodifica la imagen desde los bytes manteniendo la resolución original
+        return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length, options);
+    }
+
 }
