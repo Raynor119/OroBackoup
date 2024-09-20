@@ -51,6 +51,12 @@ public class PrendaView extends AppCompatActivity {
         LayoutLL.setVisibility(LinearLayout.GONE);
         LayoutE.setVisibility(LinearLayout.GONE);
         LayoutP.setVisibility(LinearLayout.GONE);
+
+
+        //tarjeta Fundicion
+
+
+
         mostrarF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +117,10 @@ public class PrendaView extends AppCompatActivity {
                 }
             }
         });
+
+        cargadatos();
+    }
+    public void cargadatos(){
         AlertCarga carga =new AlertCarga(PrendaView.this);
         DatosPrendaViewModel prendaViewModel= ViewModelProviders.of(PrendaView.this).get(DatosPrendaViewModel.class);
         prendaViewModel.reset();
@@ -150,6 +160,5 @@ public class PrendaView extends AppCompatActivity {
                 }
             }
         },12000);
-
     }
 }
