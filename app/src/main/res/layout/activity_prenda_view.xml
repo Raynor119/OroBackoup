@@ -102,21 +102,156 @@
                                 <LinearLayout
                                     android:id="@+id/LayoutF"
                                     android:layout_width="match_parent"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
                                     android:orientation="vertical"
                                     android:animateLayoutChanges="true"
-                                    android:layout_marginRight="20dp"
+                                    android:layout_marginRight="10dp"
                                     android:layout_marginBottom="40dp"
-                                    android:layout_height="300dp">
-                                    <FrameLayout
-                                        xmlns:android="http://schemas.android.com/apk/res/android"
-                                        xmlns:tools="http://schemas.android.com/tools"
-                                        android:id="@+id/containerF"
-                                        android:animateLayoutChanges="true"
+                                    android:layout_height="580dp">
+                                    <ScrollView
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        tools:ignore="MergeRootFrame" />
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:gravity="center"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <LinearLayout
+                                                android:layout_marginTop="15dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginLeft="3dp"
+                                                android:layout_marginRight="3dp"
+                                                android:layout_height="230dp">
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/fotoRealizada"
+                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                    card_view:cardCornerRadius="8dp"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+                                                    <RelativeLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:gravity="center"
+                                                            android:background="@drawable/fondofoto"
+                                                            android:layout_height="match_parent">
+                                                            <ImageView
+                                                                android:id="@+id/fotoprenda"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="match_parent"
+                                                                android:layout_width="match_parent"
+                                                                />
+                                                        </LinearLayout>
+                                                        <androidx.cardview.widget.CardView
+                                                            android:id="@+id/foto"
+                                                            android:layout_width="match_parent"
+                                                            card_view:cardCornerRadius="10dp"
+                                                            android:layout_height="match_parent"
+                                                            android:orientation="horizontal">
+                                                            <LinearLayout
+                                                                android:background="@drawable/fondofoto"
+                                                                android:layout_width="match_parent"
+                                                                android:gravity="bottom"
+                                                                android:layout_height="match_parent">
+                                                                <androidx.cardview.widget.CardView
+                                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                                    card_view:cardCornerRadius="0dp"
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="40dp">
+                                                                    <LinearLayout
+                                                                        android:layout_width="match_parent"
+                                                                        android:gravity="center"
+                                                                        android:orientation="horizontal"
+                                                                        android:background="@color/colorPrimary"
+                                                                        android:layout_height="match_parent">
+                                                                        <ImageView
+                                                                            android:padding="4dp"
+                                                                            android:layout_marginTop="0dp"
+                                                                            android:layout_height="35dp"
+                                                                            android:layout_width="40dp"
+                                                                            android:src="@drawable/baseline_camera_alt_24"/>
+                                                                        <TextView
+                                                                            android:layout_width="wrap_content"
+                                                                            android:text="Tomar foto"
+                                                                            android:textColor="@color/black"
+                                                                            android:layout_height="wrap_content"/>
+                                                                    </LinearLayout>
+                                                                </androidx.cardview.widget.CardView>
+
+                                                            </LinearLayout>
+                                                        </androidx.cardview.widget.CardView>
+                                                    </RelativeLayout>
+                                                </androidx.cardview.widget.CardView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Inicial (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/PesoInicial"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Final (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/pesofinal"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/merma"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="La merma es:"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+                                            <Button
+                                                android:id="@+id/ButtonG"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="35dp"
+                                                android:padding="20dp"
+                                                android:text="Guardar Prenda"
+                                                android:textColor="#FFFFFF" />
+
+                                        </LinearLayout>
+                                    </ScrollView>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -169,7 +304,7 @@
                                     android:animateLayoutChanges="true"
                                     android:layout_marginRight="20dp"
                                     android:layout_marginBottom="40dp"
-                                    android:layout_height="300dp">
+                                    android:layout_height="580dp">
                                     <FrameLayout
                                         xmlns:android="http://schemas.android.com/apk/res/android"
                                         xmlns:tools="http://schemas.android.com/tools"
@@ -230,7 +365,7 @@
                                     android:animateLayoutChanges="true"
                                     android:layout_marginRight="20dp"
                                     android:layout_marginBottom="40dp"
-                                    android:layout_height="300dp">
+                                    android:layout_height="580dp">
                                     <FrameLayout
                                         xmlns:android="http://schemas.android.com/apk/res/android"
                                         xmlns:tools="http://schemas.android.com/tools"
@@ -291,7 +426,7 @@
                                     android:animateLayoutChanges="true"
                                     android:layout_marginRight="20dp"
                                     android:layout_marginBottom="40dp"
-                                    android:layout_height="300dp">
+                                    android:layout_height="580dp">
                                     <FrameLayout
                                         xmlns:android="http://schemas.android.com/apk/res/android"
                                         xmlns:tools="http://schemas.android.com/tools"
@@ -352,7 +487,7 @@
                                     android:animateLayoutChanges="true"
                                     android:layout_marginRight="20dp"
                                     android:layout_marginBottom="40dp"
-                                    android:layout_height="300dp">
+                                    android:layout_height="580dp">
                                     <FrameLayout
                                         xmlns:android="http://schemas.android.com/apk/res/android"
                                         xmlns:tools="http://schemas.android.com/tools"
@@ -415,7 +550,7 @@
                                     android:animateLayoutChanges="true"
                                     android:layout_marginRight="20dp"
                                     android:layout_marginBottom="40dp"
-                                    android:layout_height="300dp">
+                                    android:layout_height="580dp">
                                     <FrameLayout
                                         xmlns:android="http://schemas.android.com/apk/res/android"
                                         xmlns:tools="http://schemas.android.com/tools"
@@ -457,6 +592,17 @@
                                     </androidx.cardview.widget.CardView>
                                 </LinearLayout>
                             </androidx.cardview.widget.CardView>
+
+
+                            <Button
+                                android:id="@+id/ButtonTermina"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:padding="20dp"
+                                android:text="Terminar prenda"
+                                android:textColor="#FFFFFF" />
 
                         </LinearLayout>
                     </ScrollView>
