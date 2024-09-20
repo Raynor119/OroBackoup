@@ -252,6 +252,23 @@
                                                 android:text="Guardar Datos"
                                                 android:textColor="#FFFFFF" />
 
+                                            <LinearLayout
+                                                android:id="@+id/LFechaF"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaF"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
                                         </LinearLayout>
                                     </ScrollView>
                                 </LinearLayout>
@@ -304,7 +321,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:orientation="vertical"
                                     android:animateLayoutChanges="true"
-                                    android:layout_marginRight="20dp"
+                                    android:layout_marginRight="10dp"
                                     android:layout_marginBottom="40dp"
                                     android:layout_height="580dp">
 
@@ -451,6 +468,23 @@
                                                 android:text="Guardar Datos"
                                                 android:textColor="#FFFFFF" />
 
+                                            <LinearLayout
+                                                android:id="@+id/LFechaG"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaG"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
                                         </LinearLayout>
                                     </ScrollView>
 
@@ -509,7 +543,7 @@
                                 <LinearLayout
                                     android:id="@+id/LayoutL"
                                     android:layout_width="match_parent"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginTop="10dp"
                                     android:layout_marginLeft="10dp"
                                     android:orientation="vertical"
                                     android:animateLayoutChanges="true"
@@ -664,6 +698,23 @@
                                                 android:text="Guardar Datos"
                                                 android:textColor="#FFFFFF" />
 
+                                            <LinearLayout
+                                                android:id="@+id/LFechaL"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaL"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
                                         </LinearLayout>
                                     </ScrollView>
 
@@ -722,7 +773,7 @@
                                 <LinearLayout
                                     android:id="@+id/Layoutll"
                                     android:layout_width="match_parent"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginTop="10dp"
                                     android:layout_marginLeft="10dp"
                                     android:orientation="vertical"
                                     android:animateLayoutChanges="true"
@@ -877,6 +928,23 @@
                                                 android:text="Guardar Datos"
                                                 android:textColor="#FFFFFF" />
 
+                                            <LinearLayout
+                                                android:id="@+id/LFechaLL"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaLL"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
                                         </LinearLayout>
                                     </ScrollView>
 
@@ -933,7 +1001,7 @@
                                 <LinearLayout
                                     android:id="@+id/LayoutE"
                                     android:layout_width="match_parent"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginTop="10dp"
                                     android:layout_marginLeft="10dp"
                                     android:orientation="vertical"
                                     android:animateLayoutChanges="true"
@@ -1087,6 +1155,22 @@
                                                 android:padding="20dp"
                                                 android:text="Guardar Datos"
                                                 android:textColor="#FFFFFF" />
+                                            <LinearLayout
+                                                android:id="@+id/LFechaE"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaE"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
 
                                         </LinearLayout>
                                     </ScrollView>
@@ -1146,7 +1230,7 @@
                                 <LinearLayout
                                     android:id="@+id/LayoutP"
                                     android:layout_width="match_parent"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginTop="10dp"
                                     android:layout_marginLeft="10dp"
                                     android:orientation="vertical"
                                     android:animateLayoutChanges="true"
@@ -1299,6 +1383,23 @@
                                                 android:padding="20dp"
                                                 android:text="Guardar Datos"
                                                 android:textColor="#FFFFFF" />
+
+                                            <LinearLayout
+                                                android:id="@+id/LFechaP"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaP"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
 
                                         </LinearLayout>
                                     </ScrollView>
