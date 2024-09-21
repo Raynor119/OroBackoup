@@ -1,11 +1,16 @@
 package com.pixels.orobackoup.View.Prenda;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.icu.text.SimpleDateFormat;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -15,10 +20,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.graphics.Insets;
+import java.io.ByteArrayOutputStream;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
@@ -38,6 +47,7 @@ import java.io.OutputStream;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 public class PrendaView extends AppCompatActivity {
@@ -55,6 +65,8 @@ public class PrendaView extends AppCompatActivity {
     TextInputLayout LYPesoInicialF,LYpesofinalF;
     TextView mermatextF;
     Button botonF;
+    LinearLayout LFechaF;
+    TextView FechaF;
     Bitmap imgBitmapF;
     private Uri photoURI;
     private File photoFile;
@@ -94,6 +106,8 @@ public class PrendaView extends AppCompatActivity {
         mermatextF=findViewById(R.id.mermaF);
         imgViewF = findViewById(R.id.fotoprendaF);
         botonF= findViewById(R.id.ButtonF);
+        LFechaF=findViewById(R.id.LFechaF);
+        FechaF=findViewById(R.id.FechaF);
 
         TextWatcher watcherF = new TextWatcher() {
             @Override
@@ -109,6 +123,51 @@ public class PrendaView extends AppCompatActivity {
         };
         PesoInicialF.addTextChangedListener(watcherF);
         pesofinalF.addTextChangedListener(watcherF);
+
+        btnCamaraF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+        btnCamarav2F.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         mostrarF.setOnClickListener(new View.OnClickListener() {
@@ -307,4 +366,55 @@ public class PrendaView extends AppCompatActivity {
         return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length, options);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSIONS_REQUEST_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted
+                //abrirCamara();
+            } else {
+                // Permission denied
+                Toast.makeText(this, "dele los permisos de la camara a la aplicacion", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void abrirCamara() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // Crear el archivo donde se guardará la foto
+            try {
+                photoFile = createImageFile();
+                if (photoFile != null) {
+                    photoURI = FileProvider.getUriForFile(this, "com.pixels.orobackoup.fileprovider", photoFile);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                    startActivityForResult(intent, 1);
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Toast.makeText(this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        // Crear un nombre de archivo único
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES); // Directorio temporal para guardar la imagen
+        File image = File.createTempFile(
+                imageFileName, /* prefix */
+                ".jpg",        /* suffix */
+                storageDir     /* directory */
+        );
+
+        return image;
+    }
+    private byte[] bitmapToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Usa PNG para guardar sin pérdida, o JPEG con calidad máxima (100)
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); // Cambiar a PNG si es posible, para calidad sin pérdida
+        return stream.toByteArray();
+    }
 }
