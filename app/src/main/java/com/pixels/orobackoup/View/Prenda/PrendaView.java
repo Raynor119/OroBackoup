@@ -60,6 +60,7 @@ public class PrendaView extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_CAMERA = 2;
     CardView btnCamaraF;
     CardView btnCamarav2F;
+    CardView btnVerFotoF;
     ImageView imgViewF;
     TextInputEditText PesoInicialF,pesofinalF;
     TextInputLayout LYPesoInicialF,LYpesofinalF;
@@ -68,6 +69,7 @@ public class PrendaView extends AppCompatActivity {
     LinearLayout LFechaF;
     TextView FechaF;
     Bitmap imgBitmapF;
+    String Camara="";
     private Uri photoURI;
     private File photoFile;
     @Override
@@ -99,6 +101,7 @@ public class PrendaView extends AppCompatActivity {
         //tarjeta de fundicion
         btnCamaraF = findViewById(R.id.fotoF);
         btnCamarav2F = findViewById(R.id.fotoRealizadaF);
+        btnVerFotoF=findViewById(R.id.vergaleriaF);
         PesoInicialF= findViewById(R.id.PesoInicialF);
         pesofinalF= findViewById(R.id.pesofinalF);
         LYPesoInicialF= findViewById(R.id.TLPesoInicialF);
@@ -108,6 +111,7 @@ public class PrendaView extends AppCompatActivity {
         botonF= findViewById(R.id.ButtonF);
         LFechaF=findViewById(R.id.LFechaF);
         FechaF=findViewById(R.id.FechaF);
+        LFechaF.setVisibility(View.GONE);
 
         TextWatcher watcherF = new TextWatcher() {
             @Override
@@ -127,6 +131,7 @@ public class PrendaView extends AppCompatActivity {
         btnCamaraF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Camara="F";
                 if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
                     // Request camera permission
@@ -142,6 +147,7 @@ public class PrendaView extends AppCompatActivity {
         btnCamarav2F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Camara="F";
                 if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
                     // Request camera permission
@@ -152,6 +158,12 @@ public class PrendaView extends AppCompatActivity {
                     // Permission already granted
                     abrirCamara();
                 }
+            }
+        });
+        btnVerFotoF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageInGalleryApp(imgBitmapF);
             }
         });
 
@@ -323,8 +335,6 @@ public class PrendaView extends AppCompatActivity {
             Toast.makeText(this, "Error al visualizar la imagen", Toast.LENGTH_SHORT).show();
         }
     }
-
-
     private Bitmap rotateImageIfRequired(Bitmap img, String imagePath) {
         try {
             ExifInterface exif = new ExifInterface(imagePath);
@@ -372,7 +382,7 @@ public class PrendaView extends AppCompatActivity {
         if (requestCode == PERMISSIONS_REQUEST_CAMERA) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted
-                //abrirCamara();
+                abrirCamara();
             } else {
                 // Permission denied
                 Toast.makeText(this, "dele los permisos de la camara a la aplicacion", Toast.LENGTH_LONG).show();
@@ -394,6 +404,37 @@ public class PrendaView extends AppCompatActivity {
             } catch (IOException ex) {
                 ex.printStackTrace();
                 Toast.makeText(this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            // Verificar si el archivo existe y tiene datos
+            if (photoFile != null && photoFile.exists()) {
+                // Decodificar la imagen desde el archivo con resolución completa
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                // Establecer inSampleSize para reducir la calidad. Un valor de 2 reducirá la resolución a la mitad.
+                options.inSampleSize = 2; // Cambia este valor si quieres reducir más la calidad
+                if(Camara.equals("F")){
+                    imgBitmapF = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+                    // Verificar si la imagen fue decodificada correctamente
+                    if (imgBitmapF != null) {
+                        // Corregir la orientación de la imagen
+                        imgBitmapF = rotateImageIfRequired(imgBitmapF, photoFile.getAbsolutePath());
+                        // Mostrar la imagen en el ImageView
+                        imgViewF.setImageBitmap(imgBitmapF);
+                        btnCamaraF.setVisibility(View.GONE);
+                    } else {
+                        // Manejo del error si la imagen no se decodifica
+                        Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Archivo de imagen no encontrado", Toast.LENGTH_SHORT).show();
             }
         }
     }
