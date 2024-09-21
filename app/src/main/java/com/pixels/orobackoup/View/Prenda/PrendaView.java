@@ -69,6 +69,71 @@ public class PrendaView extends AppCompatActivity {
     LinearLayout LFechaF;
     TextView FechaF;
     Bitmap imgBitmapF;
+
+    CardView btnCamaraG;
+    CardView btnCamarav2G;
+    CardView btnVerFotoG;
+    ImageView imgViewG;
+    TextInputEditText PesoInicialG,pesofinalG;
+    TextInputLayout LYPesoInicialG,LYpesofinalG;
+    TextView mermatextG;
+    Button botonG;
+    LinearLayout LFechaG;
+    TextView FechaG;
+    Bitmap imgBitmapG;
+
+
+    CardView btnCamaraL;
+    CardView btnCamarav2L;
+    CardView btnVerFotoL;
+    ImageView imgViewL;
+    TextInputEditText PesoInicialL,pesofinalL;
+    TextInputLayout LYPesoInicialL,LYpesofinalL;
+    TextView mermatextL;
+    Button botonL;
+    LinearLayout LFechaL;
+    TextView FechaL;
+    Bitmap imgBitmapL;
+
+    CardView btnCamaraLL;
+    CardView btnCamarav2LL;
+    CardView btnVerFotoLL;
+    ImageView imgViewLL;
+    TextInputEditText PesoInicialLL,pesofinalLL;
+    TextInputLayout LYPesoInicialLL,LYpesofinalLL;
+    TextView mermatextLL;
+    Button botonLL;
+    LinearLayout LFechaLL;
+    TextView FechaLL;
+    Bitmap imgBitmapLL;
+
+    CardView btnCamaraE;
+    CardView btnCamarav2E;
+    CardView btnVerFotoE;
+    ImageView imgViewE;
+    TextInputEditText PesoInicialE,pesofinalE;
+    TextInputLayout LYPesoInicialE,LYpesofinalE;
+    TextView mermatextE;
+    Button botonE;
+    LinearLayout LFechaE;
+    TextView FechaE;
+    Bitmap imgBitmapE;
+
+
+    CardView btnCamaraP;
+    CardView btnCamarav2P;
+    CardView btnVerFotoP;
+    ImageView imgViewP;
+    TextInputEditText PesoInicialP,pesofinalP;
+    TextInputLayout LYPesoInicialP,LYpesofinalP;
+    TextView mermatextP;
+    Button botonP;
+    LinearLayout LFechaP;
+    TextView FechaP;
+    Bitmap imgBitmapP;
+
+
+
     String Camara="";
     private Uri photoURI;
     private File photoFile;
@@ -181,7 +246,389 @@ public class PrendaView extends AppCompatActivity {
 
 
 
+        //tarjeta de ElectriPulido
+        btnCamaraG = findViewById(R.id.fotoG);
+        btnCamarav2G = findViewById(R.id.fotoRealizadaG);
+        btnVerFotoG=findViewById(R.id.vergaleriaG);
+        PesoInicialG= findViewById(R.id.PesoInicialG);
+        pesofinalG= findViewById(R.id.pesofinalG);
+        LYPesoInicialG= findViewById(R.id.TLPesoInicialG);
+        LYpesofinalG= findViewById(R.id.TLpesofinalG);
+        mermatextG=findViewById(R.id.mermaG);
+        imgViewG = findViewById(R.id.fotoprendaG);
+        botonG= findViewById(R.id.ButtonG);
+        LFechaG=findViewById(R.id.LFechaG);
+        FechaG=findViewById(R.id.FechaG);
+        LFechaG.setVisibility(View.GONE);
 
+
+        TextWatcher watcherG = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                calcularMerma(PesoInicialG,pesofinalG,mermatextG);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        };
+        PesoInicialG.addTextChangedListener(watcherG);
+        pesofinalG.addTextChangedListener(watcherG);
+
+        btnCamaraG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="G";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+        btnCamarav2G.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="G";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+        btnVerFotoG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageInGalleryApp(imgBitmapG);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+        //tarjeta de Limado
+        btnCamaraL = findViewById(R.id.fotoL);
+        btnCamarav2L = findViewById(R.id.fotoRealizadaL);
+        btnVerFotoL=findViewById(R.id.vergaleriaL);
+        PesoInicialL= findViewById(R.id.PesoInicialL);
+        pesofinalL= findViewById(R.id.pesofinalL);
+        LYPesoInicialL= findViewById(R.id.TLPesoInicialL);
+        LYpesofinalL= findViewById(R.id.TLpesofinalL);
+        mermatextL=findViewById(R.id.mermaL);
+        imgViewL = findViewById(R.id.fotoprendaL);
+        botonL= findViewById(R.id.ButtonL);
+        LFechaL=findViewById(R.id.LFechaL);
+        FechaL=findViewById(R.id.FechaL);
+        LFechaL.setVisibility(View.GONE);
+
+
+        TextWatcher watcherL = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                calcularMerma(PesoInicialL,pesofinalL,mermatextL);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        };
+        PesoInicialL.addTextChangedListener(watcherL);
+        pesofinalL.addTextChangedListener(watcherL);
+
+        btnCamaraL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="L";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+        btnCamarav2L.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="L";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+
+        btnVerFotoL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageInGalleryApp(imgBitmapL);
+            }
+        });
+
+
+
+
+
+
+
+
+        //tarjeta de Lijado
+        btnCamaraLL = findViewById(R.id.fotoLL);
+        btnCamarav2LL = findViewById(R.id.fotoRealizadaLL);
+        btnVerFotoLL=findViewById(R.id.vergaleriaLL);
+        PesoInicialLL= findViewById(R.id.PesoInicialLL);
+        pesofinalLL= findViewById(R.id.pesofinalLL);
+        LYPesoInicialLL= findViewById(R.id.TLPesoInicialLL);
+        LYpesofinalLL= findViewById(R.id.TLpesofinalLL);
+        mermatextLL=findViewById(R.id.mermaLL);
+        imgViewLL = findViewById(R.id.fotoprendaLL);
+        botonLL= findViewById(R.id.ButtonLL);
+        LFechaLL=findViewById(R.id.LFechaLL);
+        FechaLL=findViewById(R.id.FechaLL);
+        LFechaLL.setVisibility(View.GONE);
+
+
+        TextWatcher watcherLL = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                calcularMerma(PesoInicialLL,pesofinalLL,mermatextLL);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        };
+        PesoInicialLL.addTextChangedListener(watcherLL);
+        pesofinalLL.addTextChangedListener(watcherLL);
+
+
+        btnCamaraLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="LL";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+        btnCamarav2LL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="LL";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+
+        btnVerFotoLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageInGalleryApp(imgBitmapLL);
+            }
+        });
+
+
+
+        //tarjeta de Engaste
+        btnCamaraE = findViewById(R.id.fotoE);
+        btnCamarav2E = findViewById(R.id.fotoRealizadaE);
+        btnVerFotoE=findViewById(R.id.vergaleriaE);
+        PesoInicialE= findViewById(R.id.PesoInicialE);
+        pesofinalE= findViewById(R.id.pesofinalE);
+        LYPesoInicialE= findViewById(R.id.TLPesoInicialE);
+        LYpesofinalE= findViewById(R.id.TLpesofinalE);
+        mermatextE=findViewById(R.id.mermaE);
+        imgViewE = findViewById(R.id.fotoprendaE);
+        botonE= findViewById(R.id.ButtonE);
+        LFechaE=findViewById(R.id.LFechaE);
+        FechaE=findViewById(R.id.FechaE);
+        LFechaE.setVisibility(View.GONE);
+
+        TextWatcher watcherE = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                calcularMerma(PesoInicialE,pesofinalE,mermatextE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        };
+        PesoInicialE.addTextChangedListener(watcherE);
+        pesofinalE.addTextChangedListener(watcherE);
+
+
+        btnCamaraE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="E";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+        btnCamarav2E.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="E";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+
+        btnVerFotoE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageInGalleryApp(imgBitmapE);
+            }
+        });
+
+
+        //tarjeta de Pulido
+        btnCamaraP = findViewById(R.id.fotoP);
+        btnCamarav2P = findViewById(R.id.fotoRealizadaP);
+        btnVerFotoP=findViewById(R.id.vergaleriaP);
+        PesoInicialP= findViewById(R.id.PesoInicialP);
+        pesofinalP= findViewById(R.id.pesofinalP);
+        LYPesoInicialP= findViewById(R.id.TLPesoInicialP);
+        LYpesofinalP= findViewById(R.id.TLpesofinalP);
+        mermatextP=findViewById(R.id.mermaP);
+        imgViewP = findViewById(R.id.fotoprendaP);
+        botonP= findViewById(R.id.ButtonP);
+        LFechaP=findViewById(R.id.LFechaP);
+        FechaP=findViewById(R.id.FechaP);
+        LFechaP.setVisibility(View.GONE);
+
+        TextWatcher watcherP = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                calcularMerma(PesoInicialP,pesofinalP,mermatextP);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        };
+        PesoInicialP.addTextChangedListener(watcherP);
+        pesofinalP.addTextChangedListener(watcherP);
+
+        btnCamaraP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="P";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+        btnCamarav2P.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Camara="P";
+                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission
+                    ActivityCompat.requestPermissions(PrendaView.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    // Permission already granted
+                    abrirCamara();
+                }
+            }
+        });
+
+        btnVerFotoP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageInGalleryApp(imgBitmapP);
+            }
+        });
+
+
+
+
+
+
+
+
+
+        // Comportamiento de tarjetas
         mostrarF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -428,6 +875,76 @@ public class PrendaView extends AppCompatActivity {
                         // Mostrar la imagen en el ImageView
                         imgViewF.setImageBitmap(imgBitmapF);
                         btnCamaraF.setVisibility(View.GONE);
+                    } else {
+                        // Manejo del error si la imagen no se decodifica
+                        Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if(Camara.equals("G")){
+                    imgBitmapG = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+                    // Verificar si la imagen fue decodificada correctamente
+                    if (imgBitmapG != null) {
+                        // Corregir la orientación de la imagen
+                        imgBitmapG = rotateImageIfRequired(imgBitmapG, photoFile.getAbsolutePath());
+                        // Mostrar la imagen en el ImageView
+                        imgViewG.setImageBitmap(imgBitmapG);
+                        btnCamaraG.setVisibility(View.GONE);
+                    } else {
+                        // Manejo del error si la imagen no se decodifica
+                        Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if(Camara.equals("L")){
+                    imgBitmapL = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+                    // Verificar si la imagen fue decodificada correctamente
+                    if (imgBitmapL != null) {
+                        // Corregir la orientación de la imagen
+                        imgBitmapL = rotateImageIfRequired(imgBitmapL, photoFile.getAbsolutePath());
+                        // Mostrar la imagen en el ImageView
+                        imgViewL.setImageBitmap(imgBitmapL);
+                        btnCamaraL.setVisibility(View.GONE);
+                    } else {
+                        // Manejo del error si la imagen no se decodifica
+                        Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if(Camara.equals("LL")){
+                    imgBitmapLL = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+                    // Verificar si la imagen fue decodificada correctamente
+                    if (imgBitmapLL != null) {
+                        // Corregir la orientación de la imagen
+                        imgBitmapLL = rotateImageIfRequired(imgBitmapLL, photoFile.getAbsolutePath());
+                        // Mostrar la imagen en el ImageView
+                        imgViewLL.setImageBitmap(imgBitmapLL);
+                        btnCamaraLL.setVisibility(View.GONE);
+                    } else {
+                        // Manejo del error si la imagen no se decodifica
+                        Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if(Camara.equals("E")){
+                    imgBitmapE = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+                    // Verificar si la imagen fue decodificada correctamente
+                    if (imgBitmapE != null) {
+                        // Corregir la orientación de la imagen
+                        imgBitmapE = rotateImageIfRequired(imgBitmapE, photoFile.getAbsolutePath());
+                        // Mostrar la imagen en el ImageView
+                        imgViewE.setImageBitmap(imgBitmapE);
+                        btnCamaraE.setVisibility(View.GONE);
+                    } else {
+                        // Manejo del error si la imagen no se decodifica
+                        Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if(Camara.equals("P")){
+                    imgBitmapP = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+                    // Verificar si la imagen fue decodificada correctamente
+                    if (imgBitmapP != null) {
+                        // Corregir la orientación de la imagen
+                        imgBitmapP = rotateImageIfRequired(imgBitmapP, photoFile.getAbsolutePath());
+                        // Mostrar la imagen en el ImageView
+                        imgViewP.setImageBitmap(imgBitmapP);
+                        btnCamaraP.setVisibility(View.GONE);
                     } else {
                         // Manejo del error si la imagen no se decodifica
                         Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
