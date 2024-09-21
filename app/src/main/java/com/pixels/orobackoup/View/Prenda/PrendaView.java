@@ -232,6 +232,12 @@ public class PrendaView extends AppCompatActivity {
             }
         });
 
+        botonF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
 
 
