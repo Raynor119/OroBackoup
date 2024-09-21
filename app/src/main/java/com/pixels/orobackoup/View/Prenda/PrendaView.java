@@ -39,6 +39,7 @@ import com.itextpdf.text.pdf.parser.Line;
 import com.pixels.orobackoup.Model.DatosEncapsulados.DatosPrenda;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.AlertDialog.AlertCarga;
+import com.pixels.orobackoup.ViewModel.Prenda.DatosEstadosViewModel;
 import com.pixels.orobackoup.ViewModel.Prenda.DatosPrendaViewModel;
 import android.graphics.Matrix;
 
@@ -68,7 +69,7 @@ public class PrendaView extends AppCompatActivity {
     Button botonF;
     LinearLayout LFechaF;
     TextView FechaF;
-    Bitmap imgBitmapF;
+    Bitmap imgBitmapF=null;
 
     CardView btnCamaraG;
     CardView btnCamarav2G;
@@ -80,7 +81,7 @@ public class PrendaView extends AppCompatActivity {
     Button botonG;
     LinearLayout LFechaG;
     TextView FechaG;
-    Bitmap imgBitmapG;
+    Bitmap imgBitmapG=null;
 
 
     CardView btnCamaraL;
@@ -93,7 +94,7 @@ public class PrendaView extends AppCompatActivity {
     Button botonL;
     LinearLayout LFechaL;
     TextView FechaL;
-    Bitmap imgBitmapL;
+    Bitmap imgBitmapL=null;
 
     CardView btnCamaraLL;
     CardView btnCamarav2LL;
@@ -105,7 +106,7 @@ public class PrendaView extends AppCompatActivity {
     Button botonLL;
     LinearLayout LFechaLL;
     TextView FechaLL;
-    Bitmap imgBitmapLL;
+    Bitmap imgBitmapLL=null;
 
     CardView btnCamaraE;
     CardView btnCamarav2E;
@@ -117,7 +118,7 @@ public class PrendaView extends AppCompatActivity {
     Button botonE;
     LinearLayout LFechaE;
     TextView FechaE;
-    Bitmap imgBitmapE;
+    Bitmap imgBitmapE=null;
 
 
     CardView btnCamaraP;
@@ -130,7 +131,7 @@ public class PrendaView extends AppCompatActivity {
     Button botonP;
     LinearLayout LFechaP;
     TextView FechaP;
-    Bitmap imgBitmapP;
+    Bitmap imgBitmapP=null;
 
 
 
@@ -235,7 +236,53 @@ public class PrendaView extends AppCompatActivity {
         botonF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                if(PesoInicialF.getText().toString().equals("") || pesofinalF.getText().toString().equals("") || imgBitmapF==null){
+                    if(PesoInicialF.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso inicial", Toast.LENGTH_SHORT).show();
+                    }
+                    if(pesofinalF.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso final", Toast.LENGTH_SHORT).show();
+                    }
+                    if(imgBitmapF==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    AlertCarga carga =new AlertCarga(PrendaView.this);
+                    DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
+                    prendaestadosViewModel.reset();
+                    carga.Cargar();
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Fundicion",CodigoP,Float.parseFloat(PesoInicialF.getText().toString()),Float.parseFloat(pesofinalF.getText().toString()),bitmapToByteArray(imgBitmapF));
+                    Observer<String> observer=new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            carga.setInicio(1);
+                            carga.Cerrar();
+                            btnCamarav2F.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                            LFechaF.setVisibility(View.VISIBLE);
+                            botonF.setVisibility(View.GONE);
+                            FechaF.setText("Se Registro en el "+s);
+                            PesoInicialF.setEnabled(false);
+                            pesofinalF.setEnabled(false);
+                        }
+                    };
+                    prendaestadosViewModel.getResultado().observe(PrendaView.this,observer);
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(carga.getInicio()==0){
+                                Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                carga.Cerrar();
+                                finish();
+                            }
+                        }
+                    },12000);
+                }
+
             }
         });
 
@@ -719,7 +766,42 @@ public class PrendaView extends AppCompatActivity {
                         public void onChanged(List<DatosPrenda> datosPrendas) {
                             carga.setInicio(1);
                             carga.Cerrar();
-                            Toast.makeText(PrendaView.this, "datos:"+datosPrendas.size(), Toast.LENGTH_SHORT).show();
+                            if(datosPrendas.size()>=1){
+                                btnCamarav2F.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                    }
+                                });
+                                LFechaF.setVisibility(View.VISIBLE);
+                                botonF.setVisibility(View.GONE);
+                                FechaF.setText("Se Registro en el "+datosPrendas.get(0).getFecha());
+                                PesoInicialF.setText(""+datosPrendas.get(0).getPesoinicial());
+                                pesofinalF.setText(""+datosPrendas.get(0).getPesofinal());
+                                PesoInicialF.setEnabled(false);
+                                pesofinalF.setEnabled(false);
+                                imgBitmapF=byteArrayToBitmap(datosPrendas.get(0).getFoto());
+                                try {
+                                    photoFile = createImageFile();
+                                    if (photoFile != null) {
+                                        photoURI = FileProvider.getUriForFile(PrendaView.this, "com.pixels.orobackoup.fileprovider", photoFile);
+                                        if (imgBitmapF != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapF = rotateImageIfRequired(imgBitmapF, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewF.setImageBitmap(imgBitmapF);
+                                            btnCamaraF.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                    Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            //Toast.makeText(PrendaView.this, "datos:"+datosPrendas.size(), Toast.LENGTH_SHORT).show();
                         }
                     };
                     prendaViewModel.getResultadoDatos().observe(PrendaView.this,observer1);

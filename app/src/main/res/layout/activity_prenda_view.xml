@@ -282,7 +282,7 @@
                                                 android:id="@+id/LFechaF"
                                                 android:gravity="center"
                                                 android:layout_width="match_parent"
-                                                android:layout_marginTop="20dp"
+                                                android:layout_marginTop="60dp"
                                                 android:layout_marginLeft="17dp"
                                                 android:layout_marginRight="17dp"
                                                 android:layout_height="wrap_content">
@@ -524,7 +524,7 @@
                                                 android:id="@+id/LFechaG"
                                                 android:gravity="center"
                                                 android:layout_width="match_parent"
-                                                android:layout_marginTop="20dp"
+                                                android:layout_marginTop="60dp"
                                                 android:layout_marginLeft="17dp"
                                                 android:layout_marginRight="17dp"
                                                 android:layout_height="wrap_content">
@@ -780,7 +780,7 @@
                                                 android:id="@+id/LFechaL"
                                                 android:gravity="center"
                                                 android:layout_width="match_parent"
-                                                android:layout_marginTop="20dp"
+                                                android:layout_marginTop="60dp"
                                                 android:layout_marginLeft="17dp"
                                                 android:layout_marginRight="17dp"
                                                 android:layout_height="wrap_content">
@@ -1036,7 +1036,7 @@
                                                 android:id="@+id/LFechaLL"
                                                 android:gravity="center"
                                                 android:layout_width="match_parent"
-                                                android:layout_marginTop="20dp"
+                                                android:layout_marginTop="60dp"
                                                 android:layout_marginLeft="17dp"
                                                 android:layout_marginRight="17dp"
                                                 android:layout_height="wrap_content">
@@ -1289,7 +1289,7 @@
                                                 android:id="@+id/LFechaE"
                                                 android:gravity="center"
                                                 android:layout_width="match_parent"
-                                                android:layout_marginTop="20dp"
+                                                android:layout_marginTop="60dp"
                                                 android:layout_marginLeft="17dp"
                                                 android:layout_marginRight="17dp"
                                                 android:layout_height="wrap_content">
@@ -1544,7 +1544,7 @@
                                                 android:id="@+id/LFechaP"
                                                 android:gravity="center"
                                                 android:layout_width="match_parent"
-                                                android:layout_marginTop="20dp"
+                                                android:layout_marginTop="60dp"
                                                 android:layout_marginLeft="17dp"
                                                 android:layout_marginRight="17dp"
                                                 android:layout_height="wrap_content">
