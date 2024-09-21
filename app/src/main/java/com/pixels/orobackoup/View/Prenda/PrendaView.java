@@ -801,6 +801,190 @@ public class PrendaView extends AppCompatActivity {
                                     Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
                                 }
                             }
+                            //---------------------------------------------------------------------------------------------------------------------------------------------------
+                            if(datosPrendas.size()>=2){
+                                btnCamarav2G.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                    }
+                                });
+                                LFechaG.setVisibility(View.VISIBLE);
+                                botonG.setVisibility(View.GONE);
+                                FechaG.setText("Se Registro en el "+datosPrendas.get(1).getFecha());
+                                PesoInicialG.setText(""+datosPrendas.get(1).getPesoinicial());
+                                pesofinalG.setText(""+datosPrendas.get(1).getPesofinal());
+                                PesoInicialG.setEnabled(false);
+                                pesofinalG.setEnabled(false);
+                                imgBitmapG=byteArrayToBitmap(datosPrendas.get(1).getFoto());
+                                try {
+                                    photoFile = createImageFile();
+                                    if (photoFile != null) {
+                                        photoURI = FileProvider.getUriForFile(PrendaView.this, "com.pixels.orobackoup.fileprovider", photoFile);
+                                        if (imgBitmapG != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapG = rotateImageIfRequired(imgBitmapG, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewG.setImageBitmap(imgBitmapG);
+                                            btnCamaraG.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                    Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                            if(datosPrendas.size()>=3){
+                                btnCamarav2L.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                    }
+                                });
+                                LFechaL.setVisibility(View.VISIBLE);
+                                botonL.setVisibility(View.GONE);
+                                FechaL.setText("Se Registro en el "+datosPrendas.get(2).getFecha());
+                                PesoInicialL.setText(""+datosPrendas.get(2).getPesoinicial());
+                                pesofinalL.setText(""+datosPrendas.get(2).getPesofinal());
+                                PesoInicialL.setEnabled(false);
+                                pesofinalL.setEnabled(false);
+                                imgBitmapL=byteArrayToBitmap(datosPrendas.get(2).getFoto());
+                                try {
+                                    photoFile = createImageFile();
+                                    if (photoFile != null) {
+                                        photoURI = FileProvider.getUriForFile(PrendaView.this, "com.pixels.orobackoup.fileprovider", photoFile);
+                                        if (imgBitmapL != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapL = rotateImageIfRequired(imgBitmapL, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewL.setImageBitmap(imgBitmapL);
+                                            btnCamaraL.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                    Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                            if(datosPrendas.size()>=4){
+                                btnCamarav2LL.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                    }
+                                });
+                                LFechaLL.setVisibility(View.VISIBLE);
+                                botonLL.setVisibility(View.GONE);
+                                FechaLL.setText("Se Registro en el "+datosPrendas.get(3).getFecha());
+                                PesoInicialLL.setText(""+datosPrendas.get(3).getPesoinicial());
+                                pesofinalLL.setText(""+datosPrendas.get(3).getPesofinal());
+                                PesoInicialLL.setEnabled(false);
+                                pesofinalLL.setEnabled(false);
+                                imgBitmapLL=byteArrayToBitmap(datosPrendas.get(3).getFoto());
+                                try {
+                                    photoFile = createImageFile();
+                                    if (photoFile != null) {
+                                        photoURI = FileProvider.getUriForFile(PrendaView.this, "com.pixels.orobackoup.fileprovider", photoFile);
+                                        if (imgBitmapLL != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapLL = rotateImageIfRequired(imgBitmapLL, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewLL.setImageBitmap(imgBitmapLL);
+                                            btnCamaraLL.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                    Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            //-------------------------------------------------------------------------------------------------------------------------------------------------------
+                            if(datosPrendas.size()>=5){
+                                btnCamarav2E.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                    }
+                                });
+                                LFechaE.setVisibility(View.VISIBLE);
+                                botonE.setVisibility(View.GONE);
+                                FechaE.setText("Se Registro en el "+datosPrendas.get(4).getFecha());
+                                PesoInicialE.setText(""+datosPrendas.get(4).getPesoinicial());
+                                pesofinalE.setText(""+datosPrendas.get(4).getPesofinal());
+                                PesoInicialE.setEnabled(false);
+                                pesofinalE.setEnabled(false);
+                                imgBitmapE=byteArrayToBitmap(datosPrendas.get(4).getFoto());
+                                try {
+                                    photoFile = createImageFile();
+                                    if (photoFile != null) {
+                                        photoURI = FileProvider.getUriForFile(PrendaView.this, "com.pixels.orobackoup.fileprovider", photoFile);
+                                        if (imgBitmapE != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapE = rotateImageIfRequired(imgBitmapE, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewE.setImageBitmap(imgBitmapE);
+                                            btnCamaraE.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                    Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                            if(datosPrendas.size()>=6){
+                                btnCamarav2P.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                    }
+                                });
+                                LFechaP.setVisibility(View.VISIBLE);
+                                botonP.setVisibility(View.GONE);
+                                FechaP.setText("Se Registro en el "+datosPrendas.get(5).getFecha());
+                                PesoInicialP.setText(""+datosPrendas.get(5).getPesoinicial());
+                                pesofinalP.setText(""+datosPrendas.get(5).getPesofinal());
+                                PesoInicialP.setEnabled(false);
+                                pesofinalP.setEnabled(false);
+                                imgBitmapP=byteArrayToBitmap(datosPrendas.get(5).getFoto());
+                                try {
+                                    photoFile = createImageFile();
+                                    if (photoFile != null) {
+                                        photoURI = FileProvider.getUriForFile(PrendaView.this, "com.pixels.orobackoup.fileprovider", photoFile);
+                                        if (imgBitmapP != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapP = rotateImageIfRequired(imgBitmapP, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewP.setImageBitmap(imgBitmapP);
+                                            btnCamaraP.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                    Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
                             //Toast.makeText(PrendaView.this, "datos:"+datosPrendas.size(), Toast.LENGTH_SHORT).show();
                         }
                     };
