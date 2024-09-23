@@ -369,6 +369,73 @@ public class PrendaView extends AppCompatActivity {
             }
         });
 
+        botonG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PesoInicialG.getText().toString().equals("") || pesofinalG.getText().toString().equals("") || imgBitmapG==null){
+                    if(PesoInicialG.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso inicial", Toast.LENGTH_SHORT).show();
+                    }
+                    if(pesofinalG.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso final", Toast.LENGTH_SHORT).show();
+                    }
+                    if(imgBitmapG==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    AlertCarga carga =new AlertCarga(PrendaView.this);
+                    DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
+                    prendaestadosViewModel.reset();
+                    carga.Cargar();
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Electropulidobomba",CodigoP,Float.parseFloat(PesoInicialG.getText().toString()),Float.parseFloat(pesofinalG.getText().toString()),bitmapToByteArray(imgBitmapG));
+                    Observer<String> observer=new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            carga.setInicio(1);
+                            carga.Cerrar();
+                            btnCamarav2G.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                            LFechaG.setVisibility(View.VISIBLE);
+                            botonG.setVisibility(View.GONE);
+                            FechaG.setText("Se Registro en el "+s);
+                            PesoInicialG.setEnabled(false);
+                            pesofinalG.setEnabled(false);
+                        }
+                    };
+                    prendaestadosViewModel.getResultado().observe(PrendaView.this,observer);
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(carga.getInicio()==0){
+                                Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                carga.Cerrar();
+                                finish();
+                            }
+                        }
+                    },12000);
+                }
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -450,6 +517,66 @@ public class PrendaView extends AppCompatActivity {
             }
         });
 
+        botonL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PesoInicialL.getText().toString().equals("") || pesofinalL.getText().toString().equals("") || imgBitmapL==null){
+                    if(PesoInicialL.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso inicial", Toast.LENGTH_SHORT).show();
+                    }
+                    if(pesofinalL.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso final", Toast.LENGTH_SHORT).show();
+                    }
+                    if(imgBitmapL==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    AlertCarga carga =new AlertCarga(PrendaView.this);
+                    DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
+                    prendaestadosViewModel.reset();
+                    carga.Cargar();
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Limado",CodigoP,Float.parseFloat(PesoInicialL.getText().toString()),Float.parseFloat(pesofinalL.getText().toString()),bitmapToByteArray(imgBitmapL));
+                    Observer<String> observer=new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            carga.setInicio(1);
+                            carga.Cerrar();
+                            btnCamarav2L.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                            LFechaL.setVisibility(View.VISIBLE);
+                            botonL.setVisibility(View.GONE);
+                            FechaL.setText("Se Registro en el "+s);
+                            PesoInicialL.setEnabled(false);
+                            pesofinalL.setEnabled(false);
+                        }
+                    };
+                    prendaestadosViewModel.getResultado().observe(PrendaView.this,observer);
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(carga.getInicio()==0){
+                                Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                carga.Cerrar();
+                                finish();
+                            }
+                        }
+                    },12000);
+                }
+
+            }
+        });
+
+
+
+
+
+
+
+
 
 
 
@@ -530,6 +657,62 @@ public class PrendaView extends AppCompatActivity {
         });
 
 
+        botonLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PesoInicialLL.getText().toString().equals("") || pesofinalLL.getText().toString().equals("") || imgBitmapLL==null){
+                    if(PesoInicialLL.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso inicial", Toast.LENGTH_SHORT).show();
+                    }
+                    if(pesofinalLL.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso final", Toast.LENGTH_SHORT).show();
+                    }
+                    if(imgBitmapLL==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    AlertCarga carga =new AlertCarga(PrendaView.this);
+                    DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
+                    prendaestadosViewModel.reset();
+                    carga.Cargar();
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Lijado",CodigoP,Float.parseFloat(PesoInicialLL.getText().toString()),Float.parseFloat(pesofinalLL.getText().toString()),bitmapToByteArray(imgBitmapLL));
+                    Observer<String> observer=new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            carga.setInicio(1);
+                            carga.Cerrar();
+                            btnCamarav2LL.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                            LFechaLL.setVisibility(View.VISIBLE);
+                            botonLL.setVisibility(View.GONE);
+                            FechaLL.setText("Se Registro en el "+s);
+                            PesoInicialLL.setEnabled(false);
+                            pesofinalLL.setEnabled(false);
+                        }
+                    };
+                    prendaestadosViewModel.getResultado().observe(PrendaView.this,observer);
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(carga.getInicio()==0){
+                                Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                carga.Cerrar();
+                                finish();
+                            }
+                        }
+                    },12000);
+                }
+
+            }
+        });
+
+
+
+
 
         //tarjeta de Engaste
         btnCamaraE = findViewById(R.id.fotoE);
@@ -603,6 +786,77 @@ public class PrendaView extends AppCompatActivity {
         });
 
 
+
+        botonE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PesoInicialE.getText().toString().equals("") || pesofinalE.getText().toString().equals("") || imgBitmapE==null){
+                    if(PesoInicialE.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso inicial", Toast.LENGTH_SHORT).show();
+                    }
+                    if(pesofinalE.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso final", Toast.LENGTH_SHORT).show();
+                    }
+                    if(imgBitmapE==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    AlertCarga carga =new AlertCarga(PrendaView.this);
+                    DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
+                    prendaestadosViewModel.reset();
+                    carga.Cargar();
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Engaste",CodigoP,Float.parseFloat(PesoInicialE.getText().toString()),Float.parseFloat(pesofinalE.getText().toString()),bitmapToByteArray(imgBitmapE));
+                    Observer<String> observer=new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            carga.setInicio(1);
+                            carga.Cerrar();
+                            btnCamarav2E.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                            LFechaE.setVisibility(View.VISIBLE);
+                            botonE.setVisibility(View.GONE);
+                            FechaE.setText("Se Registro en el "+s);
+                            PesoInicialE.setEnabled(false);
+                            pesofinalE.setEnabled(false);
+                        }
+                    };
+                    prendaestadosViewModel.getResultado().observe(PrendaView.this,observer);
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(carga.getInicio()==0){
+                                Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                carga.Cerrar();
+                                finish();
+                            }
+                        }
+                    },12000);
+                }
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //tarjeta de Pulido
         btnCamaraP = findViewById(R.id.fotoP);
         btnCamarav2P = findViewById(R.id.fotoRealizadaP);
@@ -673,6 +927,59 @@ public class PrendaView extends AppCompatActivity {
             }
         });
 
+
+        botonP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PesoInicialP.getText().toString().equals("") || pesofinalP.getText().toString().equals("") || imgBitmapP==null){
+                    if(PesoInicialP.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso inicial", Toast.LENGTH_SHORT).show();
+                    }
+                    if(pesofinalP.getText().toString().equals("")){
+                        Toast.makeText(PrendaView.this, "Digite el Peso final", Toast.LENGTH_SHORT).show();
+                    }
+                    if(imgBitmapP==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    AlertCarga carga =new AlertCarga(PrendaView.this);
+                    DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
+                    prendaestadosViewModel.reset();
+                    carga.Cargar();
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Pulido",CodigoP,Float.parseFloat(PesoInicialP.getText().toString()),Float.parseFloat(pesofinalP.getText().toString()),bitmapToByteArray(imgBitmapP));
+                    Observer<String> observer=new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            carga.setInicio(1);
+                            carga.Cerrar();
+                            btnCamarav2P.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                            LFechaP.setVisibility(View.VISIBLE);
+                            botonP.setVisibility(View.GONE);
+                            FechaP.setText("Se Registro en el "+s);
+                            PesoInicialP.setEnabled(false);
+                            pesofinalP.setEnabled(false);
+                        }
+                    };
+                    prendaestadosViewModel.getResultado().observe(PrendaView.this,observer);
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(carga.getInicio()==0){
+                                Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                carga.Cerrar();
+                                finish();
+                            }
+                        }
+                    },12000);
+                }
+
+            }
+        });
 
 
 
