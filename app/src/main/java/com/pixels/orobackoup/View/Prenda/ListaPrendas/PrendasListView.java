@@ -77,7 +77,6 @@ public class PrendasListView extends AppCompatActivity {
                 if (listaPrendas==null){
 
                 }else{
-                    Toast.makeText(PrendasListView.this, "entro", Toast.LENGTH_SHORT).show();
                     if (listaPrendas.size()>0){
                         recyclerView.setAdapter(new RecyclerAdaptadorPrendas(PrendasListView.this,listaPrendas));
                     }else{

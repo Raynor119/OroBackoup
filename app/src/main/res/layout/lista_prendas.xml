@@ -10,8 +10,6 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#FFFFFF"
@@ -22,6 +20,8 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/background_rounded"
             app:background="@drawable/background_rounded"
             android:layout_width="50dp"
@@ -58,6 +58,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"/>
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:gravity="right|bottom"
                 android:layout_height="wrap_content">
@@ -71,7 +72,7 @@
                     android:text="Registro: 12/09/2024"
                     android:layout_marginTop="0dp"
                     android:layout_marginBottom="0dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="15dp"
                     android:layout_marginLeft="0dp"/>
             </LinearLayout>
         </LinearLayout>
