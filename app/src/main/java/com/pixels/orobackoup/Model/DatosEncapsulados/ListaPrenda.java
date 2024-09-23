@@ -2,12 +2,21 @@ package com.pixels.orobackoup.Model.DatosEncapsulados;
 
 public class ListaPrenda {
     private int Codigo;
-    private String Nombre,Fecha;
+    private String Nombre,Estado,Fecha;
 
-    public ListaPrenda(int codigo, String nombre, String fecha) {
+    public ListaPrenda(int codigo, String nombre,String estado, String fecha) {
         this.Codigo = codigo;
         this.Nombre = nombre;
+        this.Estado=estado;
         this.Fecha = fecha;
+    }
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String estado) {
+        Estado = estado;
     }
 
     public int getCodigo() {
