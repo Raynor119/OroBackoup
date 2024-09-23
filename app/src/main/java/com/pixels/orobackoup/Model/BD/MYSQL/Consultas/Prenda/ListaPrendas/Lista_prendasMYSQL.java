@@ -27,7 +27,7 @@ public class Lista_prendasMYSQL extends Conexion {
         this.ViewModel=viewModel;
         this.CodigoU=codigoU;
         this.TipoU=tipoU;
-        ListaPrendas=new ArrayList<>();
+        ListaPrendas=null;
         execute("");
         new android.os.Handler().postDelayed(new Runnable() {
             public void run() {
@@ -54,6 +54,7 @@ public class Lista_prendasMYSQL extends Conexion {
                     String Sql = "SELECT codigo,nombre,estado,Fecha FROM Prendas";
                     PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(Sql);
                     ResultSet rs = stmt.executeQuery();
+                    ListaPrendas=new ArrayList<>();
                     if (rs.next()) {
                         ListaPrendas.add(new ListaPrenda(rs.getInt("codigo"),rs.getString("nombre"),rs.getString("estado"),rs.getString("Fecha")));
                     }
@@ -62,6 +63,7 @@ public class Lista_prendasMYSQL extends Conexion {
                     PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(Sql);
                     stmt.setInt(1, CodigoU);
                     ResultSet rs = stmt.executeQuery();
+                    ListaPrendas=new ArrayList<>();
                     if (rs.next()) {
                         ListaPrendas.add(new ListaPrenda(rs.getInt("codigo"),rs.getString("nombre"),rs.getString("estado"),rs.getString("Fecha")));
                     }
