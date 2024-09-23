@@ -1075,6 +1075,30 @@ public class PrendaView extends AppCompatActivity {
                 botonT.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        AlertCarga carga =new AlertCarga(PrendaView.this);
+                        DatosPrendaViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosPrendaViewModel.class);
+                        prendaestadosViewModel.reset();
+                        carga.Cargar();
+                        prendaestadosViewModel.terminaPrenda(PrendaView.this,CodigoP);
+                        Observer<Boolean> observer=new Observer<Boolean>() {
+                            @Override
+                            public void onChanged(Boolean aBoolean) {
+                                carga.setInicio(1);
+                                carga.Cerrar();
+                                
+                            }
+                        };
+                        prendaestadosViewModel.getResultadoTerminacion().observe(PrendaView.this,observer);
+                        new android.os.Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(carga.getInicio()==0){
+                                    Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                    carga.Cerrar();
+                                    finish();
+                                }
+                            }
+                        },12000);
 
                     }
                 });
