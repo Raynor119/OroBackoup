@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pixels.orobackoup.Model.DatosEncapsulados.MenuLista;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.Menu.Menu;
+import com.pixels.orobackoup.View.Prenda.ListaPrendas.PrendasListView;
 import com.pixels.orobackoup.View.Prenda.PrendaView;
 
 import java.util.List;
@@ -27,12 +28,14 @@ public class RecyclerAdaptadorMenu extends RecyclerView.Adapter<RecyclerAdaptado
         public void onClick(View view) {
             int Id = Integer.parseInt((view.getTag() + ""));
             if (Id==1){
-                Intent intent=new Intent(MParentActivity, PrendaView.class);
-                intent.putExtra("codigo","1");
+                Intent intent=new Intent(MParentActivity, PrendasListView.class);
+               // intent.putExtra("codigo","1");
                 MParentActivity.startActivity(intent);
             }
             if (Id==2){
-
+                Intent intent=new Intent(MParentActivity, PrendasListView.class);
+                // intent.putExtra("codigo","1");
+                MParentActivity.startActivity(intent);
             }
             if (Id==3){
 
