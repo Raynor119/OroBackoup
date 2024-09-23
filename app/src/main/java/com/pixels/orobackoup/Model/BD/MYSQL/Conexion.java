@@ -12,7 +12,8 @@ public class Conexion extends AsyncTask<String, Void , String> {
     public Context Context;
 
     public Conexion(Context context){
-        this.Url="jdbc:mysql://"+"192.168.1.8"+"/"+"Joyeria";
+        this.Url="jdbc:mysql://"+"100.115.92.205"+"/"+"Joyeria";
+        //this.Url="jdbc:mysql://"+"192.168.1.8"+"/"+"Joyeria";
         this.Usuario="raynor";
         this.Contra="67895421d";
         this.Context=context;

@@ -30,9 +30,13 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".View.Prenda.PrendaView"
+            android:name=".View.Prenda.ListaPrendas.PrendasListView"
             android:theme="@style/Theme.MyApplication.NoActionBar"
             android:exported="false" />
+        <activity
+            android:name=".View.Prenda.PrendaView"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".View.SplashScreen"
             android:exported="true"
@@ -50,7 +54,7 @@
         <activity
             android:name=".View.InicioSesion.InicioSession"
             android:exported="false"
-            android:theme="@style/Theme.MyApplication.NoActionBar"></activity>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
