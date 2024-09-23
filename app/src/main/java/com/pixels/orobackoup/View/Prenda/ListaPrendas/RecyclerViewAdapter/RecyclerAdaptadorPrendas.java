@@ -46,6 +46,7 @@ public class RecyclerAdaptadorPrendas extends RecyclerView.Adapter<RecyclerAdapt
                // Toast.makeText(MParentActivity, "codigo: "+MValues.get(PPossition).getCodigo(), Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(MParentActivity, PrendaView.class);
                 intent.putExtra("codigo",MValues.get(PPossition).getCodigo()+"");
+                intent.putExtra("estado",MValues.get(PPossition).getEstado()+"");
                 MParentActivity.startActivity(intent);
             }
         });

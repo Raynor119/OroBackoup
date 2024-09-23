@@ -2,6 +2,7 @@ package com.pixels.orobackoup.View.Prenda;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -56,6 +57,10 @@ public class PrendaView extends AppCompatActivity {
     public TextInputEditText nombreP;
     String CodigoP;
     public CardView mostrarF,mostrarG,mostrarL,mostrarLL,mostrarE,mostrarP;
+
+    private SharedPreferences prefe;
+
+    private Button botonT;
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int PERMISSIONS_REQUEST_CAMERA = 2;
@@ -133,16 +138,21 @@ public class PrendaView extends AppCompatActivity {
     TextView FechaP;
     Bitmap imgBitmapP=null;
 
+    private String CodigoU,TipoU;
+
 
 
     String Camara="";
     private Uri photoURI;
     private File photoFile;
+    private String EstadoT;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prenda_view);
         CodigoP=getIntent().getExtras().getString("codigo");
+        EstadoT=getIntent().getExtras().getString("estado");
         LayoutF=findViewById(R.id.LayoutF);
         LayoutG=findViewById(R.id.LayoutG);
         LayoutL=findViewById(R.id.LayoutL);
@@ -162,6 +172,10 @@ public class PrendaView extends AppCompatActivity {
         LayoutLL.setVisibility(LinearLayout.GONE);
         LayoutE.setVisibility(LinearLayout.GONE);
         LayoutP.setVisibility(LinearLayout.GONE);
+        botonT=findViewById(R.id.ButtonTermina);
+
+        prefe=getSharedPreferences("Sesion",PrendaView.this.MODE_PRIVATE);
+        TipoU=prefe.getString("TipoUsuario","0");
 
 
         //tarjeta de fundicion
@@ -1049,6 +1063,26 @@ public class PrendaView extends AppCompatActivity {
                 }
             }
         });
+
+        if(TipoU.equals("A")){
+            if(EstadoT.equals("S")){
+                botonT.setText("Terminado");
+            }else{
+                botonT.setText("No Terminado");
+            }
+        }else{
+            if(EstadoT.equals("N")){
+                botonT.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+            }else{
+                Toast.makeText(this, "la prenda ya fue terminada", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
 
         cargadatos();
     }
