@@ -40,6 +40,7 @@ import com.itextpdf.text.pdf.parser.Line;
 import com.pixels.orobackoup.Model.DatosEncapsulados.DatosPrenda;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.AlertDialog.AlertCarga;
+import com.pixels.orobackoup.View.Prenda.ListaPrendas.PrendasListView;
 import com.pixels.orobackoup.ViewModel.Prenda.DatosEstadosViewModel;
 import com.pixels.orobackoup.ViewModel.Prenda.DatosPrendaViewModel;
 import android.graphics.Matrix;
@@ -61,6 +62,8 @@ public class PrendaView extends AppCompatActivity {
     private SharedPreferences prefe;
 
     private Button botonT;
+
+    public static PrendasListView listaprendas;
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int PERMISSIONS_REQUEST_CAMERA = 2;
@@ -1085,7 +1088,9 @@ public class PrendaView extends AppCompatActivity {
                             public void onChanged(Boolean aBoolean) {
                                 carga.setInicio(1);
                                 carga.Cerrar();
-                                
+                                listaprendas.reclicler();
+                                Toast.makeText(PrendaView.this, "Se a terminado la prenda y los datos han sido guardados", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         };
                         prendaestadosViewModel.getResultadoTerminacion().observe(PrendaView.this,observer);
@@ -1095,7 +1100,7 @@ public class PrendaView extends AppCompatActivity {
                                 if(carga.getInicio()==0){
                                     Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
                                     carga.Cerrar();
-                                    finish();
+                                    //finish();
                                 }
                             }
                         },12000);

@@ -48,6 +48,7 @@ public class RecyclerAdaptadorPrendas extends RecyclerView.Adapter<RecyclerAdapt
                 intent.putExtra("codigo",MValues.get(PPossition).getCodigo()+"");
                 intent.putExtra("estado",MValues.get(PPossition).getEstado()+"");
                 MParentActivity.startActivity(intent);
+                PrendaView.listaprendas=MParentActivity;
             }
         });
     }
