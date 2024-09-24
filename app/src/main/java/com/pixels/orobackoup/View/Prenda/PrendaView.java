@@ -181,6 +181,8 @@ public class PrendaView extends AppCompatActivity {
         TipoU=prefe.getString("TipoUsuario","0");
 
 
+        //copia a windows
+
         //tarjeta de fundicion
         btnCamaraF = findViewById(R.id.fotoF);
         btnCamarav2F = findViewById(R.id.fotoRealizadaF);
