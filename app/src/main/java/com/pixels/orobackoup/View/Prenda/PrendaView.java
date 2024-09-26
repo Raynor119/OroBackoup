@@ -1080,33 +1080,37 @@ public class PrendaView extends AppCompatActivity {
                 botonT.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AlertCarga carga =new AlertCarga(PrendaView.this);
-                        DatosPrendaViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosPrendaViewModel.class);
-                        prendaestadosViewModel.reset();
-                        carga.Cargar();
-                        prendaestadosViewModel.terminaPrenda(PrendaView.this,CodigoP);
-                        Observer<Boolean> observer=new Observer<Boolean>() {
-                            @Override
-                            public void onChanged(Boolean aBoolean) {
-                                carga.setInicio(1);
-                                carga.Cerrar();
-                                listaprendas.reclicler();
-                                Toast.makeText(PrendaView.this, "Se a terminado la prenda y los datos han sido guardados", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                        };
-                        prendaestadosViewModel.getResultadoTerminacion().observe(PrendaView.this,observer);
-                        new android.os.Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if(carga.getInicio()==0){
-                                    Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
-                                    carga.Cerrar();
-                                    //finish();
-                                }
-                            }
-                        },12000);
 
+                        if (LFechaF.getVisibility()==View.VISIBLE && LFechaG.getVisibility()==View.VISIBLE && LFechaL.getVisibility()==View.VISIBLE && LFechaLL.getVisibility()==View.VISIBLE && LFechaE.getVisibility()==View.VISIBLE && LFechaP.getVisibility()==View.VISIBLE){
+                            AlertCarga carga =new AlertCarga(PrendaView.this);
+                            DatosPrendaViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosPrendaViewModel.class);
+                            prendaestadosViewModel.reset();
+                            carga.Cargar();
+                            prendaestadosViewModel.terminaPrenda(PrendaView.this,CodigoP);
+                            Observer<Boolean> observer=new Observer<Boolean>() {
+                                @Override
+                                public void onChanged(Boolean aBoolean) {
+                                    carga.setInicio(1);
+                                    carga.Cerrar();
+                                    listaprendas.reclicler();
+                                    Toast.makeText(PrendaView.this, "Se a terminado la prenda y los datos han sido guardados", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            };
+                            prendaestadosViewModel.getResultadoTerminacion().observe(PrendaView.this,observer);
+                            new android.os.Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(carga.getInicio()==0){
+                                        Toast.makeText(PrendaView.this, "Error no hay conexion", Toast.LENGTH_LONG).show();
+                                        carga.Cerrar();
+                                        //finish();
+                                    }
+                                }
+                            },12000);
+                        }else{
+                            Toast.makeText(PrendaView.this, "Para poder Terminar la prenda se requiere que registre todos los estados", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }else{
