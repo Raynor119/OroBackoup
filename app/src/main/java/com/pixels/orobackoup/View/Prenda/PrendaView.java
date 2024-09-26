@@ -1092,7 +1092,9 @@ public class PrendaView extends AppCompatActivity {
                                 public void onChanged(Boolean aBoolean) {
                                     carga.setInicio(1);
                                     carga.Cerrar();
-                                    listaprendas.reclicler();
+                                    if (listaprendas!=null){
+                                        listaprendas.reclicler();
+                                    }
                                     Toast.makeText(PrendaView.this, "Se a terminado la prenda y los datos han sido guardados", Toast.LENGTH_SHORT).show();
                                     finish();
                                 }

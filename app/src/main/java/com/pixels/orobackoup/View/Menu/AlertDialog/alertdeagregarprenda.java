@@ -1,6 +1,7 @@
 package com.pixels.orobackoup.View.Menu.AlertDialog;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.InicioSesion.AlertDialog.AlertCarga;
 import com.pixels.orobackoup.View.Menu.Menu;
+import com.pixels.orobackoup.View.Prenda.PrendaView;
 import com.pixels.orobackoup.ViewModel.Menu.AgregarPrendaViewModel;
 
 public class alertdeagregarprenda {
@@ -89,7 +91,11 @@ public class alertdeagregarprenda {
                             carga.Cerrar();
                             if(aBoolean!=0){
                                 alertCancelar();
-                                Toast.makeText(Context, "La prenda se ha registro codigo:"+aBoolean, Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(Context, PrendaView.class);
+                                intent.putExtra("codigo",aBoolean+"");
+                                intent.putExtra("estado","N"+"");
+                                Context.startActivity(intent);
+                                //Toast.makeText(Context, "La prenda se ha registro codigo:"+aBoolean, Toast.LENGTH_SHORT).show();
                             }else{
                                 Cnombre.setError("Error al registrar la prenda");
                             }
