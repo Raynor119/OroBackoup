@@ -3,7 +3,6 @@ package com.pixels.orobackoup.Model.BD.MYSQL.Consultas.Prenda.ListaPrendas;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.mysql.jdbc.PreparedStatement;
 import com.pixels.orobackoup.Model.BD.MYSQL.Conexion;
 import com.pixels.orobackoup.Model.DatosEncapsulados.ListaPrenda;
 import com.pixels.orobackoup.ViewModel.Prenda.ListaPrendas.Lista_prendasViewModel;
@@ -11,6 +10,7 @@ import com.pixels.orobackoup.ViewModel.Prenda.ListaPrendas.Lista_prendasViewMode
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +21,14 @@ public class Lista_prendasMYSQL extends Conexion {
     private int CodigoU;
     private String TipoU;
     private List<ListaPrenda> ListaPrendas;
+    int conteo=0;
 
     public Lista_prendasMYSQL(Context context,int codigoU,String tipoU,Lista_prendasViewModel viewModel) {
         super(context);
         this.ViewModel=viewModel;
         this.CodigoU=codigoU;
         this.TipoU=tipoU;
-        ListaPrendas=null;
+        ListaPrendas=new ArrayList<>();
         execute("");
         new android.os.Handler().postDelayed(new Runnable() {
             public void run() {
@@ -51,21 +52,18 @@ public class Lista_prendasMYSQL extends Conexion {
                 return "Error en la conexion";
             }else{
                 if(TipoU.equals("A")){
-                    String Sql = "SELECT codigo,nombre,estado,Fecha FROM Prendas";
-                    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(Sql);
-                    ResultSet rs = stmt.executeQuery();
-                    ListaPrendas=new ArrayList<>();
-                    if (rs.next()) {
-                        ListaPrendas.add(new ListaPrenda(rs.getInt("codigo"),rs.getString("nombre"),rs.getString("estado"),rs.getString("Fecha")));
+                    Statement st = connection.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT codigo,nombre,estado,Fecha FROM Prendas");
+                    while (rs.next()) {
+                        //conteo++;
+                        ListaPrendas.add(new ListaPrenda(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
                     }
                 }else{
-                    String Sql = "SELECT codigo,nombre,estado,Fecha FROM Prendas WHERE codigousu = ? AND estado = 'N'";
-                    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(Sql);
-                    stmt.setInt(1, CodigoU);
-                    ResultSet rs = stmt.executeQuery();
-                    ListaPrendas=new ArrayList<>();
-                    if (rs.next()) {
-                        ListaPrendas.add(new ListaPrenda(rs.getInt("codigo"),rs.getString("nombre"),rs.getString("estado"),rs.getString("Fecha")));
+                    Statement st = connection.createStatement();
+                    ResultSet rs = st.executeQuery( "SELECT codigo,nombre,estado,Fecha FROM Prendas WHERE codigousu = "+CodigoU+" AND estado = 'N'");
+                    while (rs.next()) {
+                        //conteo++;
+                        ListaPrendas.add(new ListaPrenda(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
                     }
                 }
                 return "";
@@ -78,10 +76,12 @@ public class Lista_prendasMYSQL extends Conexion {
     protected void onPostExecute(String result) {
         verificarE=true;
         if(result.equals("")){
+            //Toast.makeText(Context, "El conteo es :"+conteo, Toast.LENGTH_SHORT).show();
             verficar=true;
             ConsultaBaseDatos();
         }else {
             verficar=false;
+            ListaPrendas=null;
             ConsultaBaseDatos();
             if(result.equals("Error en la conexion")){
 

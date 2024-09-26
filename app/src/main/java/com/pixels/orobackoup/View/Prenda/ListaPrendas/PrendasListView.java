@@ -78,6 +78,7 @@ public class PrendasListView extends AppCompatActivity {
 
                 }else{
                     if (listaPrendas.size()>0){
+                       // Toast.makeText(PrendasListView.this, "Cosas de la Lista:"+listaPrendas.size(), Toast.LENGTH_SHORT).show();
                         recyclerView.setAdapter(new RecyclerAdaptadorPrendas(PrendasListView.this,listaPrendas));
                     }else{
                         Toast.makeText(PrendasListView.this, "No hay Prendas Registradas", Toast.LENGTH_SHORT).show();
