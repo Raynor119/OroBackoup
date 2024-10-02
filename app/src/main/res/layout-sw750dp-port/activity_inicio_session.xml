@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:weightSum="12">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menufondo"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_login_nk"
+                    android:contentDescription="login background"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Theme.MyApplication.NoActionBar" />
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:text="@string/app_name"
+                android:gravity="center"
+                android:textSize="32dp"
+                android:textColor="#FFFFFF"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="20dp"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="155dp"
+                android:layout_marginLeft="155dp"
+                android:background="@color/whiteCardColor"
+                app:cardCornerRadius="10dp"
+                android:layout_gravity="center">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:text="Iniciar Sesión"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginTop="40dp"
+                            android:layout_height="wrap_content">
+                        </TextView>
+                        <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="35dp"
+                            android:layout_marginLeft="35dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/Uusuario"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Usuario"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/usuario"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textEmailAddress" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="35dp"
+                            android:layout_marginLeft="35dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/Ccontra"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Contraseña"
+                                app:endIconMode="password_toggle">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/contra"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textPassword" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/CheckGS"
+                            android:layout_width="match_parent"
+                            android:text="¿Quieres Guardar la Sesión?"
+                            android:layout_marginLeft="45dp"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginRight="45dp"
+                            android:layout_height="40dp"/>
+
+
+                        <Button
+                            android:id="@+id/ButtonI"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginTop="30dp"
+                            android:padding="20dp"
+                            android:text="Iniciar Sesión"
+                            android:textColor="#FFFFFF" />
+
+                    </LinearLayout>
+                </ScrollView>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.icu.text.SimpleDateFormat;
 import android.media.ExifInterface;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -1416,22 +1417,27 @@ public class PrendaView extends AppCompatActivity {
             // Crear un URI para el archivo temporal utilizando FileProvider
             Uri imageUri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", tempFile);
 
-            // Crear un Intent para visualizar la imagen en la app de galería
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(imageUri, "image/jpeg");
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Permisos para la galería
+            // Escanear el archivo para que aparezca en la galería (opcional pero útil)
+            MediaScannerConnection.scanFile(this, new String[]{tempFile.getAbsolutePath()}, null, (path, uri) -> {
+                // Crear un Intent para visualizar la imagen en la app de galería
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(imageUri, "image/jpeg");
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Permitir acceso a la imagen desde otras apps
 
-            // Verificar que haya una aplicación disponible para abrir el Intent
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent); // Mostrar la imagen
-            } else {
-                Toast.makeText(this, "No hay una aplicación disponible para visualizar la imagen", Toast.LENGTH_SHORT).show();
-            }
+                // Verificar que haya una aplicación disponible para abrir el Intent
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent); // Mostrar la imagen
+                } else {
+                    Toast.makeText(this, "No hay una aplicación disponible para visualizar la imagen", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Error al visualizar la imagen", Toast.LENGTH_SHORT).show();
         }
     }
+
     private Bitmap rotateImageIfRequired(Bitmap img, String imagePath) {
         try {
             ExifInterface exif = new ExifInterface(imagePath);

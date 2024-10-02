@@ -1,0 +1,1619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:weightSum="12">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menufondo"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+                    android:background="@color/colorPrimary"
+                    android:contentDescription="login background"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp">
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Prenda registrada"
+                android:layout_marginLeft="30dp"
+                android:textSize="26dp"
+                android:textColor="#FFFFFF"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="75dp"
+                android:layout_marginLeft="75dp"
+                android:background="@color/whiteCardColor"
+                app:cardCornerRadius="10dp"
+                android:layout_gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:layout_marginTop="15dp"
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:layout_marginLeft="17dp"
+                                android:layout_marginRight="17dp"
+                                android:gravity="center_vertical"
+                                android:layout_height="wrap_content">
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_marginRight="0dp"
+                                    android:id="@+id/n_prenda"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Nombre de la Prenda"
+                                    app:endIconMode="clear_text">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/nomprenda"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="text" />
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </RelativeLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:animateLayoutChanges="true"
+                                android:layout_marginLeft="10dp"
+                                app:cardCornerRadius="10dp"
+                                android:layout_gravity="center">
+                                <LinearLayout
+                                    android:id="@+id/LayoutF"
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_height="580dp">
+                                    <ScrollView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:gravity="center"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <LinearLayout
+                                                android:layout_marginTop="15dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginLeft="3dp"
+                                                android:layout_marginRight="3dp"
+                                                android:layout_height="230dp">
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/fotoRealizadaF"
+                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                    card_view:cardCornerRadius="8dp"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+                                                    <RelativeLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:gravity="center"
+                                                            android:orientation="vertical"
+                                                            android:background="@drawable/fondofoto"
+                                                            android:layout_height="match_parent">
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaF"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="match_parent"
+                                                                />
+                                                            <androidx.cardview.widget.CardView
+                                                                android:id="@+id/vergaleriaF"
+                                                                card_view:cardBackgroundColor="@android:color/transparent"
+                                                                card_view:cardCornerRadius="0dp"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="40dp">
+                                                                <LinearLayout
+                                                                    android:layout_width="match_parent"
+                                                                    android:gravity="center"
+                                                                    android:orientation="horizontal"
+                                                                    android:background="@color/colorPrimary"
+                                                                    android:layout_height="match_parent">
+                                                                    <ImageView
+                                                                        android:padding="4dp"
+                                                                        android:layout_marginTop="0dp"
+                                                                        android:layout_height="35dp"
+                                                                        android:layout_width="40dp"
+                                                                        android:src="@drawable/baseline_insert_photo_24"/>
+                                                                    <TextView
+                                                                        android:layout_width="wrap_content"
+                                                                        android:text="Ver Foto"
+                                                                        android:textColor="@color/black"
+                                                                        android:layout_height="wrap_content"/>
+                                                                </LinearLayout>
+                                                            </androidx.cardview.widget.CardView>
+                                                        </LinearLayout>
+                                                        <androidx.cardview.widget.CardView
+                                                            android:id="@+id/fotoF"
+                                                            android:layout_width="match_parent"
+                                                            card_view:cardCornerRadius="10dp"
+                                                            android:layout_height="match_parent"
+                                                            android:orientation="horizontal">
+                                                            <LinearLayout
+                                                                android:background="@drawable/fondofoto"
+                                                                android:layout_width="match_parent"
+                                                                android:gravity="bottom"
+                                                                android:layout_height="match_parent">
+                                                                <androidx.cardview.widget.CardView
+                                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                                    card_view:cardCornerRadius="0dp"
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="40dp">
+                                                                    <LinearLayout
+                                                                        android:layout_width="match_parent"
+                                                                        android:gravity="center"
+                                                                        android:orientation="horizontal"
+                                                                        android:background="@color/colorPrimary"
+                                                                        android:layout_height="match_parent">
+                                                                        <ImageView
+                                                                            android:padding="4dp"
+                                                                            android:layout_marginTop="0dp"
+                                                                            android:layout_height="35dp"
+                                                                            android:layout_width="40dp"
+                                                                            android:src="@drawable/baseline_camera_alt_24"/>
+                                                                        <TextView
+                                                                            android:layout_width="wrap_content"
+                                                                            android:text="Tomar foto"
+                                                                            android:textColor="@color/black"
+                                                                            android:layout_height="wrap_content"/>
+                                                                    </LinearLayout>
+                                                                </androidx.cardview.widget.CardView>
+
+                                                            </LinearLayout>
+                                                        </androidx.cardview.widget.CardView>
+                                                    </RelativeLayout>
+                                                </androidx.cardview.widget.CardView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLPesoInicialF"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Inicial (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/PesoInicialF"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLpesofinalF"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Final (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/pesofinalF"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/mermaF"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="La merma es:"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+                                            <Button
+                                                android:id="@+id/ButtonF"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="35dp"
+                                                android:padding="20dp"
+                                                android:text="Guardar Datos"
+                                                android:textColor="#FFFFFF" />
+
+                                            <LinearLayout
+                                                android:id="@+id/LFechaF"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="60dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaF"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </ScrollView>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_height="match_parent">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/mostrarF"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="bottom"
+                                        android:animateLayoutChanges="true"
+                                        android:background="@color/black"
+                                        app:cardCornerRadius="0dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:animateLayoutChanges="true"
+                                            android:background="@color/colorPrimary"
+                                            android:gravity="center">
+
+                                            <TextView
+                                                android:id="@+id/TextMasF"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Fundicion"
+                                                android:textColor="#FFFFFF" />
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:animateLayoutChanges="true"
+                                android:layout_marginLeft="10dp"
+                                app:cardCornerRadius="10dp"
+                                android:layout_gravity="center">
+                                <LinearLayout
+                                    android:id="@+id/LayoutG"
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_height="580dp">
+
+                                    <ScrollView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:gravity="center"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <LinearLayout
+                                                android:layout_marginTop="15dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginLeft="3dp"
+                                                android:layout_marginRight="3dp"
+                                                android:layout_height="230dp">
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/fotoRealizadaG"
+                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                    card_view:cardCornerRadius="8dp"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+                                                    <RelativeLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:gravity="center"
+                                                            android:orientation="vertical"
+                                                            android:background="@drawable/fondofoto"
+                                                            android:layout_height="match_parent">
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaG"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="match_parent"
+                                                                />
+                                                            <androidx.cardview.widget.CardView
+                                                                android:id="@+id/vergaleriaG"
+                                                                card_view:cardBackgroundColor="@android:color/transparent"
+                                                                card_view:cardCornerRadius="0dp"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="40dp">
+                                                                <LinearLayout
+                                                                    android:layout_width="match_parent"
+                                                                    android:gravity="center"
+                                                                    android:orientation="horizontal"
+                                                                    android:background="@color/colorPrimary"
+                                                                    android:layout_height="match_parent">
+                                                                    <ImageView
+                                                                        android:padding="4dp"
+                                                                        android:layout_marginTop="0dp"
+                                                                        android:layout_height="35dp"
+                                                                        android:layout_width="40dp"
+                                                                        android:src="@drawable/baseline_insert_photo_24"/>
+                                                                    <TextView
+                                                                        android:layout_width="wrap_content"
+                                                                        android:text="Ver Foto"
+                                                                        android:textColor="@color/black"
+                                                                        android:layout_height="wrap_content"/>
+                                                                </LinearLayout>
+                                                            </androidx.cardview.widget.CardView>
+                                                        </LinearLayout>
+                                                        <androidx.cardview.widget.CardView
+                                                            android:id="@+id/fotoG"
+                                                            android:layout_width="match_parent"
+                                                            card_view:cardCornerRadius="10dp"
+                                                            android:layout_height="match_parent"
+                                                            android:orientation="horizontal">
+                                                            <LinearLayout
+                                                                android:background="@drawable/fondofoto"
+                                                                android:layout_width="match_parent"
+                                                                android:gravity="bottom"
+                                                                android:layout_height="match_parent">
+                                                                <androidx.cardview.widget.CardView
+                                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                                    card_view:cardCornerRadius="0dp"
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="40dp">
+                                                                    <LinearLayout
+                                                                        android:layout_width="match_parent"
+                                                                        android:gravity="center"
+                                                                        android:orientation="horizontal"
+                                                                        android:background="@color/colorPrimary"
+                                                                        android:layout_height="match_parent">
+                                                                        <ImageView
+                                                                            android:padding="4dp"
+                                                                            android:layout_marginTop="0dp"
+                                                                            android:layout_height="35dp"
+                                                                            android:layout_width="40dp"
+                                                                            android:src="@drawable/baseline_camera_alt_24"/>
+                                                                        <TextView
+                                                                            android:layout_width="wrap_content"
+                                                                            android:text="Tomar foto"
+                                                                            android:textColor="@color/black"
+                                                                            android:layout_height="wrap_content"/>
+                                                                    </LinearLayout>
+                                                                </androidx.cardview.widget.CardView>
+
+                                                            </LinearLayout>
+                                                        </androidx.cardview.widget.CardView>
+                                                    </RelativeLayout>
+                                                </androidx.cardview.widget.CardView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLPesoInicialG"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Inicial (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/PesoInicialG"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLpesofinalG"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Final (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/pesofinalG"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/mermaG"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="La merma es:"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+                                            <Button
+                                                android:id="@+id/ButtonG"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="35dp"
+                                                android:padding="20dp"
+                                                android:text="Guardar Datos"
+                                                android:textColor="#FFFFFF" />
+
+                                            <LinearLayout
+                                                android:id="@+id/LFechaG"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="60dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaG"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_height="match_parent">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/mostrarG"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="bottom"
+                                        android:animateLayoutChanges="true"
+                                        android:background="@color/black"
+                                        app:cardCornerRadius="0dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:animateLayoutChanges="true"
+                                            android:background="@color/colorPrimary"
+                                            android:gravity="center">
+
+                                            <TextView
+                                                android:id="@+id/TextMasG"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Electro_pulido y Bomba"
+                                                android:textColor="#FFFFFF" />
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:animateLayoutChanges="true"
+                                android:layout_marginLeft="10dp"
+                                app:cardCornerRadius="10dp"
+                                android:layout_gravity="center">
+                                <LinearLayout
+                                    android:id="@+id/LayoutL"
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_height="580dp">
+
+
+
+
+
+                                    <ScrollView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:gravity="center"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <LinearLayout
+                                                android:layout_marginTop="15dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginLeft="3dp"
+                                                android:layout_marginRight="3dp"
+                                                android:layout_height="230dp">
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/fotoRealizadaL"
+                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                    card_view:cardCornerRadius="8dp"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+                                                    <RelativeLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:gravity="center"
+                                                            android:orientation="vertical"
+                                                            android:background="@drawable/fondofoto"
+                                                            android:layout_height="match_parent">
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaL"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="match_parent"
+                                                                />
+                                                            <androidx.cardview.widget.CardView
+                                                                android:id="@+id/vergaleriaL"
+                                                                card_view:cardBackgroundColor="@android:color/transparent"
+                                                                card_view:cardCornerRadius="0dp"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="40dp">
+                                                                <LinearLayout
+                                                                    android:layout_width="match_parent"
+                                                                    android:gravity="center"
+                                                                    android:orientation="horizontal"
+                                                                    android:background="@color/colorPrimary"
+                                                                    android:layout_height="match_parent">
+                                                                    <ImageView
+                                                                        android:padding="4dp"
+                                                                        android:layout_marginTop="0dp"
+                                                                        android:layout_height="35dp"
+                                                                        android:layout_width="40dp"
+                                                                        android:src="@drawable/baseline_insert_photo_24"/>
+                                                                    <TextView
+                                                                        android:layout_width="wrap_content"
+                                                                        android:text="Ver Foto"
+                                                                        android:textColor="@color/black"
+                                                                        android:layout_height="wrap_content"/>
+                                                                </LinearLayout>
+                                                            </androidx.cardview.widget.CardView>
+                                                        </LinearLayout>
+                                                        <androidx.cardview.widget.CardView
+                                                            android:id="@+id/fotoL"
+                                                            android:layout_width="match_parent"
+                                                            card_view:cardCornerRadius="10dp"
+                                                            android:layout_height="match_parent"
+                                                            android:orientation="horizontal">
+                                                            <LinearLayout
+                                                                android:background="@drawable/fondofoto"
+                                                                android:layout_width="match_parent"
+                                                                android:gravity="bottom"
+                                                                android:layout_height="match_parent">
+                                                                <androidx.cardview.widget.CardView
+                                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                                    card_view:cardCornerRadius="0dp"
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="40dp">
+                                                                    <LinearLayout
+                                                                        android:layout_width="match_parent"
+                                                                        android:gravity="center"
+                                                                        android:orientation="horizontal"
+                                                                        android:background="@color/colorPrimary"
+                                                                        android:layout_height="match_parent">
+                                                                        <ImageView
+                                                                            android:padding="4dp"
+                                                                            android:layout_marginTop="0dp"
+                                                                            android:layout_height="35dp"
+                                                                            android:layout_width="40dp"
+                                                                            android:src="@drawable/baseline_camera_alt_24"/>
+                                                                        <TextView
+                                                                            android:layout_width="wrap_content"
+                                                                            android:text="Tomar foto"
+                                                                            android:textColor="@color/black"
+                                                                            android:layout_height="wrap_content"/>
+                                                                    </LinearLayout>
+                                                                </androidx.cardview.widget.CardView>
+
+                                                            </LinearLayout>
+                                                        </androidx.cardview.widget.CardView>
+                                                    </RelativeLayout>
+                                                </androidx.cardview.widget.CardView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLPesoInicialL"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Inicial (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/PesoInicialL"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLpesofinalL"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Final (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/pesofinalL"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/mermaL"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="La merma es:"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+                                            <Button
+                                                android:id="@+id/ButtonL"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="35dp"
+                                                android:padding="20dp"
+                                                android:text="Guardar Datos"
+                                                android:textColor="#FFFFFF" />
+
+                                            <LinearLayout
+                                                android:id="@+id/LFechaL"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="60dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaL"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_height="match_parent">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/mostrarL"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="bottom"
+                                        android:animateLayoutChanges="true"
+                                        android:background="@color/black"
+                                        app:cardCornerRadius="0dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:animateLayoutChanges="true"
+                                            android:background="@color/colorPrimary"
+                                            android:gravity="center">
+
+                                            <TextView
+                                                android:id="@+id/TextMasL"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Limado"
+                                                android:textColor="#FFFFFF" />
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:animateLayoutChanges="true"
+                                android:layout_marginLeft="10dp"
+                                app:cardCornerRadius="10dp"
+                                android:layout_gravity="center">
+                                <LinearLayout
+                                    android:id="@+id/Layoutll"
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_height="580dp">
+
+
+
+
+
+                                    <ScrollView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:gravity="center"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <LinearLayout
+                                                android:layout_marginTop="15dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginLeft="3dp"
+                                                android:layout_marginRight="3dp"
+                                                android:layout_height="230dp">
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/fotoRealizadaLL"
+                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                    card_view:cardCornerRadius="8dp"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+                                                    <RelativeLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:gravity="center"
+                                                            android:orientation="vertical"
+                                                            android:background="@drawable/fondofoto"
+                                                            android:layout_height="match_parent">
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaLL"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="match_parent"
+                                                                />
+                                                            <androidx.cardview.widget.CardView
+                                                                android:id="@+id/vergaleriaLL"
+                                                                card_view:cardBackgroundColor="@android:color/transparent"
+                                                                card_view:cardCornerRadius="0dp"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="40dp">
+                                                                <LinearLayout
+                                                                    android:layout_width="match_parent"
+                                                                    android:gravity="center"
+                                                                    android:orientation="horizontal"
+                                                                    android:background="@color/colorPrimary"
+                                                                    android:layout_height="match_parent">
+                                                                    <ImageView
+                                                                        android:padding="4dp"
+                                                                        android:layout_marginTop="0dp"
+                                                                        android:layout_height="35dp"
+                                                                        android:layout_width="40dp"
+                                                                        android:src="@drawable/baseline_insert_photo_24"/>
+                                                                    <TextView
+                                                                        android:layout_width="wrap_content"
+                                                                        android:text="Ver Foto"
+                                                                        android:textColor="@color/black"
+                                                                        android:layout_height="wrap_content"/>
+                                                                </LinearLayout>
+                                                            </androidx.cardview.widget.CardView>
+                                                        </LinearLayout>
+                                                        <androidx.cardview.widget.CardView
+                                                            android:id="@+id/fotoLL"
+                                                            android:layout_width="match_parent"
+                                                            card_view:cardCornerRadius="10dp"
+                                                            android:layout_height="match_parent"
+                                                            android:orientation="horizontal">
+                                                            <LinearLayout
+                                                                android:background="@drawable/fondofoto"
+                                                                android:layout_width="match_parent"
+                                                                android:gravity="bottom"
+                                                                android:layout_height="match_parent">
+                                                                <androidx.cardview.widget.CardView
+                                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                                    card_view:cardCornerRadius="0dp"
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="40dp">
+                                                                    <LinearLayout
+                                                                        android:layout_width="match_parent"
+                                                                        android:gravity="center"
+                                                                        android:orientation="horizontal"
+                                                                        android:background="@color/colorPrimary"
+                                                                        android:layout_height="match_parent">
+                                                                        <ImageView
+                                                                            android:padding="4dp"
+                                                                            android:layout_marginTop="0dp"
+                                                                            android:layout_height="35dp"
+                                                                            android:layout_width="40dp"
+                                                                            android:src="@drawable/baseline_camera_alt_24"/>
+                                                                        <TextView
+                                                                            android:layout_width="wrap_content"
+                                                                            android:text="Tomar foto"
+                                                                            android:textColor="@color/black"
+                                                                            android:layout_height="wrap_content"/>
+                                                                    </LinearLayout>
+                                                                </androidx.cardview.widget.CardView>
+
+                                                            </LinearLayout>
+                                                        </androidx.cardview.widget.CardView>
+                                                    </RelativeLayout>
+                                                </androidx.cardview.widget.CardView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLPesoInicialLL"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Inicial (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/PesoInicialLL"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLpesofinalLL"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Final (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/pesofinalLL"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/mermaLL"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="La merma es:"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+                                            <Button
+                                                android:id="@+id/ButtonLL"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="35dp"
+                                                android:padding="20dp"
+                                                android:text="Guardar Datos"
+                                                android:textColor="#FFFFFF" />
+
+                                            <LinearLayout
+                                                android:id="@+id/LFechaLL"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="60dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaLL"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </ScrollView>
+
+
+
+
+
+
+
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_height="match_parent">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/mostrarLL"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="bottom"
+                                        android:animateLayoutChanges="true"
+                                        android:background="@color/black"
+                                        app:cardCornerRadius="0dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:animateLayoutChanges="true"
+                                            android:background="@color/colorPrimary"
+                                            android:gravity="center">
+
+                                            <TextView
+                                                android:id="@+id/TextMasLL"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Lijado"
+                                                android:textColor="#FFFFFF" />
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:animateLayoutChanges="true"
+                                android:layout_marginLeft="10dp"
+                                app:cardCornerRadius="10dp"
+                                android:layout_gravity="center">
+                                <LinearLayout
+                                    android:id="@+id/LayoutE"
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_height="580dp">
+
+
+
+
+
+                                    <ScrollView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:gravity="center"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <LinearLayout
+                                                android:layout_marginTop="15dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginLeft="3dp"
+                                                android:layout_marginRight="3dp"
+                                                android:layout_height="230dp">
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/fotoRealizadaE"
+                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                    card_view:cardCornerRadius="8dp"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+                                                    <RelativeLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:gravity="center"
+                                                            android:orientation="vertical"
+                                                            android:background="@drawable/fondofoto"
+                                                            android:layout_height="match_parent">
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaE"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="match_parent"
+                                                                />
+                                                            <androidx.cardview.widget.CardView
+                                                                android:id="@+id/vergaleriaE"
+                                                                card_view:cardBackgroundColor="@android:color/transparent"
+                                                                card_view:cardCornerRadius="0dp"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="40dp">
+                                                                <LinearLayout
+                                                                    android:layout_width="match_parent"
+                                                                    android:gravity="center"
+                                                                    android:orientation="horizontal"
+                                                                    android:background="@color/colorPrimary"
+                                                                    android:layout_height="match_parent">
+                                                                    <ImageView
+                                                                        android:padding="4dp"
+                                                                        android:layout_marginTop="0dp"
+                                                                        android:layout_height="35dp"
+                                                                        android:layout_width="40dp"
+                                                                        android:src="@drawable/baseline_insert_photo_24"/>
+                                                                    <TextView
+                                                                        android:layout_width="wrap_content"
+                                                                        android:text="Ver Foto"
+                                                                        android:textColor="@color/black"
+                                                                        android:layout_height="wrap_content"/>
+                                                                </LinearLayout>
+                                                            </androidx.cardview.widget.CardView>
+                                                        </LinearLayout>
+                                                        <androidx.cardview.widget.CardView
+                                                            android:id="@+id/fotoE"
+                                                            android:layout_width="match_parent"
+                                                            card_view:cardCornerRadius="10dp"
+                                                            android:layout_height="match_parent"
+                                                            android:orientation="horizontal">
+                                                            <LinearLayout
+                                                                android:background="@drawable/fondofoto"
+                                                                android:layout_width="match_parent"
+                                                                android:gravity="bottom"
+                                                                android:layout_height="match_parent">
+                                                                <androidx.cardview.widget.CardView
+                                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                                    card_view:cardCornerRadius="0dp"
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="40dp">
+                                                                    <LinearLayout
+                                                                        android:layout_width="match_parent"
+                                                                        android:gravity="center"
+                                                                        android:orientation="horizontal"
+                                                                        android:background="@color/colorPrimary"
+                                                                        android:layout_height="match_parent">
+                                                                        <ImageView
+                                                                            android:padding="4dp"
+                                                                            android:layout_marginTop="0dp"
+                                                                            android:layout_height="35dp"
+                                                                            android:layout_width="40dp"
+                                                                            android:src="@drawable/baseline_camera_alt_24"/>
+                                                                        <TextView
+                                                                            android:layout_width="wrap_content"
+                                                                            android:text="Tomar foto"
+                                                                            android:textColor="@color/black"
+                                                                            android:layout_height="wrap_content"/>
+                                                                    </LinearLayout>
+                                                                </androidx.cardview.widget.CardView>
+
+                                                            </LinearLayout>
+                                                        </androidx.cardview.widget.CardView>
+                                                    </RelativeLayout>
+                                                </androidx.cardview.widget.CardView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLPesoInicialE"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Inicial (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/PesoInicialE"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLpesofinalE"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Final (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/pesofinalE"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/mermaE"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="La merma es:"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+                                            <Button
+                                                android:id="@+id/ButtonE"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="35dp"
+                                                android:padding="20dp"
+                                                android:text="Guardar Datos"
+                                                android:textColor="#FFFFFF" />
+                                            <LinearLayout
+                                                android:id="@+id/LFechaE"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="60dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaE"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </ScrollView>
+
+
+
+
+
+
+
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_height="match_parent">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/mostrarE"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="bottom"
+                                        android:animateLayoutChanges="true"
+                                        android:background="@color/black"
+                                        app:cardCornerRadius="0dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:animateLayoutChanges="true"
+                                            android:background="@color/colorPrimary"
+                                            android:gravity="center">
+
+                                            <TextView
+                                                android:id="@+id/TextMasE"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Engaste"
+                                                android:textColor="#FFFFFF" />
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="30dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:animateLayoutChanges="true"
+                                android:layout_marginLeft="10dp"
+                                app:cardCornerRadius="10dp"
+                                android:layout_gravity="center">
+                                <LinearLayout
+                                    android:id="@+id/LayoutP"
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_height="580dp">
+
+
+
+
+                                    <ScrollView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:gravity="center"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <LinearLayout
+                                                android:layout_marginTop="15dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginLeft="3dp"
+                                                android:layout_marginRight="3dp"
+                                                android:layout_height="230dp">
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/fotoRealizadaP"
+                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                    card_view:cardCornerRadius="8dp"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+                                                    <RelativeLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:gravity="center"
+                                                            android:orientation="vertical"
+                                                            android:background="@drawable/fondofoto"
+                                                            android:layout_height="match_parent">
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaP"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="match_parent"
+                                                                />
+                                                            <androidx.cardview.widget.CardView
+                                                                android:id="@+id/vergaleriaP"
+                                                                card_view:cardBackgroundColor="@android:color/transparent"
+                                                                card_view:cardCornerRadius="0dp"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="40dp">
+                                                                <LinearLayout
+                                                                    android:layout_width="match_parent"
+                                                                    android:gravity="center"
+                                                                    android:orientation="horizontal"
+                                                                    android:background="@color/colorPrimary"
+                                                                    android:layout_height="match_parent">
+                                                                    <ImageView
+                                                                        android:padding="4dp"
+                                                                        android:layout_marginTop="0dp"
+                                                                        android:layout_height="35dp"
+                                                                        android:layout_width="40dp"
+                                                                        android:src="@drawable/baseline_insert_photo_24"/>
+                                                                    <TextView
+                                                                        android:layout_width="wrap_content"
+                                                                        android:text="Ver Foto"
+                                                                        android:textColor="@color/black"
+                                                                        android:layout_height="wrap_content"/>
+                                                                </LinearLayout>
+                                                            </androidx.cardview.widget.CardView>
+                                                        </LinearLayout>
+                                                        <androidx.cardview.widget.CardView
+                                                            android:id="@+id/fotoP"
+                                                            android:layout_width="match_parent"
+                                                            card_view:cardCornerRadius="10dp"
+                                                            android:layout_height="match_parent"
+                                                            android:orientation="horizontal">
+                                                            <LinearLayout
+                                                                android:background="@drawable/fondofoto"
+                                                                android:layout_width="match_parent"
+                                                                android:gravity="bottom"
+                                                                android:layout_height="match_parent">
+                                                                <androidx.cardview.widget.CardView
+                                                                    card_view:cardBackgroundColor="@android:color/transparent"
+                                                                    card_view:cardCornerRadius="0dp"
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="40dp">
+                                                                    <LinearLayout
+                                                                        android:layout_width="match_parent"
+                                                                        android:gravity="center"
+                                                                        android:orientation="horizontal"
+                                                                        android:background="@color/colorPrimary"
+                                                                        android:layout_height="match_parent">
+                                                                        <ImageView
+                                                                            android:padding="4dp"
+                                                                            android:layout_marginTop="0dp"
+                                                                            android:layout_height="35dp"
+                                                                            android:layout_width="40dp"
+                                                                            android:src="@drawable/baseline_camera_alt_24"/>
+                                                                        <TextView
+                                                                            android:layout_width="wrap_content"
+                                                                            android:text="Tomar foto"
+                                                                            android:textColor="@color/black"
+                                                                            android:layout_height="wrap_content"/>
+                                                                    </LinearLayout>
+                                                                </androidx.cardview.widget.CardView>
+
+                                                            </LinearLayout>
+                                                        </androidx.cardview.widget.CardView>
+                                                    </RelativeLayout>
+                                                </androidx.cardview.widget.CardView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="20dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLPesoInicialP"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Inicial (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/PesoInicialP"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/TLpesofinalP"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:hint="Peso Final (g)"
+                                                    app:endIconMode="clear_text">
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/pesofinalP"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:inputType="numberDecimal" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="30dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/mermaP"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="La merma es:"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+                                            <Button
+                                                android:id="@+id/ButtonP"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="35dp"
+                                                android:padding="20dp"
+                                                android:text="Guardar Datos"
+                                                android:textColor="#FFFFFF" />
+
+                                            <LinearLayout
+                                                android:id="@+id/LFechaP"
+                                                android:gravity="center"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginTop="60dp"
+                                                android:layout_marginLeft="17dp"
+                                                android:layout_marginRight="17dp"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/FechaP"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Se Registro en el 12/04/2025 12:30"
+                                                    android:textSize="17dp"
+                                                    />
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </ScrollView>
+
+
+
+
+
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="true"
+                                    android:layout_height="match_parent">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/mostrarP"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="bottom"
+                                        android:animateLayoutChanges="true"
+                                        android:background="@color/black"
+                                        app:cardCornerRadius="0dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:animateLayoutChanges="true"
+                                            android:background="@color/colorPrimary"
+                                            android:gravity="center">
+
+                                            <TextView
+                                                android:id="@+id/TextMasP"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Pulido"
+                                                android:textColor="#FFFFFF" />
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                            <Button
+                                android:id="@+id/ButtonTermina"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:padding="20dp"
+                                android:text="Terminar prenda"
+                                android:textColor="#FFFFFF" />
+
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
