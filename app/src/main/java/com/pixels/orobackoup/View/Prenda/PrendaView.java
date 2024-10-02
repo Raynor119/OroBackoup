@@ -1422,13 +1422,33 @@ public class PrendaView extends AppCompatActivity {
                 // Crear un Intent para visualizar la imagen en la app de galería
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setDataAndType(imageUri, "image/jpeg");
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Permitir acceso a la imagen desde otras apps
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
                 // Verificar que haya una aplicación disponible para abrir el Intent
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent); // Mostrar la imagen
                 } else {
-                    Toast.makeText(this, "No hay una aplicación disponible para visualizar la imagen", Toast.LENGTH_SHORT).show();
+                    // Si no se encuentra una app, intentamos abrir Google Fotos directamente
+                    try {
+                        Intent googlePhotosIntent = new Intent(Intent.ACTION_VIEW);
+                        googlePhotosIntent.setDataAndType(imageUri, "image/jpeg");
+                        googlePhotosIntent.setPackage("com.google.android.apps.photos"); // Paquete de Google Fotos
+                        googlePhotosIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                        // Verificar si Google Fotos está instalada
+                        if (googlePhotosIntent.resolveActivity(getPackageManager()) != null) {
+                            startActivity(googlePhotosIntent); // Abrir la imagen con Google Fotos
+                        } else {
+                            try {
+                                startActivity(googlePhotosIntent);
+                            }catch (Exception e){
+                                Toast.makeText(this, "Error no esta instalado Google Fotos", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(this, "Error al intentar abrir con Google Fotos", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 
