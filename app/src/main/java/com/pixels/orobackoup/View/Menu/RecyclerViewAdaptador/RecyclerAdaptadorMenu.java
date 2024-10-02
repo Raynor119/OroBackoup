@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pixels.orobackoup.Model.DatosEncapsulados.MenuLista;
 import com.pixels.orobackoup.R;
+import com.pixels.orobackoup.View.Estadistica.Estadistica;
 import com.pixels.orobackoup.View.Menu.Menu;
 import com.pixels.orobackoup.View.Prenda.ListaPrendas.PrendasListView;
 import com.pixels.orobackoup.View.Prenda.PrendaView;
@@ -38,7 +39,8 @@ public class RecyclerAdaptadorMenu extends RecyclerView.Adapter<RecyclerAdaptado
                 MParentActivity.startActivity(intent);
             }
             if (Id==3){
-
+                Intent intent=new Intent(MParentActivity, Estadistica.class);
+                MParentActivity.startActivity(intent);
             }
             if(Id==4){
                 android.os.Process.killProcess(android.os.Process.myPid());

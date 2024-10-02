@@ -30,9 +30,13 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".View.Estadistica.Estadistica"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
             android:name=".View.Prenda.ListaPrendas.PrendasListView"
-            android:theme="@style/Theme.MyApplication.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".View.Prenda.PrendaView"
             android:exported="false"
