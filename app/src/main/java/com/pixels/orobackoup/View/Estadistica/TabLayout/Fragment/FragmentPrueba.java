@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.pixels.orobackoup.R;
+import com.pixels.orobackoup.View.Estadistica.TabLayout.GraficasFragment.GraficaColumnaD;
 
 import java.util.Calendar;
 
@@ -49,7 +50,7 @@ public class FragmentPrueba  extends Fragment {
         LayoutLL.setVisibility(LinearLayout.GONE);
         LayoutE.setVisibility(LinearLayout.GONE);
         LayoutP.setVisibility(LinearLayout.GONE);
-
+        iniciarGraficaColumnas("");
 
         calendarioEditText=(TextInputEditText) rootView.findViewById(R.id.fecha);
         calendarioEditText.setEnabled(false);
@@ -83,7 +84,7 @@ public class FragmentPrueba  extends Fragment {
                         int mes=Mes+1;
                         calendarioEditText.setText(Dia+"/"+(mes)+"/"+year);
                         //iniciarRecyclerView(calendarioEditText.getText().toString());
-                       // iniciarGraficaColumnas(calendarioEditText.getText().toString());
+                        iniciarGraficaColumnas(calendarioEditText.getText().toString());
                     }
                 },anno,mes-1,dia);
                 datePickerDialog.show();
@@ -151,6 +152,16 @@ public class FragmentPrueba  extends Fragment {
         });
 
         return rootView;
+    }
+
+    public void iniciarGraficaColumnas(String Ffecha){
+        try{
+            GraficaColumnaD graficaColumna=new GraficaColumnaD(Ffecha);
+            graficaColumna.Fecha=Ffecha;
+            getChildFragmentManager().beginTransaction().replace(R.id.containerF,graficaColumna).commit();
+        }catch (Exception e){
+
+        }
     }
     public String getDia(){
         Calendar calendar= Calendar.getInstance();

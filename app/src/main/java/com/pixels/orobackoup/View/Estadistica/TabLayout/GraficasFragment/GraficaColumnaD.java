@@ -21,6 +21,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.pixels.orobackoup.Model.DatosEncapsulados.DatosColumn;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.Estadistica.TabLayout.Widgets.XYMarkerView;
+import com.pixels.orobackoup.ViewModel.Estadistica.GraficaBarrasDViewModel;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -45,9 +46,9 @@ public class GraficaColumnaD extends Fragment {
         return rootView;
     }
     public void GenerarGrafica(){
-        //GraficaColumnDRecyclerViewModel productos= ViewModelProviders.of(getActivity()).get(GraficaColumnDRecyclerViewModel.class);
-       // productos.reset();
-       // productos.buscarVProductos(getActivity(),getConsulta(Fecha));
+        GraficaBarrasDViewModel productos= ViewModelProviders.of(getActivity()).get(GraficaBarrasDViewModel.class);
+        productos.reset();
+        productos.buscarVProductos(getActivity(),getConsulta(Fecha));
         Observer<List<DatosColumn>> observer= new Observer<List<DatosColumn>>() {
             @Override
             public void onChanged(List<DatosColumn> datosColumns) {
@@ -56,7 +57,7 @@ public class GraficaColumnaD extends Fragment {
                     barEntryArrayList.add(new BarEntry(i,datosColumns.get(i).getTotalV()));
 
                 }
-                BarDataSet barDataSet = new BarDataSet(barEntryArrayList,"Productos Vendidos");
+                BarDataSet barDataSet = new BarDataSet(barEntryArrayList,"Porcentaje de la Merma");
                 barDataSet.setColors(ColorTemplate.rgb("0090FD"));
                 barDataSet.setValueTextSize(11);
                 barDataSet.setValueFormatter(new ValueFormatter() {
@@ -76,7 +77,7 @@ public class GraficaColumnaD extends Fragment {
                 xAxis.setValueFormatter(new ValueFormatter() {
                     @Override
                     public String getFormattedValue(float value) {
-                        return "#"+((int)value+1);
+                        return "Prenda #"+((int)value+1);
                     }
                 });
                 xAxis.setDrawGridLines(false);
@@ -91,7 +92,7 @@ public class GraficaColumnaD extends Fragment {
                     @Override
                     public String getFormattedValue(float value) {
                         NumberFormat mFormat = NumberFormat.getNumberInstance();
-                        return "$ "+mFormat.format(value);
+                        return "%` "+mFormat.format(value);
                     }
                 });
                 GColumna.animateX(900);
@@ -112,7 +113,7 @@ public class GraficaColumnaD extends Fragment {
 
             }
         };
-        //productos.getResultado().observe(getActivity(),observer);
+        productos.getResultado().observe(getActivity(),observer);
     }
 
     public String getConsulta(String fechaE){

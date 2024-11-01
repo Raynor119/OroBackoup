@@ -27,7 +27,7 @@ public class XYMarkerView extends MarkerView {
 
         int i=(int) e.getX();
         NumberFormat mFormat = NumberFormat.getNumberInstance();
-        tvContent.setText(""+DatosP.get(i).getNombre()+"\n"+DatosP.get(i).getCodigo()+"\nTotal Vendido: $ "+mFormat.format(e.getY()));
+        tvContent.setText(""+DatosP.get(i).getNombre()+"\nPorcentaje de merma %"+mFormat.format(e.getY()));
 
         super.refreshContent(e, highlight);
     }
