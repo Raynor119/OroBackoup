@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -30,12 +31,14 @@ import java.util.List;
 public class GraficaColumnaD extends Fragment {
     public static String Fecha;
     private BarChart GColumna;
+    private static String EstadoProceso;
     private ArrayList<BarEntry> barEntryArrayList;
 
     public GraficaColumnaD(){
 
     }
-    public GraficaColumnaD(String fecha){
+    public GraficaColumnaD(String fecha,String proceso){
+        this.EstadoProceso=proceso;
         this.Fecha=fecha;
     }
     @Override
@@ -46,6 +49,7 @@ public class GraficaColumnaD extends Fragment {
         return rootView;
     }
     public void GenerarGrafica(){
+        Toast.makeText(getActivity(), "Fecha: "+Fecha, Toast.LENGTH_SHORT).show();
         GraficaBarrasDViewModel productos= ViewModelProviders.of(getActivity()).get(GraficaBarrasDViewModel.class);
         productos.reset();
         productos.buscarVProductos(getActivity(),getConsulta(Fecha));
