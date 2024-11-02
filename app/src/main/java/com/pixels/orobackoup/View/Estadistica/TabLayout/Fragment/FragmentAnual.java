@@ -53,7 +53,7 @@ public class FragmentAnual extends Fragment {
         LayoutLL.setVisibility(LinearLayout.GONE);
         LayoutE.setVisibility(LinearLayout.GONE);
         LayoutP.setVisibility(LinearLayout.GONE);
-        iniciarGraficaColumnas(getAnno());
+        //iniciarGraficaColumnas(getAnno());
 
         calendarioEditText=(TextInputEditText) rootView.findViewById(R.id.fecha);
         calendarioEditText.setEnabled(false);

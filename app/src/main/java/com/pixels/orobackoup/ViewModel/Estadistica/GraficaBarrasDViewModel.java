@@ -1,11 +1,13 @@
 package com.pixels.orobackoup.ViewModel.Estadistica;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.pixels.orobackoup.Model.BD.MYSQL.Consultas.Estadistica.ConsultasMermaMYSQL;
 import com.pixels.orobackoup.Model.DatosEncapsulados.DatosColumn;
 
 import java.util.ArrayList;
@@ -23,13 +25,9 @@ public class GraficaBarrasDViewModel extends ViewModel {
         return resultado;
     }
     public void buscarVProductos(Context context, String Consulta){
-        List<DatosColumn> listcolumnas=new ArrayList<>();
-        listcolumnas.add(new DatosColumn("1","Snoppy",2));
-        listcolumnas.add(new DatosColumn("2","Solitario Esmeralda",1));
-        listcolumnas.add(new DatosColumn("3","Anillo Black Flag",4));
-        listcolumnas.add(new DatosColumn("4","LLaves",3));
-        listcolumnas.add(new DatosColumn("5","solitario de pear",9));
-        resultado.setValue(listcolumnas);
+        System.out.println("----------------------------------------------------------------------------------------------Consulta: "+Consulta);
+
+        ConsultasMermaMYSQL mysql=new ConsultasMermaMYSQL(context,Consulta,GraficaBarrasDViewModel.this);
     }
 
 }

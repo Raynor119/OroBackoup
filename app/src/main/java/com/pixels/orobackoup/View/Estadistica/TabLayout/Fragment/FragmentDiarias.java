@@ -161,18 +161,8 @@ public class FragmentDiarias extends Fragment {
             GraficaColumnaD graficaColumnaLL=new GraficaColumnaD(Ffecha,"Lijado");
             GraficaColumnaD graficaColumnaE=new GraficaColumnaD(Ffecha,"Engaste");
             GraficaColumnaD graficaColumnaP=new GraficaColumnaD(Ffecha,"Pulido");
-            graficaColumnaF.Fecha=Ffecha;
-            graficaColumnaG.Fecha=Ffecha;
-            graficaColumnaL.Fecha=Ffecha;
-            graficaColumnaLL.Fecha=Ffecha;
-            graficaColumnaE.Fecha=Ffecha;
-            graficaColumnaP.Fecha=Ffecha;
-            graficaColumnaF.EstadoProceso="Fundicion";
-            graficaColumnaG.EstadoProceso="Electropulidobomba";
-            graficaColumnaL.EstadoProceso="Limado";
-            graficaColumnaLL.EstadoProceso="Lijado";
-            graficaColumnaE.EstadoProceso="Engaste";
-            graficaColumnaP.EstadoProceso="Pulido";
+
+
             getChildFragmentManager().beginTransaction().replace(R.id.containerF,graficaColumnaF).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerG,graficaColumnaG).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerL,graficaColumnaL).commit();

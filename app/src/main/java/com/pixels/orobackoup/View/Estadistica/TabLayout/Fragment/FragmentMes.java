@@ -53,7 +53,7 @@ public class FragmentMes extends Fragment {
         LayoutLL.setVisibility(LinearLayout.GONE);
         LayoutE.setVisibility(LinearLayout.GONE);
         LayoutP.setVisibility(LinearLayout.GONE);
-        iniciarGraficaColumnas(getMes());
+        //iniciarGraficaColumnas(getMes());
 
         calendarioEditText=(TextInputEditText) rootView.findViewById(R.id.fecha);
         calendarioEditText.setEnabled(false);
