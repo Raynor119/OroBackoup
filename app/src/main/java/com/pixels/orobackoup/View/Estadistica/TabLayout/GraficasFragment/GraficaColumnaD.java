@@ -95,7 +95,7 @@ public class GraficaColumnaD extends Fragment {
                     @Override
                     public String getFormattedValue(float value) {
                         NumberFormat mFormat = NumberFormat.getNumberInstance();
-                        return "%` "+mFormat.format(value);
+                        return "% "+mFormat.format(value);
                     }
                 });
                 GColumna.animateX(900);

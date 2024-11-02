@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentAnual;
 import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentDiarias;
+import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentMes;
 
 public class PagerController extends FragmentPagerAdapter {
     private int numeroTab;
@@ -21,9 +23,9 @@ public class PagerController extends FragmentPagerAdapter {
             case 0:
                 return new FragmentDiarias();
             case 1:
-                return new FragmentDiarias();
+                return new FragmentMes();
             case 2:
-                return new FragmentDiarias();
+                return new FragmentAnual();
             default:
                 return null;
         }
