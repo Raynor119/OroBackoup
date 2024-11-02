@@ -31,7 +31,7 @@ import java.util.List;
 public class GraficaColumnaD extends Fragment {
     public static String Fecha;
     private BarChart GColumna;
-    private static String EstadoProceso;
+    public static String EstadoProceso;
     private ArrayList<BarEntry> barEntryArrayList;
 
     public GraficaColumnaD(){
@@ -51,7 +51,7 @@ public class GraficaColumnaD extends Fragment {
     public void GenerarGrafica(){
         GraficaBarrasDViewModel productos= ViewModelProviders.of(getActivity()).get(GraficaBarrasDViewModel.class);
         productos.reset();
-        productos.buscarVProductos(getActivity(),getConsulta(Fecha));
+        productos.buscarVProductos(getActivity(),getConsulta(Fecha,EstadoProceso));
         Observer<List<DatosColumn>> observer= new Observer<List<DatosColumn>>() {
             @Override
             public void onChanged(List<DatosColumn> datosColumns) {
@@ -119,7 +119,7 @@ public class GraficaColumnaD extends Fragment {
         productos.getResultado().observe(getActivity(),observer);
     }
 
-    public String getConsulta(String fechaE){
+    public String getConsulta(String fechaE,String estadoProcesoP){
 
         return "";
     }

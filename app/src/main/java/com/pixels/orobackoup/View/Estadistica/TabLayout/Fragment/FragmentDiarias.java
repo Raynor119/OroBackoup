@@ -155,18 +155,24 @@ public class FragmentDiarias extends Fragment {
 
     public void iniciarGraficaColumnas(String Ffecha){
         try{
-            GraficaColumnaD graficaColumnaF=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaG=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaL=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaLL=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaE=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaP=new GraficaColumnaD(Ffecha,"");
+            GraficaColumnaD graficaColumnaF=new GraficaColumnaD(Ffecha,"Fundicion");
+            GraficaColumnaD graficaColumnaG=new GraficaColumnaD(Ffecha,"Electropulidobomba");
+            GraficaColumnaD graficaColumnaL=new GraficaColumnaD(Ffecha,"Limado");
+            GraficaColumnaD graficaColumnaLL=new GraficaColumnaD(Ffecha,"Lijado");
+            GraficaColumnaD graficaColumnaE=new GraficaColumnaD(Ffecha,"Engaste");
+            GraficaColumnaD graficaColumnaP=new GraficaColumnaD(Ffecha,"Pulido");
             graficaColumnaF.Fecha=Ffecha;
             graficaColumnaG.Fecha=Ffecha;
             graficaColumnaL.Fecha=Ffecha;
             graficaColumnaLL.Fecha=Ffecha;
             graficaColumnaE.Fecha=Ffecha;
             graficaColumnaP.Fecha=Ffecha;
+            graficaColumnaF.EstadoProceso="Fundicion";
+            graficaColumnaG.EstadoProceso="Electropulidobomba";
+            graficaColumnaL.EstadoProceso="Limado";
+            graficaColumnaLL.EstadoProceso="Lijado";
+            graficaColumnaE.EstadoProceso="Engaste";
+            graficaColumnaP.EstadoProceso="Pulido";
             getChildFragmentManager().beginTransaction().replace(R.id.containerF,graficaColumnaF).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerG,graficaColumnaG).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerL,graficaColumnaL).commit();
