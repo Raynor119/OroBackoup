@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentPrueba;
+import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentDiarias;
 
 public class PagerController extends FragmentPagerAdapter {
     private int numeroTab;
@@ -19,11 +19,11 @@ public class PagerController extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new FragmentPrueba();
+                return new FragmentDiarias();
             case 1:
-                return new FragmentPrueba();
+                return new FragmentDiarias();
             case 2:
-                return new FragmentPrueba();
+                return new FragmentDiarias();
             default:
                 return null;
         }

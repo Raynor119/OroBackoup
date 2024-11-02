@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -18,11 +17,11 @@ import com.pixels.orobackoup.View.Estadistica.TabLayout.GraficasFragment.Grafica
 
 import java.util.Calendar;
 
-public class FragmentPrueba  extends Fragment {
+public class FragmentDiarias extends Fragment {
     public CardView mostrarF,mostrarG,mostrarL,mostrarLL,mostrarE,mostrarP;
     public LinearLayout LayoutF,LayoutG,LayoutL,LayoutLL,LayoutE,LayoutP;
     private TextInputEditText calendarioEditText;
-    public FragmentPrueba(){
+    public FragmentDiarias(){
 
     }
     @Override

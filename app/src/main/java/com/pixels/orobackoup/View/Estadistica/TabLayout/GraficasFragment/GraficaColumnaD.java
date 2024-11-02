@@ -49,7 +49,6 @@ public class GraficaColumnaD extends Fragment {
         return rootView;
     }
     public void GenerarGrafica(){
-        Toast.makeText(getActivity(), "Fecha: "+Fecha, Toast.LENGTH_SHORT).show();
         GraficaBarrasDViewModel productos= ViewModelProviders.of(getActivity()).get(GraficaBarrasDViewModel.class);
         productos.reset();
         productos.buscarVProductos(getActivity(),getConsulta(Fecha));
