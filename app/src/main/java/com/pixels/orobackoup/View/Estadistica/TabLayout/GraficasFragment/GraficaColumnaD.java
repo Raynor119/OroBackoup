@@ -120,7 +120,26 @@ public class GraficaColumnaD extends Fragment {
     }
 
     public String getConsulta(String fechaE,String estadoProcesoP){
-
-        return "";
+        int dia=1,mes=1,anno;
+        int cont=0;
+        String date="";
+        for(int i=0;i<fechaE.length();i++){
+            if((fechaE.charAt(i)+"").equals("/")){
+                if(cont==0){
+                    dia=Integer.parseInt(date);
+                    date="";
+                }
+                if (cont==1){
+                    mes=Integer.parseInt(date);
+                    date="";
+                }
+                cont++;
+            }else {
+                date = date + (fechaE.charAt(i));
+            }
+        }
+        anno=Integer.parseInt(date);
+        String Consulta="SELECT Prendas.codigo, Prendas.nombre, ROUND((("+estadoProcesoP+".pesoinicial - "+estadoProcesoP+".pesofinal) / "+estadoProcesoP+".pesoinicial) * 100) AS merma_porcentaje FROM Prendas INNER JOIN "+estadoProcesoP+" on Prendas.codigo="+estadoProcesoP+".codigoprenda WHERE CAST("+estadoProcesoP+".Fecha AS DATE) = '"+anno+"-"+mes+"-"+dia+"' GROUP BY Prendas.codigo";
+        return Consulta;
     }
 }
