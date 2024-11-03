@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -50,8 +51,6 @@ public class FragmentDiarias extends Fragment {
         LayoutLL.setVisibility(LinearLayout.GONE);
         LayoutE.setVisibility(LinearLayout.GONE);
         LayoutP.setVisibility(LinearLayout.GONE);
-        iniciarGraficaColumnas(getDia());
-
         calendarioEditText=(TextInputEditText) rootView.findViewById(R.id.fecha);
         calendarioEditText.setEnabled(false);
         calendarioEditText.setText(getDia());
@@ -150,7 +149,7 @@ public class FragmentDiarias extends Fragment {
                 }
             }
         });
-
+        iniciarGraficaColumnas(calendarioEditText.getText().toString());
         return rootView;
     }
 
@@ -166,22 +165,22 @@ public class FragmentDiarias extends Fragment {
             Handler handler = new Handler();
             int delay = 500; // Tiempo en milisegundos entre cada fragment
             handler.postDelayed(() -> {
-                getChildFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumnaF).commit();
+                getChildFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumnaF).commitAllowingStateLoss();
             }, delay);
             handler.postDelayed(() -> {
-                getChildFragmentManager().beginTransaction().replace(R.id.containerG, graficaColumnaG).commit();
+                getChildFragmentManager().beginTransaction().replace(R.id.containerG, graficaColumnaG).commitAllowingStateLoss();
             }, delay * 2);
             handler.postDelayed(() -> {
-                getChildFragmentManager().beginTransaction().replace(R.id.containerL, graficaColumnaL).commit();
+                getChildFragmentManager().beginTransaction().replace(R.id.containerL, graficaColumnaL).commitAllowingStateLoss();
             }, delay * 3);
             handler.postDelayed(() -> {
-                getChildFragmentManager().beginTransaction().replace(R.id.containerLL, graficaColumnaLL).commit();
+                getChildFragmentManager().beginTransaction().replace(R.id.containerLL, graficaColumnaLL).commitAllowingStateLoss();
             }, delay * 4);
             handler.postDelayed(() -> {
-                getChildFragmentManager().beginTransaction().replace(R.id.containerE, graficaColumnaE).commit();
+                getChildFragmentManager().beginTransaction().replace(R.id.containerE, graficaColumnaE).commitAllowingStateLoss();
             }, delay * 5);
             handler.postDelayed(() -> {
-                getChildFragmentManager().beginTransaction().replace(R.id.containerP, graficaColumnaP).commit();
+                getChildFragmentManager().beginTransaction().replace(R.id.containerP, graficaColumnaP).commitAllowingStateLoss();
             }, delay * 6);
         }catch (Exception e){
 

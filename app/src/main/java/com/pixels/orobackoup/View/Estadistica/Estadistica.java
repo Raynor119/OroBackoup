@@ -28,6 +28,7 @@ public class Estadistica extends AppCompatActivity {
         viewPager= findViewById(R.id.viewpager);
         pagerController= new PagerController(getSupportFragmentManager(), 3);
         viewPager.setAdapter(pagerController);
+        viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
         ImageView RecargarD= findViewById(R.id.buscarRecivo);
         RecargarD.setOnClickListener(new View.OnClickListener() {

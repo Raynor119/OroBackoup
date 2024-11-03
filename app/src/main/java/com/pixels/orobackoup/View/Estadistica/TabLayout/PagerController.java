@@ -12,7 +12,7 @@ import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentMes;
 public class PagerController extends FragmentPagerAdapter {
     private int numeroTab;
     public PagerController(FragmentManager fm, int behavior) {
-        super(fm);
+        super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.numeroTab=behavior;
     }
 
