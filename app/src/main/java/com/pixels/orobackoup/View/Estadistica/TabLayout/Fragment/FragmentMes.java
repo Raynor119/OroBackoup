@@ -147,24 +147,21 @@ public class FragmentMes extends Fragment {
 
     public void iniciarGraficaColumnas(String Ffecha){
         try{
+            /*
             GraficaColumnaD graficaColumnaF=new GraficaColumnaD(Ffecha,"");
             GraficaColumnaD graficaColumnaG=new GraficaColumnaD(Ffecha,"");
             GraficaColumnaD graficaColumnaL=new GraficaColumnaD(Ffecha,"");
             GraficaColumnaD graficaColumnaLL=new GraficaColumnaD(Ffecha,"");
             GraficaColumnaD graficaColumnaE=new GraficaColumnaD(Ffecha,"");
             GraficaColumnaD graficaColumnaP=new GraficaColumnaD(Ffecha,"");
-            graficaColumnaF.Fecha=Ffecha;
-            graficaColumnaG.Fecha=Ffecha;
-            graficaColumnaL.Fecha=Ffecha;
-            graficaColumnaLL.Fecha=Ffecha;
-            graficaColumnaE.Fecha=Ffecha;
-            graficaColumnaP.Fecha=Ffecha;
             getChildFragmentManager().beginTransaction().replace(R.id.containerF,graficaColumnaF).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerG,graficaColumnaG).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerL,graficaColumnaL).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerLL,graficaColumnaLL).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerE,graficaColumnaE).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerP,graficaColumnaP).commit();
+
+             */
         }catch (Exception e){
 
         }

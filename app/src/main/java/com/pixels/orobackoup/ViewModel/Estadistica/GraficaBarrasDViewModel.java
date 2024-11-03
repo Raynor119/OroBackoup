@@ -25,8 +25,6 @@ public class GraficaBarrasDViewModel extends ViewModel {
         return resultado;
     }
     public void buscarVProductos(Context context, String Consulta){
-        System.out.println("----------------------------------------------------------------------------------------------Consulta: "+Consulta);
-
         ConsultasMermaMYSQL mysql=new ConsultasMermaMYSQL(context,Consulta,GraficaBarrasDViewModel.this);
     }
 

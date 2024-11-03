@@ -55,7 +55,6 @@ public class GraficaColumnaD extends Fragment {
         Observer<List<DatosColumn>> observer= new Observer<List<DatosColumn>>() {
             @Override
             public void onChanged(List<DatosColumn> datosColumns) {
-                System.out.println("--------------------------------------------------DAtos de Lista:"+datosColumns.size());
                 barEntryArrayList=new ArrayList<>();
                 for(int i=0;i<datosColumns.size();i++){
                     barEntryArrayList.add(new BarEntry(i,datosColumns.get(i).getTotalV()));
@@ -111,7 +110,6 @@ public class GraficaColumnaD extends Fragment {
                     XYMarkerView mv = new XYMarkerView(getActivity(),datosColumns);
                     mv.setChartView(GColumna);
                     GColumna.setMarker(mv);
-                    System.out.println("-------------------------------- se termino el estado:"+EstadoProceso);
                 }catch (Exception e){
 
                 }

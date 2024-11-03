@@ -134,6 +134,7 @@ public class FragmentAnual extends Fragment {
 
     public void iniciarGraficaColumnas(String Ffecha){
         try{
+            /*
             GraficaColumnaD graficaColumnaF=new GraficaColumnaD(Ffecha,"");
             GraficaColumnaD graficaColumnaG=new GraficaColumnaD(Ffecha,"");
             GraficaColumnaD graficaColumnaL=new GraficaColumnaD(Ffecha,"");
@@ -152,6 +153,8 @@ public class FragmentAnual extends Fragment {
             getChildFragmentManager().beginTransaction().replace(R.id.containerLL,graficaColumnaLL).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerE,graficaColumnaE).commit();
             getChildFragmentManager().beginTransaction().replace(R.id.containerP,graficaColumnaP).commit();
+
+             */
         }catch (Exception e){
 
         }

@@ -2,6 +2,7 @@ package com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -162,13 +163,26 @@ public class FragmentDiarias extends Fragment {
             GraficaColumnaD graficaColumnaE=new GraficaColumnaD(Ffecha,"Engaste");
             GraficaColumnaD graficaColumnaP=new GraficaColumnaD(Ffecha,"Pulido");
 
-
-            getChildFragmentManager().beginTransaction().replace(R.id.containerF,graficaColumnaF).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerG,graficaColumnaG).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerL,graficaColumnaL).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerLL,graficaColumnaLL).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerE,graficaColumnaE).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerP,graficaColumnaP).commit();
+            Handler handler = new Handler();
+            int delay = 500; // Tiempo en milisegundos entre cada fragment
+            handler.postDelayed(() -> {
+                getChildFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumnaF).commit();
+            }, delay);
+            handler.postDelayed(() -> {
+                getChildFragmentManager().beginTransaction().replace(R.id.containerG, graficaColumnaG).commit();
+            }, delay * 2);
+            handler.postDelayed(() -> {
+                getChildFragmentManager().beginTransaction().replace(R.id.containerL, graficaColumnaL).commit();
+            }, delay * 3);
+            handler.postDelayed(() -> {
+                getChildFragmentManager().beginTransaction().replace(R.id.containerLL, graficaColumnaLL).commit();
+            }, delay * 4);
+            handler.postDelayed(() -> {
+                getChildFragmentManager().beginTransaction().replace(R.id.containerE, graficaColumnaE).commit();
+            }, delay * 5);
+            handler.postDelayed(() -> {
+                getChildFragmentManager().beginTransaction().replace(R.id.containerP, graficaColumnaP).commit();
+            }, delay * 6);
         }catch (Exception e){
 
         }
