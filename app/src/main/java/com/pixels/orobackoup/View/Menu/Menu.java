@@ -90,6 +90,7 @@ public class Menu extends AppCompatActivity {
         }else{
             menuopciones.add(new MenuLista(2,"Prendas Registradas"));
             menuopciones.add(new MenuLista(3,"Estadisticas"));
+            menuopciones.add(new MenuLista(5,"TermoCupla"));
             menuopciones.add(new MenuLista(4,"Salir"));
         }
         recyclerView.setAdapter(new RecyclerAdaptadorMenu(Menu.this,menuopciones));

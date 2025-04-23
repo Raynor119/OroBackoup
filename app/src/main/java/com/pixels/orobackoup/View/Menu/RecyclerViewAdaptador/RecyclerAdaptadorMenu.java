@@ -17,6 +17,7 @@ import com.pixels.orobackoup.View.Estadistica.Estadistica;
 import com.pixels.orobackoup.View.Menu.Menu;
 import com.pixels.orobackoup.View.Prenda.ListaPrendas.PrendasListView;
 import com.pixels.orobackoup.View.Prenda.PrendaView;
+import com.pixels.orobackoup.View.TermoCupla.TermoCupla;
 
 import java.util.List;
 
@@ -44,6 +45,10 @@ public class RecyclerAdaptadorMenu extends RecyclerView.Adapter<RecyclerAdaptado
             }
             if(Id==4){
                 android.os.Process.killProcess(android.os.Process.myPid());
+            }
+            if(Id==5){
+                Intent intent=new Intent(MParentActivity, TermoCupla.class);
+                MParentActivity.startActivity(intent);
             }
         }
     };
@@ -74,6 +79,9 @@ public class RecyclerAdaptadorMenu extends RecyclerView.Adapter<RecyclerAdaptado
         }
         if(MValues.get(position).getId()==4){
             holder.imagen.setImageResource(R.drawable.baseline_power_settings_new_24);
+        }
+        if(MValues.get(position).getId()==5){
+            holder.imagen.setImageResource(R.drawable.baseline_wifi_tethering_24);
         }
         holder.mContentView.setText(MValues.get(position).getTitulo());
         holder.itemView.setTag(MValues.get(position).getId());
