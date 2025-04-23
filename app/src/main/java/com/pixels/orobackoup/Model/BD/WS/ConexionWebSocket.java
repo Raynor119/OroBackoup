@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.ViewModel.TermoCupla.WS.VerificarWSViewModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URI;
@@ -77,13 +78,18 @@ public class ConexionWebSocket {
                         @Override
                         public void run() {
                             try{
-                                JSONObject jsonObject = new JSONObject(message);
-                                int sessionId = jsonObject.getInt("session_id");
-                                String sessionIdStr = String.valueOf(sessionId);
-                                Toast.makeText(CContext,"Session:"+sessionIdStr,Toast.LENGTH_LONG).show();
-                                webSocketClient.close();
+                                try {
+                                    JSONObject jsonObject = new JSONObject(message);
+                                    int sessionId = jsonObject.getInt("session_id");
+                                    String sessionIdStr = String.valueOf(sessionId);
+                                    ViewModel.resultado.setValue(sessionIdStr);
+                                    webSocketClient.close();
+                                } catch (JSONException e) {
+                                    Toast.makeText(CContext,"El ESP32 no esta conectado",Toast.LENGTH_LONG).show();
+                                    webSocketClient.close();
+                                }
                             } catch (Exception e){
-                                e.printStackTrace();
+
                             }
                         }
                     });

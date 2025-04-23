@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 
@@ -15,6 +16,9 @@ import com.pixels.orobackoup.Model.DatosEncapsulados.TermoCalor;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.TermoCupla.GraficasFragment.GraficaLineaTR;
 import com.pixels.orobackoup.ViewModel.TermoCupla.WS.VerificarWSViewModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -42,16 +46,7 @@ public class TermoCupla extends AppCompatActivity {
             }
         });
         LayoutF=findViewById(R.id.LayoutF);
-        try{
-            GraficaLineaTR graficaColumna=new GraficaLineaTR(new ArrayList<TermoCalor>());
-            Handler handler = new Handler();
-            int delay = 500; // Tiempo en milisegundos entre cada fragment
-            handler.postDelayed(() -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumna).commitAllowingStateLoss();
-            }, delay);
-        }catch (Exception e){
 
-        }
         //
     }
     public void WSConnect(){
@@ -60,6 +55,24 @@ public class TermoCupla extends AppCompatActivity {
         String Consulta="{\"type\": \"mobile_app\"}";
         //Toast.makeText(this, ""+Consulta, Toast.LENGTH_SHORT).show();
         ConexionWS.EjecutarSession(TermoCupla.this,Consulta,"S");
+        Observer<String> observer=new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(TermoCupla.this,"Session:"+s,Toast.LENGTH_LONG).show();
+                try{
+                    GraficaLineaTR graficaColumna=new GraficaLineaTR(new ArrayList<TermoCalor>());
+                    Handler handler = new Handler();
+                    int delay = 500; // Tiempo en milisegundos entre cada fragment
+                    handler.postDelayed(() -> {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumna).commitAllowingStateLoss();
+                    }, delay);
+                }catch (Exception e){
+
+                }
+            }
+        };
+        ConexionWS.getResultado().observe(TermoCupla.this,observer);
+
     }
     public void WSStop(){
         ConexionWS= ViewModelProviders.of(TermoCupla.this).get(VerificarWSViewModel.class);
