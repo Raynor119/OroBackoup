@@ -24,12 +24,14 @@ public class ConexionWebSocket {
     private int contador=0;
     private AppCompatActivity CContext;
     private String Consulta;
+    private String Estado;
     private VerificarWSViewModel ViewModel;
 
-    public ConexionWebSocket(AppCompatActivity context, String consulta, VerificarWSViewModel viewModel){
+    public ConexionWebSocket(AppCompatActivity context, String consulta, VerificarWSViewModel viewModel,String estado){
         this.CContext=context;
         this.Consulta=consulta;
         this.ViewModel=viewModel;
+        this.Estado=estado;
         createWebSocketClient();
     }
     private void createWebSocketClient() {
@@ -51,10 +53,21 @@ public class ConexionWebSocket {
                 @Override
                 public void onOpen() {
                     webSocketClient.send(Consulta);
-                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                        String Start = "{\"command\": \"START\"}";
-                        webSocketClient.send(Start);
-                    }, 100);
+                    if (Estado.equals("N")){
+                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                            String Start = "{\"command\": \"STOP\"}";
+                            webSocketClient.send(Start);
+                            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                                webSocketClient.close();
+                            }, 300);
+                        }, 200);
+                    }else {
+                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                            String Start = "{\"command\": \"START\"}";
+                            webSocketClient.send(Start);
+                        }, 100);
+                    }
+
                 }
 
                 @Override
@@ -68,8 +81,6 @@ public class ConexionWebSocket {
                                 int sessionId = jsonObject.getInt("session_id");
                                 String sessionIdStr = String.valueOf(sessionId);
                                 Toast.makeText(CContext,"Session:"+sessionIdStr,Toast.LENGTH_LONG).show();
-                                String Start = "{\"command\": \"STOP\"}";
-                                //webSocketClient.send(Start);
                                 webSocketClient.close();
                             } catch (Exception e){
                                 e.printStackTrace();

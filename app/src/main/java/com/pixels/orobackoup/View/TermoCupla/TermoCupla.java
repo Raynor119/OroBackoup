@@ -28,6 +28,12 @@ public class TermoCupla extends AppCompatActivity {
                 WSConnect();
             }
         });
+        Stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WSStop();
+            }
+        });
         //
     }
     public void WSConnect(){
@@ -35,13 +41,13 @@ public class TermoCupla extends AppCompatActivity {
         ConexionWS.reset();
         String Consulta="{\"type\": \"mobile_app\"}";
         //Toast.makeText(this, ""+Consulta, Toast.LENGTH_SHORT).show();
-        ConexionWS.EjecutarSession(TermoCupla.this,Consulta);
+        ConexionWS.EjecutarSession(TermoCupla.this,Consulta,"S");
     }
     public void WSStop(){
         ConexionWS= ViewModelProviders.of(TermoCupla.this).get(VerificarWSViewModel.class);
         ConexionWS.reset();
-        String STOP="{\"command\": \"STOP\"}";
+        String Consulta="{\"type\": \"mobile_app\"}";
         //Toast.makeText(this, ""+Consulta, Toast.LENGTH_SHORT).show();
-        ConexionWS.EjecutarSession(TermoCupla.this,STOP);
+        ConexionWS.EjecutarSession(TermoCupla.this,Consulta,"N");
     }
 }

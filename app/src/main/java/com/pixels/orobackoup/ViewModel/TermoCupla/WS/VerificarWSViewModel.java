@@ -23,7 +23,7 @@ public class VerificarWSViewModel extends ViewModel {
     public LiveData<String> getResultado(){
         return resultado;
     }
-    public void EjecutarSession(AppCompatActivity context, String consulta){
-        ConexionWebSocket ws =new ConexionWebSocket(context,consulta,VerificarWSViewModel.this);
+    public void EjecutarSession(AppCompatActivity context, String consulta,String Estado){
+        ConexionWebSocket ws =new ConexionWebSocket(context,consulta,VerificarWSViewModel.this,Estado);
     }
 }
