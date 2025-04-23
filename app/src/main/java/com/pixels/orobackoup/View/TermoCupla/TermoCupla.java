@@ -1,21 +1,28 @@
 package com.pixels.orobackoup.View.TermoCupla;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 
+import com.pixels.orobackoup.Model.DatosEncapsulados.TermoCalor;
 import com.pixels.orobackoup.R;
+import com.pixels.orobackoup.View.TermoCupla.GraficasFragment.GraficaLineaTR;
 import com.pixels.orobackoup.ViewModel.TermoCupla.WS.VerificarWSViewModel;
+
+import java.util.ArrayList;
 
 public class TermoCupla extends AppCompatActivity {
 
     public VerificarWSViewModel ConexionWS;
     public Button Start,Stop;
+    public LinearLayout LayoutF;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +41,17 @@ public class TermoCupla extends AppCompatActivity {
                 WSStop();
             }
         });
+        LayoutF=findViewById(R.id.LayoutF);
+        try{
+            GraficaLineaTR graficaColumna=new GraficaLineaTR(new ArrayList<TermoCalor>());
+            Handler handler = new Handler();
+            int delay = 500; // Tiempo en milisegundos entre cada fragment
+            handler.postDelayed(() -> {
+                getSupportFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumna).commitAllowingStateLoss();
+            }, delay);
+        }catch (Exception e){
+
+        }
         //
     }
     public void WSConnect(){
