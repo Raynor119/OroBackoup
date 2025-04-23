@@ -26,9 +26,4 @@ public class VerificarWSViewModel extends ViewModel {
     public void EjecutarSession(AppCompatActivity context, String consulta){
         ConexionWebSocket ws =new ConexionWebSocket(context,consulta,VerificarWSViewModel.this);
     }
-    public String obtenerSession(Context context){
-
-        return "";
-    }
-
 }

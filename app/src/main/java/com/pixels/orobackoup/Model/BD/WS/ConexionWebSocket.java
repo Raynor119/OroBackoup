@@ -68,8 +68,8 @@ public class ConexionWebSocket {
                                 int sessionId = jsonObject.getInt("session_id");
                                 String sessionIdStr = String.valueOf(sessionId);
                                 Toast.makeText(CContext,"Session:"+sessionIdStr,Toast.LENGTH_LONG).show();
-                                String STOP="{\"command\": \"STOP\"}";
-                                //webSocketClient.send(STOP);
+                                String Start = "{\"command\": \"STOP\"}";
+                                //webSocketClient.send(Start);
                                 webSocketClient.close();
                             } catch (Exception e){
                                 e.printStackTrace();
