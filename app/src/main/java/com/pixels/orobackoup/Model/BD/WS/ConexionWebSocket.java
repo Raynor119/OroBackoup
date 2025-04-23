@@ -1,5 +1,7 @@
 package com.pixels.orobackoup.Model.BD.WS;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
 import androidx.annotation.WorkerThread;
@@ -9,6 +11,8 @@ import androidx.core.content.ContextCompat;
 
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.ViewModel.TermoCupla.WS.VerificarWSViewModel;
+
+import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -20,14 +24,12 @@ public class ConexionWebSocket {
     private int contador=0;
     private AppCompatActivity CContext;
     private String Consulta;
-    //private VerificarInicioSWSViewModel ViewModel;
     private VerificarWSViewModel ViewModel;
-    private String CodigoV;
-    public ConexionWebSocket(AppCompatActivity context, String consulta, VerificarWSViewModel viewModel, String codigoV){
+
+    public ConexionWebSocket(AppCompatActivity context, String consulta, VerificarWSViewModel viewModel){
         this.CContext=context;
         this.Consulta=consulta;
         this.ViewModel=viewModel;
-        this.CodigoV=codigoV;
         createWebSocketClient();
     }
     private void createWebSocketClient() {
@@ -49,6 +51,10 @@ public class ConexionWebSocket {
                 @Override
                 public void onOpen() {
                     webSocketClient.send(Consulta);
+                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                        String Start = "{\"command\": \"START\"}";
+                        webSocketClient.send(Start);
+                    }, 100);
                 }
 
                 @Override
@@ -58,18 +64,13 @@ public class ConexionWebSocket {
                         @Override
                         public void run() {
                             try{
-
-                                if(contador!=0){
-                                    ViewModel.resultado.setValue(message);
-                                    webSocketClient.close();
-                                }else{
-                                    if(message.equals(CodigoV)){
-                                        contador++;
-                                    }else{
-                                        ViewModel.resultado.setValue("0");
-                                        webSocketClient.close();
-                                    }
-                                }
+                                JSONObject jsonObject = new JSONObject(message);
+                                int sessionId = jsonObject.getInt("session_id");
+                                String sessionIdStr = String.valueOf(sessionId);
+                                Toast.makeText(CContext,"Session:"+sessionIdStr,Toast.LENGTH_LONG).show();
+                                String STOP="{\"command\": \"STOP\"}";
+                                //webSocketClient.send(STOP);
+                                webSocketClient.close();
                             } catch (Exception e){
                                 e.printStackTrace();
                             }

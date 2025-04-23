@@ -5,12 +5,13 @@ import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.pixels.orobackoup.Model.BD.WS.ConexionWebSocket;
 
 import java.util.List;
 
-public class VerificarWSViewModel {
+public class VerificarWSViewModel extends ViewModel {
     public MutableLiveData<String> resultado;
 
     public VerificarWSViewModel(){
@@ -22,10 +23,10 @@ public class VerificarWSViewModel {
     public LiveData<String> getResultado(){
         return resultado;
     }
-    public void verificarusuario(AppCompatActivity context, String consulta, String CodigoV){
-        ConexionWebSocket ws =new ConexionWebSocket(context,consulta,VerificarWSViewModel.this,CodigoV);
+    public void EjecutarSession(AppCompatActivity context, String consulta){
+        ConexionWebSocket ws =new ConexionWebSocket(context,consulta,VerificarWSViewModel.this);
     }
-    public String obtenerUsuario(Context context){
+    public String obtenerSession(Context context){
 
         return "";
     }
