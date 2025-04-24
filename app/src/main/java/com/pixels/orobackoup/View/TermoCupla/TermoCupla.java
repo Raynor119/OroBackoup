@@ -15,18 +15,24 @@ import androidx.lifecycle.ViewModelProviders;
 import com.pixels.orobackoup.Model.DatosEncapsulados.TermoCalor;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.TermoCupla.GraficasFragment.GraficaLineaTR;
+import com.pixels.orobackoup.ViewModel.TermoCupla.WS.GraficaTiempoRealViewModel;
 import com.pixels.orobackoup.ViewModel.TermoCupla.WS.VerificarWSViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TermoCupla extends AppCompatActivity {
 
     public VerificarWSViewModel ConexionWS;
     public Button Start,Stop;
     public LinearLayout LayoutF;
+
+    private boolean isFetching = false;
+    private Handler handler = new Handler();
+    private Runnable dataFetchRunnable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,37 +55,69 @@ public class TermoCupla extends AppCompatActivity {
 
         //
     }
-    public void WSConnect(){
-        ConexionWS= ViewModelProviders.of(TermoCupla.this).get(VerificarWSViewModel.class);
+    public void WSConnect() {
+        ConexionWS = ViewModelProviders.of(TermoCupla.this).get(VerificarWSViewModel.class);
         ConexionWS.reset();
-        String Consulta="{\"type\": \"mobile_app\"}";
-        //Toast.makeText(this, ""+Consulta, Toast.LENGTH_SHORT).show();
-        ConexionWS.EjecutarSession(TermoCupla.this,Consulta,"S");
-        Observer<String> observer=new Observer<String>() {
+        String Consulta = "{\"type\": \"mobile_app\"}";
+        ConexionWS.EjecutarSession(TermoCupla.this, Consulta, "S");
+
+        Observer<String> observer = new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Toast.makeText(TermoCupla.this,"Session:"+s,Toast.LENGTH_LONG).show();
-                try{
-                    
-                    GraficaLineaTR graficaColumna=new GraficaLineaTR(new ArrayList<TermoCalor>());
-                    Handler handler = new Handler();
-                    int delay = 500; // Tiempo en milisegundos entre cada fragment
-                    handler.postDelayed(() -> {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumna).commitAllowingStateLoss();
-                    }, delay);
-                }catch (Exception e){
+                Toast.makeText(TermoCupla.this, "Session:" + s, Toast.LENGTH_LONG).show();
+                ConexionWS.getResultado().removeObserver(this); // eliminar el observer una vez usada la sesión
 
-                }
+                isFetching = true;
+
+                dataFetchRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!isFetching) return;
+
+                        try {
+                            GraficaTiempoRealViewModel MYSQLTR = ViewModelProviders.of(TermoCupla.this).get(GraficaTiempoRealViewModel.class);
+                            MYSQLTR.reset();
+                            MYSQLTR.GraficaTiempoReal(TermoCupla.this, s);
+
+                            Observer<List<TermoCalor>> observer1 = new Observer<List<TermoCalor>>() {
+                                @Override
+                                public void onChanged(List<TermoCalor> termoCalors) {
+                                    Toast.makeText(TermoCupla.this, "Tamanno de la lista "+termoCalors.size(), Toast.LENGTH_SHORT).show();
+                                    GraficaLineaTR graficaColumna = new GraficaLineaTR(termoCalors);
+                                    graficaColumna.Temperaturas = termoCalors;
+
+                                    Handler uiHandler = new Handler();
+                                    int delay = 500;
+                                    uiHandler.postDelayed(() -> {
+                                        getSupportFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumna).commitAllowingStateLoss();
+                                    }, delay);
+
+                                    MYSQLTR.getResultado().removeObserver(this);
+                                }
+                            };
+
+                            MYSQLTR.getResultado().observe(TermoCupla.this, observer1);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        handler.postDelayed(this, 4000); // repetir cada 4 segundos
+                    }
+                };
+
+                handler.post(dataFetchRunnable); // iniciar el primer ciclo
             }
         };
-        ConexionWS.getResultado().observe(TermoCupla.this,observer);
 
+        ConexionWS.getResultado().observe(TermoCupla.this, observer);
     }
-    public void WSStop(){
-        ConexionWS= ViewModelProviders.of(TermoCupla.this).get(VerificarWSViewModel.class);
+    public void WSStop() {
+        ConexionWS = ViewModelProviders.of(TermoCupla.this).get(VerificarWSViewModel.class);
         ConexionWS.reset();
-        String Consulta="{\"type\": \"mobile_app\"}";
-        //Toast.makeText(this, ""+Consulta, Toast.LENGTH_SHORT).show();
-        ConexionWS.EjecutarSession(TermoCupla.this,Consulta,"N");
+        String Consulta = "{\"type\": \"mobile_app\"}";
+        ConexionWS.EjecutarSession(TermoCupla.this, Consulta, "N");
+
+        isFetching = false;
+        handler.removeCallbacks(dataFetchRunnable);
     }
 }
