@@ -60,6 +60,7 @@ public class TermoCupla extends AppCompatActivity {
             public void onChanged(String s) {
                 Toast.makeText(TermoCupla.this,"Session:"+s,Toast.LENGTH_LONG).show();
                 try{
+                    
                     GraficaLineaTR graficaColumna=new GraficaLineaTR(new ArrayList<TermoCalor>());
                     Handler handler = new Handler();
                     int delay = 500; // Tiempo en milisegundos entre cada fragment
