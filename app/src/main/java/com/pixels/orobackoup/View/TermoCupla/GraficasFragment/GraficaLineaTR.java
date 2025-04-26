@@ -105,6 +105,9 @@ public class GraficaLineaTR extends Fragment {
         if (Temperaturas.size()>25){
             lineDataSet.setCircleRadius(2f);
         }
+        if (Temperaturas.size()>55){
+            lineDataSet.setCircleRadius(0f);
+        }
         lineDataSet.setValueTextSize(11);
         lineDataSet.setValueFormatter(new ValueFormatter() {
             @Override

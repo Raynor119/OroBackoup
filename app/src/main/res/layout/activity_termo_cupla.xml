@@ -129,7 +129,7 @@
                                                                 android:layout_marginLeft="10dp"
                                                                 android:id="@+id/Ffecha"
                                                                 android:layout_height="wrap_content"
-                                                                android:hint="Fecha"
+                                                                android:hint="Session #  yyyy/mm/dd"
                                                                 app:endIconMode="clear_text">
 
                                                                 <com.google.android.material.textfield.TextInputEditText
