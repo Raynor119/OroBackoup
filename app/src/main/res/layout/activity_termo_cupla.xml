@@ -160,7 +160,7 @@
                                                                             android:padding="0dp"
                                                                             android:layout_height="40dp"
                                                                             android:layout_width="40dp"
-                                                                            android:src="@mipmap/calendarios_adaptive_fore"/>
+                                                                            android:src="@drawable/baseline_wifi_tethering_24"/>
                                                                     </LinearLayout>
                                                                 </androidx.cardview.widget.CardView>
                                                             </LinearLayout>

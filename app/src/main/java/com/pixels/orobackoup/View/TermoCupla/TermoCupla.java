@@ -8,10 +8,13 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.pixels.orobackoup.Model.DatosEncapsulados.TermoCalor;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.TermoCupla.GraficasFragment.GraficaLineaTR;
@@ -35,6 +38,10 @@ public class TermoCupla extends AppCompatActivity {
 
     private boolean isFetching = false;
     private Handler handler = new Handler();
+    private TextInputLayout Ffecha;
+    private TextInputEditText fecha;
+    private CardView calendario;
+
     private Runnable dataFetchRunnable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,11 @@ public class TermoCupla extends AppCompatActivity {
         setContentView(R.layout.activity_termo_cupla);
         Start=(Button) findViewById(R.id.start);
         Stop=(Button) findViewById(R.id.stop);
+        Ffecha =findViewById(R.id.Ffecha);
+        fecha=findViewById(R.id.fecha);
+        calendario=findViewById(R.id.calendario);
+
+
         Start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +68,21 @@ public class TermoCupla extends AppCompatActivity {
         });
         LayoutF=findViewById(R.id.LayoutF);
 
+        calendario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(fecha.getText().toString().equals("")){
+                    Toast.makeText(TermoCupla.this, "Digiten una session", Toast.LENGTH_LONG).show();
+                }else{
+                   String session= fecha.getText().toString();
+                    //Toast.makeText(TermoCupla.this, "Session:" + s, Toast.LENGTH_LONG).show();
+                   // ConexionWS.getResultado().removeObserver(this); // eliminar el observer para evitar duplicados
+
+                    autoFetchViewModel = ViewModelProviders.of(TermoCupla.this).get(AutoFetchViewModel.class);
+                    autoFetchViewModel.startFetching(TermoCupla.this, session, getSupportFragmentManager());
+                }
+            }
+        });
         //
     }
     public void WSConnect() {
