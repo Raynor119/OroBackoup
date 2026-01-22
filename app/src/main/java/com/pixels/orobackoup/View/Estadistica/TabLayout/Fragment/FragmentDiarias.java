@@ -158,7 +158,7 @@ public class FragmentDiarias extends Fragment {
 
 
             Handler handler = new Handler();
-            int delay = 500; // Tiempo en milisegundos entre cada fragment
+            int delay = 700; // Tiempo en milisegundos entre cada fragment
             handler.postDelayed(() -> {
                 GraficaColumnaD graficaColumnaF=new GraficaColumnaD(Ffecha,"Fundicion");
                 getChildFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumnaF).commitAllowingStateLoss();

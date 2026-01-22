@@ -147,15 +147,8 @@ public class FragmentMes extends Fragment {
 
     public void iniciarGraficaColumnasM(String Ffecha){
         try{
-
-
-
-
-
-
-
             Handler handlerv2 = new Handler();
-            int delay = 1000; // Tiempo en milisegundos entre cada fragment
+            int delay = 2000; // Tiempo en milisegundos entre cada fragment
             handlerv2.postDelayed(() -> {
                 GraficaColumnaM graficaColumnaFM=new GraficaColumnaM(Ffecha,"Fundicion");
                 getChildFragmentManager().beginTransaction().replace(R.id.containerFM, graficaColumnaFM).commitAllowingStateLoss();
