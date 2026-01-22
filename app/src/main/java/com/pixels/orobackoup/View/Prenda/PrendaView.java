@@ -1,6 +1,7 @@
 package com.pixels.orobackoup.View.Prenda;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -14,7 +15,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -94,6 +99,7 @@ public class PrendaView extends AppCompatActivity {
     LinearLayout LFechaG;
     TextView FechaG;
     Bitmap imgBitmapG=null;
+    Bitmap imgBitmapGv2=null;
 
 
     CardView btnCamaraL;
@@ -108,6 +114,7 @@ public class PrendaView extends AppCompatActivity {
     LinearLayout LFechaL;
     TextView FechaL;
     Bitmap imgBitmapL=null;
+    Bitmap imgBitmapLv2=null;
 
     CardView btnCamaraLL;
     CardView btnCamarav2LL;
@@ -121,6 +128,7 @@ public class PrendaView extends AppCompatActivity {
     LinearLayout LFechaLL;
     TextView FechaLL;
     Bitmap imgBitmapLL=null;
+    Bitmap imgBitmapLLv2=null;
 
     CardView btnCamaraE;
     CardView btnCamarav2E;
@@ -134,6 +142,7 @@ public class PrendaView extends AppCompatActivity {
     LinearLayout LFechaE;
     TextView FechaE;
     Bitmap imgBitmapE=null;
+    Bitmap imgBitmapEv2=null;
 
 
     CardView btnCamaraP;
@@ -148,6 +157,7 @@ public class PrendaView extends AppCompatActivity {
     LinearLayout LFechaP;
     TextView FechaP;
     Bitmap imgBitmapP=null;
+    Bitmap imgBitmapPv2=null;
 
     private String CodigoU,TipoU;
 
@@ -226,15 +236,63 @@ public class PrendaView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Camara="F";
-                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    // Request camera permission
-                    ActivityCompat.requestPermissions(PrendaView.this,
-                            new String[]{Manifest.permission.CAMERA},
-                            PERMISSIONS_REQUEST_CAMERA);
-                } else {
-                    // Permission already granted
-                    abrirCamara();
+                try {
+                    photoFile = createImageFile();
+                    if (photoFile != null) {
+                        photoURI = FileProvider.getUriForFile(PrendaView.this, "com.pixels.orobackoup.fileprovider", photoFile);
+                        if (imgBitmapF != null) {
+                            int colorPrimario = getResources().getColor(R.color.colorPrimary);
+
+// Crear título con color
+                            SpannableString titulo = new SpannableString("Alerta");
+                            titulo.setSpan(
+                                    new ForegroundColorSpan(colorPrimario),
+                                    0,
+                                    titulo.length(),
+                                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                            );
+                            AlertDialog.Builder builder = new AlertDialog.Builder(PrendaView.this);
+                            builder.setTitle(titulo);
+                            builder.setMessage("Seleccione una de las siguientes opciones");
+                            builder.setPositiveButton("Ver foto", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    showImageInGalleryApp(imgBitmapF);
+                                }
+                            });
+                            builder.setNegativeButton("Modificar foto", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                                            != PackageManager.PERMISSION_GRANTED) {
+                                        // Request camera permission
+                                        ActivityCompat.requestPermissions(PrendaView.this,
+                                                new String[]{Manifest.permission.CAMERA},
+                                                PERMISSIONS_REQUEST_CAMERA);
+                                    } else {
+                                        // Permission already granted
+                                        abrirCamara();
+                                    }
+                                }
+                            });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        } else {
+                            if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                                    != PackageManager.PERMISSION_GRANTED) {
+                                // Request camera permission
+                                ActivityCompat.requestPermissions(PrendaView.this,
+                                        new String[]{Manifest.permission.CAMERA},
+                                        PERMISSIONS_REQUEST_CAMERA);
+                            } else {
+                                // Permission already granted
+                                abrirCamara();
+                            }
+                        }
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -242,15 +300,63 @@ public class PrendaView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Camara="Fv2";
-                if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    // Request camera permission
-                    ActivityCompat.requestPermissions(PrendaView.this,
-                            new String[]{Manifest.permission.CAMERA},
-                            PERMISSIONS_REQUEST_CAMERA);
-                } else {
-                    // Permission already granted
-                    abrirCamara();
+                try {
+                    photoFile = createImageFile();
+                    if (photoFile != null) {
+                        photoURI = FileProvider.getUriForFile(PrendaView.this, "com.pixels.orobackoup.fileprovider", photoFile);
+                        if (imgBitmapFv2 != null) {
+                            int colorPrimario = getResources().getColor(R.color.colorPrimary);
+
+// Crear título con color
+                            SpannableString titulo = new SpannableString("Alerta");
+                            titulo.setSpan(
+                                    new ForegroundColorSpan(colorPrimario),
+                                    0,
+                                    titulo.length(),
+                                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                            );
+                            AlertDialog.Builder builder = new AlertDialog.Builder(PrendaView.this);
+                            builder.setTitle(titulo);
+                            builder.setMessage("Seleccione una de las siguientes opciones");
+                            builder.setPositiveButton("Ver foto", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    showImageInGalleryApp(imgBitmapFv2);
+                                }
+                            });
+                            builder.setNegativeButton("Modificar foto", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                                            != PackageManager.PERMISSION_GRANTED) {
+                                        // Request camera permission
+                                        ActivityCompat.requestPermissions(PrendaView.this,
+                                                new String[]{Manifest.permission.CAMERA},
+                                                PERMISSIONS_REQUEST_CAMERA);
+                                    } else {
+                                        // Permission already granted
+                                        abrirCamara();
+                                    }
+                                }
+                            });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        } else {
+                            if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
+                                    != PackageManager.PERMISSION_GRANTED) {
+                                // Request camera permission
+                                ActivityCompat.requestPermissions(PrendaView.this,
+                                        new String[]{Manifest.permission.CAMERA},
+                                        PERMISSIONS_REQUEST_CAMERA);
+                            } else {
+                                // Permission already granted
+                                abrirCamara();
+                            }
+                        }
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    Toast.makeText(PrendaView.this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show();
                 }
             }
         });
