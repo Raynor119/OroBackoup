@@ -80,6 +80,7 @@ public class PrendaView extends AppCompatActivity {
     LinearLayout LFechaF;
     TextView FechaF;
     Bitmap imgBitmapF=null;
+    Bitmap imgBitmapFv2=null;
 
     CardView btnCamaraG;
     CardView btnCamarav2G;
@@ -221,7 +222,7 @@ public class PrendaView extends AppCompatActivity {
         PesoInicialF.addTextChangedListener(watcherF);
         pesofinalF.addTextChangedListener(watcherF);
 
-        btnCamaraF.setOnClickListener(new View.OnClickListener() {
+        imgViewF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Camara="F";
@@ -237,10 +238,10 @@ public class PrendaView extends AppCompatActivity {
                 }
             }
         });
-        btnCamarav2F.setOnClickListener(new View.OnClickListener() {
+        imgViewFv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Camara="F";
+                Camara="Fv2";
                 if (ContextCompat.checkSelfPermission(PrendaView.this, Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
                     // Request camera permission
@@ -253,10 +254,11 @@ public class PrendaView extends AppCompatActivity {
                 }
             }
         });
+
         btnVerFotoF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showImageInGalleryApp(imgBitmapF);
+                //showImageInGalleryApp(imgBitmapF);
             }
         });
 
@@ -1562,6 +1564,20 @@ public class PrendaView extends AppCompatActivity {
                         imgBitmapF = rotateImageIfRequired(imgBitmapF, photoFile.getAbsolutePath());
                         // Mostrar la imagen en el ImageView
                         imgViewF.setImageBitmap(imgBitmapF);
+                        btnCamaraF.setVisibility(View.GONE);
+                    } else {
+                        // Manejo del error si la imagen no se decodifica
+                        Toast.makeText(this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if(Camara.equals("Fv2")){
+                    imgBitmapFv2 = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+                    // Verificar si la imagen fue decodificada correctamente
+                    if (imgBitmapFv2 != null) {
+                        // Corregir la orientación de la imagen
+                        imgBitmapFv2 = rotateImageIfRequired(imgBitmapFv2, photoFile.getAbsolutePath());
+                        // Mostrar la imagen en el ImageView
+                        imgViewFv2.setImageBitmap(imgBitmapFv2);
                         btnCamaraF.setVisibility(View.GONE);
                     } else {
                         // Manejo del error si la imagen no se decodifica
