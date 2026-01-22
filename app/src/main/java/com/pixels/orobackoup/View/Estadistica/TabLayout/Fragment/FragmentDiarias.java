@@ -152,6 +152,9 @@ public class FragmentDiarias extends Fragment {
         iniciarGraficaColumnas(calendarioEditText.getText().toString());
         return rootView;
     }
+    public void reiniciar(){
+        iniciarGraficaColumnas(calendarioEditText.getText().toString());
+    }
 
     public void iniciarGraficaColumnas(String Ffecha){
         try{

@@ -145,6 +145,9 @@ public class FragmentMes extends Fragment {
         return rootView;
     }
 
+    public void reiniciar(){
+        iniciarGraficaColumnasM(getMes());
+    }
     public void iniciarGraficaColumnasM(String Ffecha){
         try{
             Handler handlerv2 = new Handler();

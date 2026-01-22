@@ -11,6 +11,9 @@ import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentMes;
 
 public class PagerController extends FragmentPagerAdapter {
     private int numeroTab;
+    public FragmentDiarias FD=new FragmentDiarias();
+    public FragmentMes FM=new FragmentMes();
+    public FragmentAnual FA=new FragmentAnual();
     public PagerController(FragmentManager fm, int behavior) {
         super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.numeroTab=behavior;
@@ -21,11 +24,11 @@ public class PagerController extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new FragmentDiarias();
+                return FD;
             case 1:
-                return new FragmentMes();
+                return FM;
             case 2:
-                return new FragmentAnual();
+                return FA;
             default:
                 return null;
         }

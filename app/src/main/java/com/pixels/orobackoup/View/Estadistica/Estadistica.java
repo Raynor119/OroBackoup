@@ -8,10 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.pixels.orobackoup.R;
+import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentAnual;
+import com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment.FragmentDiarias;
 import com.pixels.orobackoup.View.Estadistica.TabLayout.PagerController;
 
 public class Estadistica extends AppCompatActivity {
@@ -34,7 +37,8 @@ public class Estadistica extends AppCompatActivity {
         RecargarD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                pagerController.FD.reiniciar();
+                pagerController.FM.reiniciar();
             }
         });
 
