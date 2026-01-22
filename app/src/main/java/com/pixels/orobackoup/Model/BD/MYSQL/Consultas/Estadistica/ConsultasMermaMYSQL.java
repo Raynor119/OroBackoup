@@ -52,7 +52,7 @@ public class ConsultasMermaMYSQL extends Conexion {
                 String Sql = Consulta;
                 PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(Sql);
                 ResultSet rs = stmt.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     listaConsulta.add(new DatosColumn(rs.getString(1),rs.getString(2),rs.getInt(3)));
                 }
                 return "";
