@@ -2,6 +2,7 @@ package com.pixels.orobackoup.View.Estadistica.TabLayout.Fragment;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.pixels.orobackoup.R;
 import com.pixels.orobackoup.View.Estadistica.TabLayout.Calendario.MesAnnoPickerDialog;
 import com.pixels.orobackoup.View.Estadistica.TabLayout.GraficasFragment.GraficaColumnaD;
+import com.pixels.orobackoup.View.Estadistica.TabLayout.GraficasFragment.GraficaColumnaM;
 
 import java.util.Calendar;
 
@@ -34,7 +36,7 @@ public class FragmentMes extends Fragment {
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_merma, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_mermam, container, false);
         LayoutF=rootView.findViewById(R.id.LayoutF);
         LayoutG=rootView.findViewById(R.id.LayoutG);
         LayoutL=rootView.findViewById(R.id.LayoutL);
@@ -53,11 +55,9 @@ public class FragmentMes extends Fragment {
         LayoutLL.setVisibility(LinearLayout.GONE);
         LayoutE.setVisibility(LinearLayout.GONE);
         LayoutP.setVisibility(LinearLayout.GONE);
-        //iniciarGraficaColumnas(getMes());
-
         calendarioEditText=(TextInputEditText) rootView.findViewById(R.id.fecha);
         calendarioEditText.setEnabled(false);
-        calendarioEditText.setText(getMes());
+        calendarioEditText.setText(getTMes());
         CardView Bcalendario=(CardView) rootView.findViewById(R.id.calendario);
         Bcalendario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,32 +141,56 @@ public class FragmentMes extends Fragment {
                 }
             }
         });
-
+        iniciarGraficaColumnasM(getMes());
         return rootView;
     }
 
-    public void iniciarGraficaColumnas(String Ffecha){
+    public void iniciarGraficaColumnasM(String Ffecha){
         try{
-            /*
-            GraficaColumnaD graficaColumnaF=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaG=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaL=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaLL=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaE=new GraficaColumnaD(Ffecha,"");
-            GraficaColumnaD graficaColumnaP=new GraficaColumnaD(Ffecha,"");
-            getChildFragmentManager().beginTransaction().replace(R.id.containerF,graficaColumnaF).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerG,graficaColumnaG).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerL,graficaColumnaL).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerLL,graficaColumnaLL).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerE,graficaColumnaE).commit();
-            getChildFragmentManager().beginTransaction().replace(R.id.containerP,graficaColumnaP).commit();
 
-             */
+
+
+
+
+
+
+            Handler handlerv2 = new Handler();
+            int delay = 1000; // Tiempo en milisegundos entre cada fragment
+            handlerv2.postDelayed(() -> {
+                GraficaColumnaM graficaColumnaFM=new GraficaColumnaM(Ffecha,"Fundicion");
+                getChildFragmentManager().beginTransaction().replace(R.id.containerFM, graficaColumnaFM).commitAllowingStateLoss();
+            }, delay);
+            handlerv2.postDelayed(() -> {
+                GraficaColumnaM graficaColumnaGM=new GraficaColumnaM(Ffecha,"Electropulidobomba");
+                getChildFragmentManager().beginTransaction().replace(R.id.containerGM, graficaColumnaGM).commitAllowingStateLoss();
+            }, delay * 2);
+            handlerv2.postDelayed(() -> {
+                GraficaColumnaM graficaColumnaLM=new GraficaColumnaM(Ffecha,"Limado");
+                getChildFragmentManager().beginTransaction().replace(R.id.containerLM, graficaColumnaLM).commitAllowingStateLoss();
+            }, delay * 3);
+            handlerv2.postDelayed(() -> {
+                GraficaColumnaM graficaColumnaLLM=new GraficaColumnaM(Ffecha,"Lijado");
+                getChildFragmentManager().beginTransaction().replace(R.id.containerLLM, graficaColumnaLLM).commitAllowingStateLoss();
+            }, delay * 4);
+            handlerv2.postDelayed(() -> {
+                GraficaColumnaM graficaColumnaEM=new GraficaColumnaM(Ffecha,"Engaste");
+                getChildFragmentManager().beginTransaction().replace(R.id.containerEM, graficaColumnaEM).commitAllowingStateLoss();
+            }, delay * 5);
+            handlerv2.postDelayed(() -> {
+                GraficaColumnaM graficaColumnaPM=new GraficaColumnaM(Ffecha,"Pulido");
+                getChildFragmentManager().beginTransaction().replace(R.id.containerPM, graficaColumnaPM).commitAllowingStateLoss();
+            }, delay * 6);
         }catch (Exception e){
 
         }
     }
     public String getMes(){
+        Calendar calendar= Calendar.getInstance();
+        int mes=(calendar.get(Calendar.MONTH)+1);
+        int anno=calendar.get(Calendar.YEAR);
+        return "10"+"/"+mes+"/"+anno;
+    }
+    public String getTMes(){
         Calendar calendar= Calendar.getInstance();
         int mes=(calendar.get(Calendar.MONTH)+1);
         int anno=calendar.get(Calendar.YEAR);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -50,7 +51,7 @@ public class GraficaColumnaM extends Fragment {
     public void GenerarGrafica(){
         GraficaBarrasDViewModel productos= ViewModelProviders.of(getActivity()).get(GraficaBarrasDViewModel.class);
         productos.reset();
-        productos.buscarVProductos(getActivity(),getConsulta(Fecha));
+        productos.buscarVProductos(getActivity(),getConsulta(Fecha,EstadoProceso));
         Observer<List<DatosColumn>> observer= new Observer<List<DatosColumn>>() {
             @Override
             public void onChanged(List<DatosColumn> datosColumns) {
@@ -118,8 +119,27 @@ public class GraficaColumnaM extends Fragment {
         productos.getResultado().observe(getActivity(),observer);
     }
 
-    public String getConsulta(String fechaE){
-
-        return "";
+    public String getConsulta(String fechaE,String estadoProcesoP){
+        int dia=1,mes=1,anno;
+        int cont=0;
+        String date="";
+        for(int i=0;i<fechaE.length();i++){
+            if((fechaE.charAt(i)+"").equals("/")){
+                if(cont==0){
+                    dia=Integer.parseInt(date);
+                    date="";
+                }
+                if (cont==1){
+                    mes=Integer.parseInt(date);
+                    date="";
+                }
+                cont++;
+            }else {
+                date = date + (fechaE.charAt(i));
+            }
+        }
+        anno=Integer.parseInt(date);
+        String Consulta="SELECT Prendas.codigo, Prendas.nombre, ROUND((("+estadoProcesoP+".pesoinicial - "+estadoProcesoP+".pesofinal) / "+estadoProcesoP+".pesoinicial) * 100) AS merma_porcentaje FROM Prendas INNER JOIN "+estadoProcesoP+" on Prendas.codigo="+estadoProcesoP+".codigoprenda WHERE YEAR("+estadoProcesoP+".Fecha) = '"+anno+"' AND MONTH("+estadoProcesoP+".Fecha) =  '"+mes+"' GROUP BY Prendas.codigo";
+        return Consulta;
     }
 }

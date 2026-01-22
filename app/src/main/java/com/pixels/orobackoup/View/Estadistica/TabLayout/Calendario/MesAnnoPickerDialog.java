@@ -30,7 +30,7 @@ public class MesAnnoPickerDialog{
             public void onDateSet(DatePicker datePicker, int anno, int mes, int i2) {
                 Context.calendarioEditText.setText(mes+"/"+anno);
 
-                Context.iniciarGraficaColumnas(Context.calendarioEditText.getText().toString());
+                Context.iniciarGraficaColumnasM("10"+"/"+Context.calendarioEditText.getText().toString());
             }
         };
     }

@@ -155,31 +155,32 @@ public class FragmentDiarias extends Fragment {
 
     public void iniciarGraficaColumnas(String Ffecha){
         try{
-            GraficaColumnaD graficaColumnaF=new GraficaColumnaD(Ffecha,"Fundicion");
-            GraficaColumnaD graficaColumnaG=new GraficaColumnaD(Ffecha,"Electropulidobomba");
-            GraficaColumnaD graficaColumnaL=new GraficaColumnaD(Ffecha,"Limado");
-            GraficaColumnaD graficaColumnaLL=new GraficaColumnaD(Ffecha,"Lijado");
-            GraficaColumnaD graficaColumnaE=new GraficaColumnaD(Ffecha,"Engaste");
-            GraficaColumnaD graficaColumnaP=new GraficaColumnaD(Ffecha,"Pulido");
+
 
             Handler handler = new Handler();
             int delay = 500; // Tiempo en milisegundos entre cada fragment
             handler.postDelayed(() -> {
+                GraficaColumnaD graficaColumnaF=new GraficaColumnaD(Ffecha,"Fundicion");
                 getChildFragmentManager().beginTransaction().replace(R.id.containerF, graficaColumnaF).commitAllowingStateLoss();
             }, delay);
             handler.postDelayed(() -> {
+                GraficaColumnaD graficaColumnaG=new GraficaColumnaD(Ffecha,"Electropulidobomba");
                 getChildFragmentManager().beginTransaction().replace(R.id.containerG, graficaColumnaG).commitAllowingStateLoss();
             }, delay * 2);
             handler.postDelayed(() -> {
+                GraficaColumnaD graficaColumnaL=new GraficaColumnaD(Ffecha,"Limado");
                 getChildFragmentManager().beginTransaction().replace(R.id.containerL, graficaColumnaL).commitAllowingStateLoss();
             }, delay * 3);
             handler.postDelayed(() -> {
+                GraficaColumnaD graficaColumnaLL=new GraficaColumnaD(Ffecha,"Lijado");
                 getChildFragmentManager().beginTransaction().replace(R.id.containerLL, graficaColumnaLL).commitAllowingStateLoss();
             }, delay * 4);
             handler.postDelayed(() -> {
+                GraficaColumnaD graficaColumnaE=new GraficaColumnaD(Ffecha,"Engaste");
                 getChildFragmentManager().beginTransaction().replace(R.id.containerE, graficaColumnaE).commitAllowingStateLoss();
             }, delay * 5);
             handler.postDelayed(() -> {
+                GraficaColumnaD graficaColumnaP=new GraficaColumnaD(Ffecha,"Pulido");
                 getChildFragmentManager().beginTransaction().replace(R.id.containerP, graficaColumnaP).commitAllowingStateLoss();
             }, delay * 6);
         }catch (Exception e){
