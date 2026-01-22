@@ -72,6 +72,7 @@ public class PrendaView extends AppCompatActivity {
     CardView btnCamarav2F;
     CardView btnVerFotoF;
     ImageView imgViewF;
+    ImageView imgViewFv2;
     TextInputEditText PesoInicialF,pesofinalF;
     TextInputLayout LYPesoInicialF,LYpesofinalF;
     TextView mermatextF;
@@ -84,6 +85,7 @@ public class PrendaView extends AppCompatActivity {
     CardView btnCamarav2G;
     CardView btnVerFotoG;
     ImageView imgViewG;
+    ImageView imgViewGv2;
     TextInputEditText PesoInicialG,pesofinalG;
     TextInputLayout LYPesoInicialG,LYpesofinalG;
     TextView mermatextG;
@@ -97,6 +99,7 @@ public class PrendaView extends AppCompatActivity {
     CardView btnCamarav2L;
     CardView btnVerFotoL;
     ImageView imgViewL;
+    ImageView imgViewLv2;
     TextInputEditText PesoInicialL,pesofinalL;
     TextInputLayout LYPesoInicialL,LYpesofinalL;
     TextView mermatextL;
@@ -109,6 +112,7 @@ public class PrendaView extends AppCompatActivity {
     CardView btnCamarav2LL;
     CardView btnVerFotoLL;
     ImageView imgViewLL;
+    ImageView imgViewLLv2;
     TextInputEditText PesoInicialLL,pesofinalLL;
     TextInputLayout LYPesoInicialLL,LYpesofinalLL;
     TextView mermatextLL;
@@ -121,6 +125,7 @@ public class PrendaView extends AppCompatActivity {
     CardView btnCamarav2E;
     CardView btnVerFotoE;
     ImageView imgViewE;
+    ImageView imgViewEv2;
     TextInputEditText PesoInicialE,pesofinalE;
     TextInputLayout LYPesoInicialE,LYpesofinalE;
     TextView mermatextE;
@@ -134,6 +139,7 @@ public class PrendaView extends AppCompatActivity {
     CardView btnCamarav2P;
     CardView btnVerFotoP;
     ImageView imgViewP;
+    ImageView imgViewPv2;
     TextInputEditText PesoInicialP,pesofinalP;
     TextInputLayout LYPesoInicialP,LYpesofinalP;
     TextView mermatextP;
@@ -194,6 +200,7 @@ public class PrendaView extends AppCompatActivity {
         LYpesofinalF= findViewById(R.id.TLpesofinalF);
         mermatextF=findViewById(R.id.mermaF);
         imgViewF = findViewById(R.id.fotoprendaF);
+        imgViewFv2 = findViewById(R.id.fotoprendaFv2);
         botonF= findViewById(R.id.ButtonF);
         LFechaF=findViewById(R.id.LFechaF);
         FechaF=findViewById(R.id.FechaF);
@@ -329,6 +336,7 @@ public class PrendaView extends AppCompatActivity {
         LYpesofinalG= findViewById(R.id.TLpesofinalG);
         mermatextG=findViewById(R.id.mermaG);
         imgViewG = findViewById(R.id.fotoprendaG);
+        imgViewGv2 = findViewById(R.id.fotoprendaGv2);
         botonG= findViewById(R.id.ButtonG);
         LFechaG=findViewById(R.id.LFechaG);
         FechaG=findViewById(R.id.FechaG);
@@ -476,6 +484,7 @@ public class PrendaView extends AppCompatActivity {
         LYpesofinalL= findViewById(R.id.TLpesofinalL);
         mermatextL=findViewById(R.id.mermaL);
         imgViewL = findViewById(R.id.fotoprendaL);
+        imgViewLv2 = findViewById(R.id.fotoprendaLv2);
         botonL= findViewById(R.id.ButtonL);
         LFechaL=findViewById(R.id.LFechaL);
         FechaL=findViewById(R.id.FechaL);
@@ -614,6 +623,7 @@ public class PrendaView extends AppCompatActivity {
         LYpesofinalLL= findViewById(R.id.TLpesofinalLL);
         mermatextLL=findViewById(R.id.mermaLL);
         imgViewLL = findViewById(R.id.fotoprendaLL);
+        imgViewLLv2 = findViewById(R.id.fotoprendaLLv2);
         botonLL= findViewById(R.id.ButtonLL);
         LFechaLL=findViewById(R.id.LFechaLL);
         FechaLL=findViewById(R.id.FechaLL);
@@ -744,6 +754,7 @@ public class PrendaView extends AppCompatActivity {
         LYpesofinalE= findViewById(R.id.TLpesofinalE);
         mermatextE=findViewById(R.id.mermaE);
         imgViewE = findViewById(R.id.fotoprendaE);
+        imgViewEv2 = findViewById(R.id.fotoprendaEv2);
         botonE= findViewById(R.id.ButtonE);
         LFechaE=findViewById(R.id.LFechaE);
         FechaE=findViewById(R.id.FechaE);
@@ -887,6 +898,7 @@ public class PrendaView extends AppCompatActivity {
         LYpesofinalP= findViewById(R.id.TLpesofinalP);
         mermatextP=findViewById(R.id.mermaP);
         imgViewP = findViewById(R.id.fotoprendaP);
+        imgViewPv2 = findViewById(R.id.fotoprendaPv2);
         botonP= findViewById(R.id.ButtonP);
         LFechaP=findViewById(R.id.LFechaP);
         FechaP=findViewById(R.id.FechaP);
