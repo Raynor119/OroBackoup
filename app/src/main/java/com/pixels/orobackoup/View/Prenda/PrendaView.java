@@ -1928,7 +1928,7 @@ public class PrendaView extends AppCompatActivity {
                                 PesoInicialL.setEnabled(false);
                                 pesofinalL.setEnabled(false);
                                 imgBitmapL=byteArrayToBitmap(datosPrendas.get(2).getFoto());
-                                imgBitmapL=byteArrayToBitmap(datosPrendas.get(2).getFotov2());
+                                imgBitmapLv2=byteArrayToBitmap(datosPrendas.get(2).getFotov2());
                                 try {
                                     photoFile = createImageFile();
                                     if (photoFile != null) {

@@ -40,7 +40,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="Prenda registrada"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="90dp"
                 android:textSize="26dp"
                 android:textColor="#FFFFFF"
                 android:layout_height="wrap_content"
@@ -50,8 +50,8 @@
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="205dp"
-                android:layout_marginLeft="205dp"
+                android:layout_marginRight="255dp"
+                android:layout_marginLeft="255dp"
                 android:background="@color/whiteCardColor"
                 app:cardCornerRadius="10dp"
                 android:layout_gravity="center">
@@ -138,13 +138,28 @@
                                                             android:orientation="vertical"
                                                             android:background="@drawable/fondofoto"
                                                             android:layout_height="match_parent">
-                                                            <ImageView
-                                                                android:id="@+id/fotoprendaF"
-                                                                android:padding="4dp"
-                                                                android:layout_marginTop="1dp"
-                                                                android:layout_height="190dp"
-                                                                android:layout_width="match_parent"
-                                                                />
+                                                           <LinearLayout
+                                                               android:layout_width="match_parent"
+                                                               android:orientation="horizontal"
+                                                               android:padding="4dp"
+                                                               android:layout_marginLeft="4dp"
+                                                               android:layout_marginRight="4dp"
+                                                               android:gravity="center"
+                                                               android:layout_height="wrap_content">
+                                                               <ImageView
+                                                                   android:id="@+id/fotoprendaF"
+                                                                   android:padding="4dp"
+                                                                   android:layout_marginTop="1dp"
+                                                                   android:layout_height="190dp"
+                                                                   android:layout_width="160dp"
+                                                                   />
+                                                               <ImageView
+                                                                   android:id="@+id/fotoprendaFv2"
+                                                                   android:padding="4dp"
+                                                                   android:layout_marginTop="1dp"
+                                                                   android:layout_height="190dp"
+                                                                   android:layout_width="160dp" />
+                                                           </LinearLayout>
                                                             <androidx.cardview.widget.CardView
                                                                 android:id="@+id/vergaleriaF"
                                                                 card_view:cardBackgroundColor="@android:color/transparent"
@@ -380,13 +395,30 @@
                                                             android:orientation="vertical"
                                                             android:background="@drawable/fondofoto"
                                                             android:layout_height="match_parent">
+                                                            <LinearLayout
+                                                                android:layout_width="match_parent"
+                                                                android:orientation="horizontal"
+                                                                android:padding="4dp"
+                                                                android:layout_marginLeft="4dp"
+                                                                android:layout_marginRight="4dp"
+                                                                android:gravity="center"
+                                                                android:layout_height="wrap_content">
                                                             <ImageView
                                                                 android:id="@+id/fotoprendaG"
                                                                 android:padding="4dp"
                                                                 android:layout_marginTop="1dp"
                                                                 android:layout_height="190dp"
-                                                                android:layout_width="match_parent"
+                                                                android:layout_width="160dp"
                                                                 />
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaGv2"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="160dp"
+                                                                />
+                                                        </LinearLayout>
+
                                                             <androidx.cardview.widget.CardView
                                                                 android:id="@+id/vergaleriaG"
                                                                 card_view:cardBackgroundColor="@android:color/transparent"
@@ -636,13 +668,30 @@
                                                             android:orientation="vertical"
                                                             android:background="@drawable/fondofoto"
                                                             android:layout_height="match_parent">
-                                                            <ImageView
-                                                                android:id="@+id/fotoprendaL"
-                                                                android:padding="4dp"
-                                                                android:layout_marginTop="1dp"
-                                                                android:layout_height="190dp"
+                                                            <LinearLayout
                                                                 android:layout_width="match_parent"
-                                                                />
+                                                                android:orientation="horizontal"
+                                                                android:padding="4dp"
+                                                                android:layout_marginLeft="4dp"
+                                                                android:layout_marginRight="4dp"
+                                                                android:gravity="center"
+                                                                android:layout_height="wrap_content">
+                                                                <ImageView
+                                                                    android:id="@+id/fotoprendaL"
+                                                                    android:padding="4dp"
+                                                                    android:layout_marginTop="1dp"
+                                                                    android:layout_height="190dp"
+                                                                    android:layout_width="160dp"
+                                                                    />
+                                                                <ImageView
+                                                                    android:id="@+id/fotoprendaLv2"
+                                                                    android:padding="4dp"
+                                                                    android:layout_marginTop="1dp"
+                                                                    android:layout_height="190dp"
+                                                                    android:layout_width="160dp"
+                                                                    />
+                                                            </LinearLayout>
+
                                                             <androidx.cardview.widget.CardView
                                                                 android:id="@+id/vergaleriaL"
                                                                 card_view:cardBackgroundColor="@android:color/transparent"
@@ -892,13 +941,30 @@
                                                             android:orientation="vertical"
                                                             android:background="@drawable/fondofoto"
                                                             android:layout_height="match_parent">
+                                                            <LinearLayout
+                                                                android:layout_width="match_parent"
+                                                                android:orientation="horizontal"
+                                                                android:padding="4dp"
+                                                                android:layout_marginLeft="4dp"
+                                                                android:layout_marginRight="4dp"
+                                                                android:gravity="center"
+                                                                android:layout_height="wrap_content">
                                                             <ImageView
                                                                 android:id="@+id/fotoprendaLL"
                                                                 android:padding="4dp"
                                                                 android:layout_marginTop="1dp"
                                                                 android:layout_height="190dp"
-                                                                android:layout_width="match_parent"
+                                                                android:layout_width="160dp"
                                                                 />
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaLLv2"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="160dp"
+                                                                />
+                                                        </LinearLayout>
+
                                                             <androidx.cardview.widget.CardView
                                                                 android:id="@+id/vergaleriaLL"
                                                                 card_view:cardBackgroundColor="@android:color/transparent"
@@ -1146,13 +1212,30 @@
                                                             android:orientation="vertical"
                                                             android:background="@drawable/fondofoto"
                                                             android:layout_height="match_parent">
+                                                            <LinearLayout
+                                                                android:layout_width="match_parent"
+                                                                android:orientation="horizontal"
+                                                                android:padding="4dp"
+                                                                android:layout_marginLeft="4dp"
+                                                                android:layout_marginRight="4dp"
+                                                                android:gravity="center"
+                                                                android:layout_height="wrap_content">
                                                             <ImageView
                                                                 android:id="@+id/fotoprendaE"
                                                                 android:padding="4dp"
                                                                 android:layout_marginTop="1dp"
                                                                 android:layout_height="190dp"
-                                                                android:layout_width="match_parent"
+                                                                android:layout_width="160dp"
                                                                 />
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaEv2"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="160dp"
+                                                                />
+                                                        </LinearLayout>
+
                                                             <androidx.cardview.widget.CardView
                                                                 android:id="@+id/vergaleriaE"
                                                                 card_view:cardBackgroundColor="@android:color/transparent"
@@ -1400,13 +1483,30 @@
                                                             android:orientation="vertical"
                                                             android:background="@drawable/fondofoto"
                                                             android:layout_height="match_parent">
+                                                            <LinearLayout
+                                                                android:layout_width="match_parent"
+                                                                android:orientation="horizontal"
+                                                                android:padding="4dp"
+                                                                android:layout_marginLeft="4dp"
+                                                                android:layout_marginRight="4dp"
+                                                                android:gravity="center"
+                                                                android:layout_height="wrap_content">
                                                             <ImageView
                                                                 android:id="@+id/fotoprendaP"
                                                                 android:padding="4dp"
                                                                 android:layout_marginTop="1dp"
                                                                 android:layout_height="190dp"
-                                                                android:layout_width="match_parent"
+                                                                android:layout_width="160dp"
                                                                 />
+                                                            <ImageView
+                                                                android:id="@+id/fotoprendaPv2"
+                                                                android:padding="4dp"
+                                                                android:layout_marginTop="1dp"
+                                                                android:layout_height="190dp"
+                                                                android:layout_width="160dp"
+                                                                />
+                                                        </LinearLayout>
+
                                                             <androidx.cardview.widget.CardView
                                                                 android:id="@+id/vergaleriaP"
                                                                 card_view:cardBackgroundColor="@android:color/transparent"
