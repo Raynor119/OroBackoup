@@ -381,21 +381,30 @@ public class PrendaView extends AppCompatActivity {
                     if(imgBitmapF==null){
                         Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
                     }
+                    if(imgBitmapFv2==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda del peso final", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     AlertCarga carga =new AlertCarga(PrendaView.this);
                     DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
                     prendaestadosViewModel.reset();
                     carga.Cargar();
-                    prendaestadosViewModel.daotsestados(PrendaView.this,"Fundicion",CodigoP,Float.parseFloat(PesoInicialF.getText().toString()),Float.parseFloat(pesofinalF.getText().toString()),bitmapToByteArray(imgBitmapF));
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Fundicion",CodigoP,Float.parseFloat(PesoInicialF.getText().toString()),Float.parseFloat(pesofinalF.getText().toString()),bitmapToByteArray(imgBitmapF),bitmapToByteArray(imgBitmapFv2));
                     Observer<String> observer=new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
                             carga.setInicio(1);
                             carga.Cerrar();
-                            btnCamarav2F.setOnClickListener(new View.OnClickListener() {
+                            imgViewF.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
+                                    showImageInGalleryApp(imgBitmapF);
+                                }
+                            });
+                            imgViewFv2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    showImageInGalleryApp(imgBitmapFv2);
                                 }
                             });
                             LFechaF.setVisibility(View.VISIBLE);
@@ -614,21 +623,30 @@ public class PrendaView extends AppCompatActivity {
                     if(imgBitmapG==null){
                         Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
                     }
+                    if(imgBitmapGv2==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda del peso final", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     AlertCarga carga =new AlertCarga(PrendaView.this);
                     DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
                     prendaestadosViewModel.reset();
                     carga.Cargar();
-                    prendaestadosViewModel.daotsestados(PrendaView.this,"Electropulidobomba",CodigoP,Float.parseFloat(PesoInicialG.getText().toString()),Float.parseFloat(pesofinalG.getText().toString()),bitmapToByteArray(imgBitmapG));
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Electropulidobomba",CodigoP,Float.parseFloat(PesoInicialG.getText().toString()),Float.parseFloat(pesofinalG.getText().toString()),bitmapToByteArray(imgBitmapG),bitmapToByteArray(imgBitmapGv2));
                     Observer<String> observer=new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
                             carga.setInicio(1);
                             carga.Cerrar();
-                            btnCamarav2G.setOnClickListener(new View.OnClickListener() {
+                            imgViewG.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
+                                    showImageInGalleryApp(imgBitmapG);
+                                }
+                            });
+                            imgViewGv2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    showImageInGalleryApp(imgBitmapGv2);
                                 }
                             });
                             LFechaG.setVisibility(View.VISIBLE);
@@ -860,21 +878,30 @@ public class PrendaView extends AppCompatActivity {
                     if(imgBitmapL==null){
                         Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
                     }
+                    if(imgBitmapLv2==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda del peso final", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     AlertCarga carga =new AlertCarga(PrendaView.this);
                     DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
                     prendaestadosViewModel.reset();
                     carga.Cargar();
-                    prendaestadosViewModel.daotsestados(PrendaView.this,"Limado",CodigoP,Float.parseFloat(PesoInicialL.getText().toString()),Float.parseFloat(pesofinalL.getText().toString()),bitmapToByteArray(imgBitmapL));
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Limado",CodigoP,Float.parseFloat(PesoInicialL.getText().toString()),Float.parseFloat(pesofinalL.getText().toString()),bitmapToByteArray(imgBitmapL),bitmapToByteArray(imgBitmapLv2));
                     Observer<String> observer=new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
                             carga.setInicio(1);
                             carga.Cerrar();
-                            btnCamarav2L.setOnClickListener(new View.OnClickListener() {
+                            imgViewL.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
+                                    showImageInGalleryApp(imgBitmapL);
+                                }
+                            });
+                            imgViewLv2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    showImageInGalleryApp(imgBitmapLv2);
                                 }
                             });
                             LFechaL.setVisibility(View.VISIBLE);
@@ -1097,21 +1124,30 @@ public class PrendaView extends AppCompatActivity {
                     if(imgBitmapLL==null){
                         Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
                     }
+                    if(imgBitmapLLv2==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda del peso final", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     AlertCarga carga =new AlertCarga(PrendaView.this);
                     DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
                     prendaestadosViewModel.reset();
                     carga.Cargar();
-                    prendaestadosViewModel.daotsestados(PrendaView.this,"Lijado",CodigoP,Float.parseFloat(PesoInicialLL.getText().toString()),Float.parseFloat(pesofinalLL.getText().toString()),bitmapToByteArray(imgBitmapLL));
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Lijado",CodigoP,Float.parseFloat(PesoInicialLL.getText().toString()),Float.parseFloat(pesofinalLL.getText().toString()),bitmapToByteArray(imgBitmapLL),bitmapToByteArray(imgBitmapLLv2));
                     Observer<String> observer=new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
                             carga.setInicio(1);
                             carga.Cerrar();
-                            btnCamarav2LL.setOnClickListener(new View.OnClickListener() {
+                            imgViewLL.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
+                                    showImageInGalleryApp(imgBitmapLL);
+                                }
+                            });
+                            imgViewLLv2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    showImageInGalleryApp(imgBitmapLLv2);
                                 }
                             });
                             LFechaLL.setVisibility(View.VISIBLE);
@@ -1324,21 +1360,30 @@ public class PrendaView extends AppCompatActivity {
                     if(imgBitmapE==null){
                         Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
                     }
+                    if(imgBitmapEv2==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda del peso final", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     AlertCarga carga =new AlertCarga(PrendaView.this);
                     DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
                     prendaestadosViewModel.reset();
                     carga.Cargar();
-                    prendaestadosViewModel.daotsestados(PrendaView.this,"Engaste",CodigoP,Float.parseFloat(PesoInicialE.getText().toString()),Float.parseFloat(pesofinalE.getText().toString()),bitmapToByteArray(imgBitmapE));
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Engaste",CodigoP,Float.parseFloat(PesoInicialE.getText().toString()),Float.parseFloat(pesofinalE.getText().toString()),bitmapToByteArray(imgBitmapE),bitmapToByteArray(imgBitmapEv2));
                     Observer<String> observer=new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
                             carga.setInicio(1);
                             carga.Cerrar();
-                            btnCamarav2E.setOnClickListener(new View.OnClickListener() {
+                            imgViewE.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
+                                    showImageInGalleryApp(imgBitmapE);
+                                }
+                            });
+                            imgViewEv2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    showImageInGalleryApp(imgBitmapEv2);
                                 }
                             });
                             LFechaE.setVisibility(View.VISIBLE);
@@ -1562,21 +1607,30 @@ public class PrendaView extends AppCompatActivity {
                     if(imgBitmapP==null){
                         Toast.makeText(PrendaView.this, "Tome la foto de la prenda", Toast.LENGTH_SHORT).show();
                     }
+                    if(imgBitmapPv2==null){
+                        Toast.makeText(PrendaView.this, "Tome la foto de la prenda del peso final", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     AlertCarga carga =new AlertCarga(PrendaView.this);
                     DatosEstadosViewModel prendaestadosViewModel= ViewModelProviders.of(PrendaView.this).get(DatosEstadosViewModel.class);
                     prendaestadosViewModel.reset();
                     carga.Cargar();
-                    prendaestadosViewModel.daotsestados(PrendaView.this,"Pulido",CodigoP,Float.parseFloat(PesoInicialP.getText().toString()),Float.parseFloat(pesofinalP.getText().toString()),bitmapToByteArray(imgBitmapP));
+                    prendaestadosViewModel.daotsestados(PrendaView.this,"Pulido",CodigoP,Float.parseFloat(PesoInicialP.getText().toString()),Float.parseFloat(pesofinalP.getText().toString()),bitmapToByteArray(imgBitmapP),bitmapToByteArray(imgBitmapPv2));
                     Observer<String> observer=new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
                             carga.setInicio(1);
                             carga.Cerrar();
-                            btnCamarav2P.setOnClickListener(new View.OnClickListener() {
+                            imgViewP.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
+                                    showImageInGalleryApp(imgBitmapP);
+                                }
+                            });
+                            imgViewPv2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    showImageInGalleryApp(imgBitmapPv2);
                                 }
                             });
                             LFechaP.setVisibility(View.VISIBLE);

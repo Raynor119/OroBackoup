@@ -18,17 +18,19 @@ public class DatosEstadosMYSQL extends Conexion {
     private float Peso_inicial;
     private float Peso_final;
     private byte[] Foto;
+    private byte[] Fotov2;
     private boolean verficar=true;
     private boolean verificarE=false;
     private DatosEstadosViewModel ViewModel;
     private String Fecha="false";
-    public DatosEstadosMYSQL(Context context,String tipoEstado,int codigoP,float peso_inicial,float peso_final, byte[] foto, DatosEstadosViewModel viewModel) {
+    public DatosEstadosMYSQL(Context context,String tipoEstado,int codigoP,float peso_inicial,float peso_final, byte[] foto, byte[] fotov2, DatosEstadosViewModel viewModel) {
         super(context);
         this.TipoEstado=tipoEstado;
         this.CodigoP=codigoP;
         this.Peso_inicial=peso_inicial;
         this.Peso_final=peso_final;
         this.Foto=foto;
+        this.Fotov2=fotov2;
         this.ViewModel=viewModel;
         execute("");
         new android.os.Handler().postDelayed(new Runnable() {
@@ -51,12 +53,13 @@ public class DatosEstadosMYSQL extends Conexion {
             if(verificarE){
                 return "Error en la conexion";
             }else{
-                String Sql="INSERT INTO "+TipoEstado+" (codigoprenda, pesoinicial, pesofinal, foto) VALUES (?, ?, ?, ?)";
+                String Sql="INSERT INTO "+TipoEstado+" (codigoprenda, pesoinicial, pesofinal, foto, fotov2) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(Sql, Statement.RETURN_GENERATED_KEYS);
                 stmt.setInt(1, CodigoP);
                 stmt.setFloat(2, Peso_inicial);
                 stmt.setFloat(3, Peso_final);
                 stmt.setBytes(4, Foto);
+                stmt.setBytes(5, Fotov2);
                 stmt.executeUpdate();
                 ResultSet generatedKeys = stmt.getGeneratedKeys();
                 int codigopp=0;

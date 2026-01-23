@@ -20,7 +20,7 @@ public class DatosEstadosViewModel extends ViewModel {
     public LiveData<String> getResultado(){
         return datosman;
     }
-    public void daotsestados(Context context,String TipoEstado, String CodigoP,float peso_inicial,float peso_final,byte[] Foto){
-        DatosEstadosMYSQL BD=new DatosEstadosMYSQL(context, TipoEstado, Integer.parseInt(CodigoP),peso_inicial,peso_final,Foto,DatosEstadosViewModel.this);
+    public void daotsestados(Context context,String TipoEstado, String CodigoP,float peso_inicial,float peso_final,byte[] Foto,byte[] Fotov2){
+        DatosEstadosMYSQL BD=new DatosEstadosMYSQL(context, TipoEstado, Integer.parseInt(CodigoP),peso_inicial,peso_final,Foto,Fotov2,DatosEstadosViewModel.this);
     }
 }
