@@ -5,14 +5,16 @@ public class DatosPrenda {
     private String TipoEstado;
     private float Pesoinicial,Pesofinal;
     private byte[] Foto;
+    private byte[] Fotov2;
     private String Fecha;
 
-    public DatosPrenda(int codigo, String tipoEstado, float pesoinicial, float pesofinal, byte[] foto, String fecha) {
+    public DatosPrenda(int codigo, String tipoEstado, float pesoinicial, float pesofinal, byte[] foto,byte[] fotov2, String fecha) {
         this.Codigo = codigo;
         this.TipoEstado = tipoEstado;
         this.Pesoinicial = pesoinicial;
         this.Pesofinal = pesofinal;
         this.Foto = foto;
+        this.Fotov2 = fotov2;
         this.Fecha = fecha;
     }
 
@@ -58,6 +60,14 @@ public class DatosPrenda {
 
     public String getFecha() {
         return Fecha;
+    }
+
+    public byte[] getFotov2() {
+        return Fotov2;
+    }
+
+    public void setFotov2(byte[] fotov2) {
+        Fotov2 = fotov2;
     }
 
     public void setFecha(String fecha) {

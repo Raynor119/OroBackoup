@@ -1801,10 +1801,16 @@ public class PrendaView extends AppCompatActivity {
                             carga.setInicio(1);
                             carga.Cerrar();
                             if(datosPrendas.size()>=1){
-                                btnCamarav2F.setOnClickListener(new View.OnClickListener() {
+                                imgViewF.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
+                                        showImageInGalleryApp(imgBitmapF);
+                                    }
+                                });
+                                imgViewFv2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        showImageInGalleryApp(imgBitmapFv2);
                                     }
                                 });
                                 LFechaF.setVisibility(View.VISIBLE);
@@ -1815,6 +1821,7 @@ public class PrendaView extends AppCompatActivity {
                                 PesoInicialF.setEnabled(false);
                                 pesofinalF.setEnabled(false);
                                 imgBitmapF=byteArrayToBitmap(datosPrendas.get(0).getFoto());
+                                imgBitmapFv2=byteArrayToBitmap(datosPrendas.get(0).getFotov2());
                                 try {
                                     photoFile = createImageFile();
                                     if (photoFile != null) {
@@ -1829,6 +1836,16 @@ public class PrendaView extends AppCompatActivity {
                                             // Manejo del error si la imagen no se decodifica
                                             Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
                                         }
+                                        if (imgBitmapFv2 != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapFv2 = rotateImageIfRequired(imgBitmapFv2, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewFv2.setImageBitmap(imgBitmapFv2);
+                                            btnCamaraF.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 } catch (IOException ex) {
                                     ex.printStackTrace();
@@ -1837,10 +1854,16 @@ public class PrendaView extends AppCompatActivity {
                             }
                             //---------------------------------------------------------------------------------------------------------------------------------------------------
                             if(datosPrendas.size()>=2){
-                                btnCamarav2G.setOnClickListener(new View.OnClickListener() {
+                                imgViewG.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
+                                        showImageInGalleryApp(imgBitmapG);
+                                    }
+                                });
+                                imgViewGv2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        showImageInGalleryApp(imgBitmapGv2);
                                     }
                                 });
                                 LFechaG.setVisibility(View.VISIBLE);
@@ -1851,6 +1874,7 @@ public class PrendaView extends AppCompatActivity {
                                 PesoInicialG.setEnabled(false);
                                 pesofinalG.setEnabled(false);
                                 imgBitmapG=byteArrayToBitmap(datosPrendas.get(1).getFoto());
+                                imgBitmapGv2=byteArrayToBitmap(datosPrendas.get(1).getFotov2());
                                 try {
                                     photoFile = createImageFile();
                                     if (photoFile != null) {
@@ -1865,6 +1889,16 @@ public class PrendaView extends AppCompatActivity {
                                             // Manejo del error si la imagen no se decodifica
                                             Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
                                         }
+                                        if (imgBitmapGv2 != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapGv2 = rotateImageIfRequired(imgBitmapGv2, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewGv2.setImageBitmap(imgBitmapGv2);
+                                            btnCamaraG.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 } catch (IOException ex) {
                                     ex.printStackTrace();
@@ -1874,10 +1908,16 @@ public class PrendaView extends AppCompatActivity {
                             //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
                             if(datosPrendas.size()>=3){
-                                btnCamarav2L.setOnClickListener(new View.OnClickListener() {
+                                imgViewL.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
+                                        showImageInGalleryApp(imgBitmapL);
+                                    }
+                                });
+                                imgViewLv2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        showImageInGalleryApp(imgBitmapLv2);
                                     }
                                 });
                                 LFechaL.setVisibility(View.VISIBLE);
@@ -1888,6 +1928,7 @@ public class PrendaView extends AppCompatActivity {
                                 PesoInicialL.setEnabled(false);
                                 pesofinalL.setEnabled(false);
                                 imgBitmapL=byteArrayToBitmap(datosPrendas.get(2).getFoto());
+                                imgBitmapL=byteArrayToBitmap(datosPrendas.get(2).getFotov2());
                                 try {
                                     photoFile = createImageFile();
                                     if (photoFile != null) {
@@ -1902,6 +1943,16 @@ public class PrendaView extends AppCompatActivity {
                                             // Manejo del error si la imagen no se decodifica
                                             Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
                                         }
+                                        if (imgBitmapLv2 != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapLv2 = rotateImageIfRequired(imgBitmapLv2, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewLv2.setImageBitmap(imgBitmapLv2);
+                                            btnCamaraL.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 } catch (IOException ex) {
                                     ex.printStackTrace();
@@ -1911,10 +1962,16 @@ public class PrendaView extends AppCompatActivity {
 
                             //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                             if(datosPrendas.size()>=4){
-                                btnCamarav2LL.setOnClickListener(new View.OnClickListener() {
+                                imgViewLL.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
+                                        showImageInGalleryApp(imgBitmapLL);
+                                    }
+                                });
+                                imgViewLLv2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        showImageInGalleryApp(imgBitmapLLv2);
                                     }
                                 });
                                 LFechaLL.setVisibility(View.VISIBLE);
@@ -1925,6 +1982,7 @@ public class PrendaView extends AppCompatActivity {
                                 PesoInicialLL.setEnabled(false);
                                 pesofinalLL.setEnabled(false);
                                 imgBitmapLL=byteArrayToBitmap(datosPrendas.get(3).getFoto());
+                                imgBitmapLLv2=byteArrayToBitmap(datosPrendas.get(3).getFotov2());
                                 try {
                                     photoFile = createImageFile();
                                     if (photoFile != null) {
@@ -1939,6 +1997,16 @@ public class PrendaView extends AppCompatActivity {
                                             // Manejo del error si la imagen no se decodifica
                                             Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
                                         }
+                                        if (imgBitmapLLv2 != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapLLv2 = rotateImageIfRequired(imgBitmapLLv2, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewLLv2.setImageBitmap(imgBitmapLLv2);
+                                            btnCamaraLL.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 } catch (IOException ex) {
                                     ex.printStackTrace();
@@ -1947,10 +2015,16 @@ public class PrendaView extends AppCompatActivity {
                             }
                             //-------------------------------------------------------------------------------------------------------------------------------------------------------
                             if(datosPrendas.size()>=5){
-                                btnCamarav2E.setOnClickListener(new View.OnClickListener() {
+                                imgViewE.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
+                                        showImageInGalleryApp(imgBitmapE);
+                                    }
+                                });
+                                imgViewEv2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        showImageInGalleryApp(imgBitmapEv2);
                                     }
                                 });
                                 LFechaE.setVisibility(View.VISIBLE);
@@ -1961,6 +2035,7 @@ public class PrendaView extends AppCompatActivity {
                                 PesoInicialE.setEnabled(false);
                                 pesofinalE.setEnabled(false);
                                 imgBitmapE=byteArrayToBitmap(datosPrendas.get(4).getFoto());
+                                imgBitmapEv2=byteArrayToBitmap(datosPrendas.get(4).getFotov2());
                                 try {
                                     photoFile = createImageFile();
                                     if (photoFile != null) {
@@ -1975,6 +2050,16 @@ public class PrendaView extends AppCompatActivity {
                                             // Manejo del error si la imagen no se decodifica
                                             Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
                                         }
+                                        if (imgBitmapEv2 != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapEv2 = rotateImageIfRequired(imgBitmapEv2, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewEv2.setImageBitmap(imgBitmapEv2);
+                                            btnCamaraE.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 } catch (IOException ex) {
                                     ex.printStackTrace();
@@ -1984,10 +2069,16 @@ public class PrendaView extends AppCompatActivity {
 
                             //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                             if(datosPrendas.size()>=6){
-                                btnCamarav2P.setOnClickListener(new View.OnClickListener() {
+                                imgViewP.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
+                                        showImageInGalleryApp(imgBitmapP);
+                                    }
+                                });
+                                imgViewPv2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        showImageInGalleryApp(imgBitmapPv2);
                                     }
                                 });
                                 LFechaP.setVisibility(View.VISIBLE);
@@ -1998,6 +2089,7 @@ public class PrendaView extends AppCompatActivity {
                                 PesoInicialP.setEnabled(false);
                                 pesofinalP.setEnabled(false);
                                 imgBitmapP=byteArrayToBitmap(datosPrendas.get(5).getFoto());
+                                imgBitmapPv2=byteArrayToBitmap(datosPrendas.get(5).getFotov2());
                                 try {
                                     photoFile = createImageFile();
                                     if (photoFile != null) {
@@ -2007,6 +2099,16 @@ public class PrendaView extends AppCompatActivity {
                                             imgBitmapP = rotateImageIfRequired(imgBitmapP, photoFile.getAbsolutePath());
                                             // Mostrar la imagen en el ImageView
                                             imgViewP.setImageBitmap(imgBitmapP);
+                                            btnCamaraP.setVisibility(View.GONE);
+                                        } else {
+                                            // Manejo del error si la imagen no se decodifica
+                                            Toast.makeText(PrendaView.this, "Error al decodificar la imagen", Toast.LENGTH_SHORT).show();
+                                        }
+                                        if (imgBitmapPv2 != null) {
+                                            // Corregir la orientación de la imagen
+                                            imgBitmapPv2 = rotateImageIfRequired(imgBitmapPv2, photoFile.getAbsolutePath());
+                                            // Mostrar la imagen en el ImageView
+                                            imgViewPv2.setImageBitmap(imgBitmapPv2);
                                             btnCamaraP.setVisibility(View.GONE);
                                         } else {
                                             // Manejo del error si la imagen no se decodifica

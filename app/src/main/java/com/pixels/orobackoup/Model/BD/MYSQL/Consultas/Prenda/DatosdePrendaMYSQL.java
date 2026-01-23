@@ -46,51 +46,52 @@ public class DatosdePrendaMYSQL extends Conexion {
             if(verificarE){
                 return "Error en la conexion";
             }else{
-                String Sql = "SELECT codigo,pesoinicial,pesofinal,foto,Fecha FROM Fundicion WHERE codigoprenda = ?";
+                String Sql = "SELECT codigo,pesoinicial,pesofinal,foto,fotov2,Fecha FROM Fundicion WHERE codigoprenda = ?";
                 PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(Sql);
                 stmt.setInt(1, Codigodeprenda);
                 ResultSet rs = stmt.executeQuery();
                 if (rs.next()) {
-                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"fundicion",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getString("Fecha")));
+                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"fundicion",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getBytes("fotov2"),rs.getString("Fecha")));
                 }
-                String SqlETP = "SELECT codigo,pesoinicial,pesofinal,foto,Fecha FROM Electropulidobomba WHERE codigoprenda = ?";
+                String SqlETP = "SELECT codigo,pesoinicial,pesofinal,foto,fotov2,Fecha FROM Electropulidobomba WHERE codigoprenda = ?";
                 PreparedStatement stmtETP = (PreparedStatement) connection.prepareStatement(SqlETP);
                 stmtETP.setInt(1, Codigodeprenda);
                 rs = stmtETP.executeQuery();
                 if (rs.next()) {
-                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"electro",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getString("Fecha")));
+                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"electro",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getBytes("fotov2"),rs.getString("Fecha")));
                 }
-                String SqlLM = "SELECT codigo,pesoinicial,pesofinal,foto,Fecha FROM Limado WHERE codigoprenda = ?";
+                String SqlLM = "SELECT codigo,pesoinicial,pesofinal,foto,fotov2,Fecha FROM Limado WHERE codigoprenda = ?";
                 PreparedStatement stmtLM = (PreparedStatement) connection.prepareStatement(SqlLM);
                 stmtLM.setInt(1, Codigodeprenda);
                 rs = stmtLM.executeQuery();
                 if (rs.next()) {
-                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"limado",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getString("Fecha")));
+                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"limado",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getBytes("fotov2"),rs.getString("Fecha")));
                 }
-                String SqlLJ = "SELECT codigo,pesoinicial,pesofinal,foto,Fecha FROM Lijado WHERE codigoprenda = ?";
+                String SqlLJ = "SELECT codigo,pesoinicial,pesofinal,foto,fotov2,Fecha FROM Lijado WHERE codigoprenda = ?";
                 PreparedStatement stmtLJ = (PreparedStatement) connection.prepareStatement(SqlLJ);
                 stmtLJ.setInt(1, Codigodeprenda);
                 rs = stmtLJ.executeQuery();
                 if (rs.next()) {
-                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"lijado",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getString("Fecha")));
+                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"lijado",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getBytes("fotov2"),rs.getString("Fecha")));
                 }
-                String SqlEG = "SELECT codigo,pesoinicial,pesofinal,foto,Fecha FROM Engaste WHERE codigoprenda = ?";
+                String SqlEG = "SELECT codigo,pesoinicial,pesofinal,foto,fotov2,Fecha FROM Engaste WHERE codigoprenda = ?";
                 PreparedStatement stmtLG = (PreparedStatement) connection.prepareStatement(SqlEG);
                 stmtLG.setInt(1, Codigodeprenda);
                 rs = stmtLG.executeQuery();
                 if (rs.next()) {
-                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"engaste",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getString("Fecha")));
+                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"engaste",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getBytes("fotov2"),rs.getString("Fecha")));
                 }
-                String SqlP = "SELECT codigo,pesoinicial,pesofinal,foto,Fecha FROM Pulido WHERE codigoprenda = ?";
+                String SqlP = "SELECT codigo,pesoinicial,pesofinal,foto,fotov2,Fecha FROM Pulido WHERE codigoprenda = ?";
                 PreparedStatement stmtP = (PreparedStatement) connection.prepareStatement(SqlP);
                 stmtP.setInt(1, Codigodeprenda);
                 rs = stmtP.executeQuery();
                 if (rs.next()) {
-                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"pulido",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getString("Fecha")));
+                    DatosPren.add(new DatosPrenda(rs.getInt("codigo"),"pulido",rs.getFloat("pesoinicial"),rs.getFloat("pesofinal"),rs.getBytes("foto"),rs.getBytes("fotov2"),rs.getString("Fecha")));
                 }
                 return "";
             }
         }catch (Exception e){
+            System.out.println("-----------------------------------------------------------------------------------------Error: "+e+"-------------------------0-----------------------------------------------");
             return "Error al guardar los datos del producto en la Base de Datos";
         }
     }
